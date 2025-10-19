@@ -1,0 +1,138 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ContactForm from '../components/ContactForm';
+---
+
+<BaseLayout title="Contact - Get In Touch" description="Get in touch for opportunities, collaborations, or just to say hello">
+  <div class="min-h-screen bg-gradient-to-b from-black to-slate-900">
+    <!-- Terminal Header Section -->
+    <section class="py-16">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center font-mono">
+          <div class="text-2xl md:text-4xl text-green-400 mb-4">
+            ./contact --kevin
+          </div>
+          <div class="text-gray-400 text-sm max-w-3xl mx-auto">
+            # Opening communication channels... Ready to connect!
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="py-16">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+          <!-- Terminal Contact Info -->
+          <div class="bg-black/40 backdrop-blur-sm border border-gray-700/50 rounded-lg p-8 font-mono">
+            <div class="text-green-400 text-lg mb-6">
+              <span class="text-blue-400">$</span> cat ./contact_info.json
+            </div>
+            <div class="text-gray-300 leading-relaxed mb-8">
+              # Multiple communication protocols available<br/>
+              # All channels monitored and responses guaranteed
+            </div>
+
+            <div class="space-y-6">
+              <!-- Email -->
+              <div class="text-sm">
+                <div class="text-blue-400 mb-1">"email":</div>
+                <div class="ml-4 text-green-400">
+                  <a href="mailto:kevin@kevinkunkel.dev" class="hover:text-green-300 transition-colors">
+                    "kevin@kevinkunkel.dev"
+                  </a>
+                </div>
+              </div>
+
+              <!-- Location -->
+              <div class="text-sm">
+                <div class="text-blue-400 mb-1">"location":</div>
+                <div class="ml-4 text-green-400">"Remote + Available Worldwide"</div>
+              </div>
+
+              <!-- Response Time -->
+              <div class="text-sm">
+                <div class="text-blue-400 mb-1">"response_time":</div>
+                <div class="ml-4 text-green-400">"&lt; 24 hours"</div>
+              </div>
+
+              <!-- Social Links -->
+              <div class="text-sm">
+                <div class="text-blue-400 mb-2">"social_channels": [</div>
+                <div class="ml-4 space-y-1">
+                  <div>
+                    <a href="https://github.com/kevinkunkel" class="text-green-400 hover:text-green-300 transition-colors">
+                      "github.com/kevinkunkel"
+                    </a>,
+                  </div>
+                  <div>
+                    <a href="https://linkedin.com/in/kevinkunkel" class="text-green-400 hover:text-green-300 transition-colors">
+                      "linkedin.com/in/kevinkunkel"
+                    </a>,
+                  </div>
+                  <div>
+                    <a href="https://twitter.com/kevinkunkel" class="text-green-400 hover:text-green-300 transition-colors">
+                      "twitter.com/kevinkunkel"
+                    </a>
+                  </div>
+                </div>
+                <div class="text-blue-400">]</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Terminal Contact Form -->
+        <div class="bg-black/40 backdrop-blur-sm border border-gray-700/50 rounded-lg p-8 font-mono">
+          <div class="text-green-400 text-lg mb-6">
+            <span class="text-blue-400">$</span> ./send_message --to=kevin
+          </div>
+          <ContactForm client:load />
+        </div>
+      </div>
+    </div>
+  </section>
+
+    <!-- Terminal FAQ Section -->
+    <section class="py-16">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="bg-black/40 backdrop-blur-sm border border-gray-700/50 rounded-lg p-8 font-mono">
+          <div class="text-center mb-12">
+            <div class="text-green-400 text-2xl mb-4">
+              <span class="text-blue-400">$</span> cat ./faq.md
+            </div>
+          </div>
+
+          <div class="space-y-8">
+            <div class="border-l-2 border-green-400/50 pl-4">
+              <div class="text-blue-400 text-lg mb-2">
+                ## What kind of projects do you work on?
+              </div>
+              <p class="text-gray-300 leading-relaxed">
+                Both ML projects (computer vision, NLP, data analysis) and web development (full-stack applications, APIs, frontend interfaces). Particularly interested in projects that combine both domains.
+              </p>
+            </div>
+
+            <div class="border-l-2 border-green-400/50 pl-4">
+              <div class="text-blue-400 text-lg mb-2">
+                ## Are you available for freelance work?
+              </div>
+              <p class="text-gray-300 leading-relaxed">
+                Yes! Open to freelance opportunities, especially for ML integration, data analysis, or modern web applications. Let's discuss your project requirements.
+              </p>
+            </div>
+
+            <div class="border-l-2 border-green-400/50 pl-4">
+              <div class="text-blue-400 text-lg mb-2">
+                ## How can we collaborate?
+              </div>
+              <p class="text-gray-300 leading-relaxed">
+                Multiple formats available: full-time positions, contract work, consulting, or technical discussions and knowledge sharing. Let's find what works best.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+</BaseLayout>

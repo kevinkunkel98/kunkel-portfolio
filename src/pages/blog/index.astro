@@ -1,0 +1,172 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+
+// Get all blog posts
+const allPosts = await getCollection('blog');
+
+// Sort posts by publication date (newest first)
+const sortedPosts = allPosts.sort((a, b) =>
+  new Date(b.data.pubDate).getTime() - new Date(a.data.pubDate).getTime()
+);
+
+// Group posts by category
+const categories = ['All', ...new Set(sortedPosts.map(post => post.data.category))];
+
+function formatDate(date: Date) {
+  return new Date(date).toLocaleDateString('en-US', {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric'
+  });
+}
+---
+
+<BaseLayout title="Kevin's Random Thoughts - /dev/blog" description="Random thoughts, tutorials, and rants about code, ML, and life">
+  <!-- Header Section -->
+  <section class="bg-gradient-to-b from-slate-900 to-black py-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center font-mono">
+        <div class="text-2xl md:text-4xl text-green-400 mb-4">
+          cat ./random_thoughts.md
+        </div>
+        <div class="text-gray-400 text-sm max-w-3xl mx-auto">
+          # Brain dumps, tutorials, and occasional existential crises about code
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Blog Posts Section -->
+  <section class="py-16 bg-gradient-to-b from-black to-slate-900">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <!-- Terminal Filter -->
+      <div class="flex flex-wrap justify-center gap-4 mb-12 font-mono" id="category-filters">
+        {categories.map((category) => (
+          <button
+            class={`filter-btn px-4 py-2 text-sm transition-colors ${
+              category === 'All'
+                ? 'text-green-400 border border-green-400/50 bg-green-400/10'
+                : 'text-gray-400 hover:text-white border border-gray-600 hover:border-gray-400'
+            }`}
+            data-category={category}
+          >
+            <span class="text-blue-400">./</span>{category.toLowerCase().replace(' ', '_')}
+          </button>
+        ))}
+      </div>      <!-- Posts Grid -->
+      <!-- Blog Posts Grid -->
+      <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-3" id="blog-posts">
+        {sortedPosts.map((post) => (
+          <article class={`blog-post bg-black/40 backdrop-blur-sm border border-gray-700/50 rounded-lg overflow-hidden hover:border-green-400/50 hover:shadow-green-400/20 hover:shadow-lg transition-all duration-300`} data-categories={post.data.category}>
+            {post.data.heroImage && (
+              <img
+                src={post.data.heroImage}
+                alt={post.data.title}
+                class="w-full h-48 object-cover opacity-80"
+                loading="lazy"
+              />
+            )}
+            <div class="p-6 font-mono">
+              <div class="flex items-center justify-between mb-3">
+                <time class="text-xs text-gray-400">
+                  <span class="text-blue-400">$</span> date --iso-8601 # {new Date(post.data.pubDate).toISOString().split('T')[0]}
+                </time>
+                <div class="flex flex-wrap gap-1">
+                  <span class="px-2 py-1 text-xs text-green-400 bg-green-400/10 border border-green-400/30">
+                    {post.data.category}
+                  </span>
+                </div>
+              </div>
+
+              <h2 class="text-lg font-bold text-white mb-3 leading-tight">
+                <span class="text-blue-400">$</span> cat <span class="text-green-400">./</span>{post.data.title.toLowerCase().replace(/[^a-z0-9]/g, '_')}<span class="text-gray-400">.md</span>
+              </h2>
+
+              <p class="text-gray-300 text-sm mb-4 leading-relaxed">
+                {post.data.description}
+              </p>
+
+              <a
+                href={`/blog/${post.slug}/`}
+                class="inline-flex items-center text-green-400 hover:text-green-300 text-sm transition-colors"
+              >
+                <span class="text-blue-400">$</span> vim <span class="text-green-400">./{post.slug}</span>
+                <span class="ml-2 animate-pulse">→</span>
+              </a>
+            </div>
+          </article>
+        ))}
+      </div>      {sortedPosts.length === 0 && (
+        <div class="text-center py-12">
+          <p class="text-gray-600 dark:text-gray-300 text-lg">
+            No blog posts yet. Check back soon for updates!
+          </p>
+        </div>
+      )}
+    </div>
+  </section>
+
+  <!-- Newsletter CTA -->
+  <section class="py-16 bg-gray-50 dark:bg-gray-900">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h2 class="text-3xl font-bold text-gray-900 dark:text-white mb-4">
+        Stay Updated
+      </h2>
+      <p class="text-lg text-gray-600 dark:text-gray-300 mb-8">
+        Get notified when I publish new articles about ML and web development.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center max-w-md mx-auto">
+        <input
+          type="email"
+          placeholder="Enter your email"
+          class="px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg flex-1 dark:bg-gray-800 dark:text-white"
+        />
+        <button class="bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-6 rounded-lg transition-colors">
+          Subscribe
+        </button>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .line-clamp-3 {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+</style>
+
+<script>
+  // Category filtering functionality
+  document.addEventListener('DOMContentLoaded', () => {
+    const filterBtns = document.querySelectorAll('.filter-btn');
+    const postItems = document.querySelectorAll('.post-item');
+
+    filterBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const category = btn.getAttribute('data-category');
+
+        // Update active button
+        filterBtns.forEach(b => {
+          b.classList.remove('bg-blue-600', 'text-white');
+          b.classList.add('bg-gray-200', 'dark:bg-gray-700', 'text-gray-700', 'dark:text-gray-300');
+        });
+        btn.classList.add('bg-blue-600', 'text-white');
+        btn.classList.remove('bg-gray-200', 'dark:bg-gray-700', 'text-gray-700', 'dark:text-gray-300');
+
+        // Filter posts
+        postItems.forEach(item => {
+          const htmlItem = item as HTMLElement;
+          if (category === 'All' || item.getAttribute('data-category') === category) {
+            htmlItem.style.display = 'block';
+          } else {
+            htmlItem.style.display = 'none';
+          }
+        });
+      });
+    });
+  });
+</script>

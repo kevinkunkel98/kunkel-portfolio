@@ -1,0 +1,170 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+import type { CollectionEntry } from 'astro:content';
+
+export async function getStaticPaths() {
+  const blogEntries = await getCollection('blog');
+  return blogEntries.map(entry => ({
+    params: { slug: entry.slug },
+    props: { entry }
+  }));
+}
+
+const { entry } = Astro.props as { entry: CollectionEntry<'blog'> };
+const { Content } = await entry.render();
+
+function formatDate(date: Date) {
+  return new Date(date).toLocaleDateString('en-US', {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric'
+  });
+}
+
+// Get reading time estimate
+function getReadingTime(content: string) {
+  const wordsPerMinute = 200;
+  const words = content.split(/\s+/).length;
+  const minutes = Math.ceil(words / wordsPerMinute);
+  return minutes;
+}
+---
+
+<BaseLayout title={entry.data.title} description={entry.data.description}>
+  <!-- Terminal Background -->
+  <div class="min-h-screen bg-gradient-to-b from-black to-slate-900">
+    <article class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <!-- Article Header -->
+      <header class="mb-12">
+        <!-- Terminal Breadcrumb -->
+        <nav class="mb-6 font-mono">
+          <div class="text-sm text-gray-400">
+            <span class="text-blue-400">~/kevin-kunkel $</span>
+            <span class="text-green-400">cd</span>
+            <a href="/" class="hover:text-white transition-colors">/home</a>
+            <span class="text-green-400">/</span>
+            <a href="/blog" class="hover:text-white transition-colors">blog</a>
+            <span class="text-green-400">/</span>
+            <span class="text-white">{entry.slug}</span>
+          </div>
+        </nav>
+
+        <!-- Hero Image -->
+        {entry.data.heroImage && (
+          <div class="mb-8 border border-gray-700/50 rounded-lg overflow-hidden">
+            <img
+              src={entry.data.heroImage}
+              alt={entry.data.title}
+              class="w-full h-64 md:h-96 object-cover opacity-80"
+            />
+          </div>
+        )}
+
+        <!-- Terminal File Header -->
+        <div class="bg-black/60 backdrop-blur-sm border border-gray-700/50 rounded-lg p-6 mb-8 font-mono">
+          <div class="text-green-400 text-lg mb-2">
+            <span class="text-blue-400">$</span> cat ./{entry.slug}.md
+          </div>
+          <h1 class="text-2xl md:text-4xl font-bold text-white mb-4">
+            {entry.data.title}
+          </h1>
+
+          <p class="text-gray-300 mb-6 leading-relaxed">
+            {entry.data.description}
+          </p>
+
+          <!-- File Meta -->
+          <div class="flex flex-col md:flex-row md:items-center gap-4 pb-4 border-b border-gray-700/50">
+            <div class="flex items-center gap-4 text-sm">
+              <span class="text-gray-400">
+                <span class="text-blue-400">$</span> stat {entry.slug}.md
+              </span>
+            </div>
+            <div class="flex items-center gap-4 text-sm text-gray-400">
+              <span class="px-2 py-1 bg-green-400/10 border border-green-400/30 text-green-400">
+                {entry.data.category}
+              </span>
+
+              <time>
+                Modified: {formatDate(entry.data.pubDate)}
+              </time>
+
+              <span>
+                Size: ~{getReadingTime(entry.body)} min
+              </span>
+            </div>
+
+            {entry.data.tags && (
+              <div class="flex flex-wrap gap-2">
+                {entry.data.tags.map((tag) => (
+                  <span class="px-2 py-1 text-xs text-blue-400 bg-blue-400/10 border border-blue-400/30">
+                    #{tag}
+                  </span>
+                ))}
+              </div>
+            )}
+          </div>
+        </div>
+    </header>
+
+      <!-- Article Content -->
+      <div class="bg-black/20 backdrop-blur-sm border border-gray-700/30 rounded-lg p-8 prose prose-lg prose-invert max-w-none">
+        <Content />
+      </div>
+
+      <!-- Terminal Footer -->
+      <footer class="mt-12 pt-8 border-t border-gray-700/50 font-mono">
+        <!-- Terminal Commands Section -->
+        <div class="mb-8">
+          <div class="text-green-400 mb-4">
+            <span class="text-blue-400">$</span> share --social {entry.slug}
+          </div>
+          <div class="flex space-x-4">
+            <a
+              href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(entry.data.title)}&url=${encodeURIComponent(Astro.url.href)}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="inline-flex items-center px-3 py-2 text-sm bg-blue-500/20 border border-blue-500/50 text-blue-400 hover:text-white hover:bg-blue-500/40 transition-all"
+            >
+              ./twitter --post
+            </a>
+
+            <a
+              href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(Astro.url.href)}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="inline-flex items-center px-3 py-2 text-sm bg-blue-700/20 border border-blue-700/50 text-blue-400 hover:text-white hover:bg-blue-700/40 transition-all"
+            >
+              ./linkedin --share
+            </a>
+          </div>
+        </div>
+
+        <!-- Navigation Commands -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div>
+            <a
+              href="/blog"
+              class="inline-flex items-center text-green-400 hover:text-green-300 transition-colors"
+            >
+              <span class="text-blue-400">$</span> cd ../
+            </a>
+          </div>
+
+          <div class="md:text-right">
+            <a
+              href="/contact"
+              class="inline-flex items-center text-green-400 hover:text-green-300 transition-colors"
+            >
+              <span class="text-blue-400">$</span> ./contact --kevin
+            </a>
+          </div>
+        </div>
+      </footer>
+    </article>
+  </div>
+</BaseLayout>
+
+

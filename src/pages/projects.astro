@@ -1,0 +1,192 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ProjectCard from '../components/ProjectCard';
+
+// Kevin's actual projects data
+const allProjects = [
+  {
+    title: "Neural Style Transfer",
+    description: "Deep learning model that applies artistic styles to images using CNN architectures. Real-time processing with optimized inference pipeline.",
+    technologies: ["Python", "TensorFlow", "OpenCV", "FastAPI", "Docker"],
+    category: "ML" as const,
+    githubUrl: "https://github.com/kevinkunkel/neural-style-transfer",
+    imageUrl: "/projects/neural-style.jpg"
+  },
+  {
+    title: "Real-time Analytics Dashboard",
+    description: "Full-stack application for real-time data visualization and analytics. WebSocket connections for live updates, responsive design.",
+    technologies: ["React", "Node.js", "Socket.io", "D3.js", "MongoDB"],
+    category: "WebDev" as const,
+    githubUrl: "https://github.com/kevinkunkel/analytics-dashboard",
+    liveUrl: "https://analytics.kevinkunkel.dev",
+    imageUrl: "/projects/dashboard.jpg"
+  },
+  {
+    title: "Computer Vision Object Detection",
+    description: "Real-time object detection system using YOLO architecture. Optimized for edge deployment with 60+ FPS performance.",
+    technologies: ["Python", "YOLO", "OpenCV", "TensorRT", "CUDA"],
+    category: "ML" as const,
+    githubUrl: "https://github.com/kevinkunkel/yolo-detection",
+    imageUrl: "/projects/object-detection.jpg"
+  },
+  {
+    title: "Microservices E-commerce API",
+    description: "Scalable microservices architecture for e-commerce platform. Event-driven design with Docker containers and API gateway.",
+    technologies: ["Node.js", "Docker", "Redis", "PostgreSQL", "GraphQL"],
+    category: "WebDev" as const,
+    githubUrl: "https://github.com/kevinkunkel/microservices-ecommerce",
+    liveUrl: "https://api.kevinkunkel.dev",
+    imageUrl: "/projects/microservices.jpg"
+  },
+  {
+    title: "Time Series Anomaly Detection",
+    description: "ML pipeline for detecting anomalies in IoT sensor data using autoencoder networks. Real-time processing and alerting system.",
+    technologies: ["Python", "PyTorch", "Kafka", "InfluxDB", "Grafana"],
+    category: "ML" as const,
+    githubUrl: "https://github.com/kevinkunkel/anomaly-detection",
+    imageUrl: "/projects/anomaly-detection.jpg"
+  },
+  {
+    title: "WebRTC Video Chat Platform",
+    description: "Real-time video conferencing application with WebRTC, signaling server, and responsive UI. Screen sharing and chat features.",
+    technologies: ["WebRTC", "Socket.io", "React", "Express", "WebGL"],
+    category: "WebDev" as const,
+    githubUrl: "https://github.com/kevinkunkel/webrtc-platform",
+    liveUrl: "https://chat.kevinkunkel.dev",
+    imageUrl: "/projects/webrtc.jpg"
+  }
+];
+
+const mlProjects = allProjects.filter(project => project.category === 'ML');
+const webDevProjects = allProjects.filter(project => project.category === 'WebDev');
+---
+
+<BaseLayout title="Projects - My Work Portfolio" description="Explore my machine learning and web development projects">
+  <div class="min-h-screen bg-gradient-to-b from-black to-slate-900">
+    <!-- Terminal Header Section -->
+    <section class="py-16">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center font-mono">
+          <div class="text-2xl md:text-4xl text-green-400 mb-4">
+            ls -la ./projects/
+          </div>
+          <div class="text-gray-400 text-sm max-w-3xl mx-auto">
+            # Listing repository contents: ML models, web applications, and experimental solutions
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Terminal Projects Section -->
+    <section class="py-16">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <!-- Terminal Filter Tabs -->
+        <div class="flex flex-wrap justify-center gap-4 mb-12 font-mono" id="project-filters">
+          <button
+            class="filter-btn active px-4 py-2 text-sm transition-colors text-green-400 border border-green-400/50 bg-green-400/10"
+            data-filter="all"
+          >
+            <span class="text-blue-400">./</span>all
+          </button>
+            <button
+            class="filter-btn px-4 py-2 text-sm transition-colors text-gray-400 hover:text-white border border-gray-600 hover:border-gray-400"
+            data-filter="ML"
+          >
+            <span class="text-blue-400">./</span>machine_learning
+          </button>
+          <button
+            class="filter-btn px-4 py-2 text-sm transition-colors text-gray-400 hover:text-white border border-gray-600 hover:border-gray-400"
+            data-filter="WebDev"
+          >
+            <span class="text-blue-400">./</span>web_development
+          </button>
+      </div>
+
+      <!-- Projects Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="projects-grid">
+        {allProjects.map((project) => (
+          <div class="project-item" data-category={project.category}>
+            <ProjectCard project={project} client:load />
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+    <!-- Terminal Stats Section -->
+    <section class="py-16">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="bg-black/40 backdrop-blur-sm border border-gray-700/50 rounded-lg p-8 font-mono">
+          <div class="text-green-400 text-lg mb-6">
+            <span class="text-blue-400">$</span> wc -l ./projects/**/*
+          </div>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div class="text-center">
+              <div class="text-4xl font-bold text-green-400 mb-2">{allProjects.length}</div>
+              <div class="text-gray-400">total_projects</div>
+            </div>
+            <div class="text-center">
+              <div class="text-4xl font-bold text-blue-400 mb-2">{mlProjects.length}</div>
+              <div class="text-gray-400">ml_models</div>
+            </div>
+            <div class="text-center">
+              <div class="text-4xl font-bold text-purple-400 mb-2">{webDevProjects.length}</div>
+              <div class="text-gray-400">web_apps</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Terminal CTA Section -->
+      <section class="py-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="bg-black/40 backdrop-blur-sm border border-gray-700/50 rounded-lg p-8 text-center font-mono">
+            <div class="text-green-400 text-2xl mb-4">
+              <span class="text-blue-400">$</span> ./collaborate --with=kevin
+            </div>
+            <div class="text-gray-300 text-lg mb-8 max-w-2xl mx-auto">
+              # Ready to build something awesome together?
+            </div>
+            <a
+              href="/contact"
+              class="inline-block bg-green-400/20 border border-green-400/50 text-green-400 hover:text-black hover:bg-green-400 font-medium py-3 px-8 transition-all"
+            >
+              ./contact --kevin
+            </a>
+          </div>
+        </div>
+      </section>
+    </div>
+</BaseLayout>
+
+<script>
+  // Project filtering functionality
+  document.addEventListener('DOMContentLoaded', () => {
+    const filterBtns = document.querySelectorAll('.filter-btn');
+    const projectItems = document.querySelectorAll('.project-item');
+
+    filterBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const filter = btn.getAttribute('data-filter');
+
+        // Update active button
+        filterBtns.forEach(b => {
+          b.classList.remove('active', 'text-green-400', 'border-green-400/50', 'bg-green-400/10');
+          b.classList.add('text-gray-400', 'border-gray-600');
+        });
+        btn.classList.add('active', 'text-green-400', 'border-green-400/50', 'bg-green-400/10');
+        btn.classList.remove('text-gray-400', 'border-gray-600');
+
+        // Filter projects
+        projectItems.forEach(item => {
+          const htmlItem = item as HTMLElement;
+          if (filter === 'all' || item.getAttribute('data-category') === filter) {
+            htmlItem.style.display = 'block';
+          } else {
+            htmlItem.style.display = 'none';
+          }
+        });
+      });
+    });
+  });
+</script>
