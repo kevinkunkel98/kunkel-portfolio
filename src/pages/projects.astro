@@ -64,13 +64,13 @@ const webDevProjects = allProjects.filter(project => project.category === 'WebDe
 <BaseLayout title="Projects - My Work Portfolio" description="Explore my machine learning and web development projects">
   <div class="min-h-screen bg-gradient-to-b from-black to-slate-900">
     <!-- Terminal Header Section -->
-    <section class="py-16">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section class="py-12 sm:py-16">
+      <div class="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8">
         <div class="text-center font-mono">
-          <div class="text-2xl md:text-4xl text-green-400 mb-4">
+          <div class="text-xl sm:text-2xl md:text-4xl text-green-400 mb-3 sm:mb-4">
             ls -la ./projects/
           </div>
-          <div class="text-gray-400 text-sm max-w-3xl mx-auto">
+          <div class="text-gray-400 text-xs sm:text-sm max-w-3xl mx-auto px-2">
             # Listing repository contents: ML models, web applications, and experimental solutions
           </div>
         </div>
@@ -78,24 +78,24 @@ const webDevProjects = allProjects.filter(project => project.category === 'WebDe
     </section>
 
     <!-- Terminal Projects Section -->
-    <section class="py-16">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section class="py-12 sm:py-16">
+      <div class="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8">
         <!-- Terminal Filter Tabs -->
-        <div class="flex flex-wrap justify-center gap-4 mb-12 font-mono" id="project-filters">
+        <div class="flex flex-wrap justify-center gap-2 sm:gap-4 mb-8 sm:mb-12 font-mono overflow-x-auto pb-2" id="project-filters">
           <button
-            class="filter-btn active px-4 py-2 text-sm transition-colors text-green-400 border border-green-400/50 bg-green-400/10"
+            class="filter-btn active px-3 py-1.5 sm:px-4 sm:py-2 text-xs sm:text-sm transition-colors text-green-400 border border-green-400/50 bg-green-400/10 whitespace-nowrap"
             data-filter="all"
           >
             <span class="text-blue-400">./</span>all
           </button>
             <button
-            class="filter-btn px-4 py-2 text-sm transition-colors text-gray-400 hover:text-white border border-gray-600 hover:border-gray-400"
+            class="filter-btn px-3 py-1.5 sm:px-4 sm:py-2 text-xs sm:text-sm transition-colors text-gray-400 hover:text-white border border-gray-600 hover:border-gray-400 whitespace-nowrap"
             data-filter="ML"
           >
             <span class="text-blue-400">./</span>machine_learning
           </button>
           <button
-            class="filter-btn px-4 py-2 text-sm transition-colors text-gray-400 hover:text-white border border-gray-600 hover:border-gray-400"
+            class="filter-btn px-3 py-1.5 sm:px-4 sm:py-2 text-xs sm:text-sm transition-colors text-gray-400 hover:text-white border border-gray-600 hover:border-gray-400 whitespace-nowrap"
             data-filter="WebDev"
           >
             <span class="text-blue-400">./</span>web_development
@@ -103,7 +103,7 @@ const webDevProjects = allProjects.filter(project => project.category === 'WebDe
       </div>
 
       <!-- Projects Grid -->
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="projects-grid">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8" id="projects-grid">
         {allProjects.map((project) => (
           <div class="project-item" data-category={project.category}>
             <ProjectCard project={project} client:load />
@@ -114,42 +114,42 @@ const webDevProjects = allProjects.filter(project => project.category === 'WebDe
   </section>
 
     <!-- Terminal Stats Section -->
-    <section class="py-16">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="bg-black/40 backdrop-blur-sm border border-gray-700/50 rounded-lg p-8 font-mono">
-          <div class="text-green-400 text-lg mb-6">
-            <span class="text-blue-400">$</span> wc -l ./projects/**/*
+    <section class="py-12 sm:py-16">
+      <div class="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8">
+        <div class="bg-black/40 backdrop-blur-sm border border-gray-700/50 rounded-lg p-6 sm:p-8 font-mono">
+          <div class="text-green-400 text-base sm:text-lg mb-4 sm:mb-6 overflow-x-auto">
+            <span class="text-blue-400">$</span> <span class="whitespace-nowrap">wc -l ./projects/**/*</span>
           </div>
-          <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-8">
             <div class="text-center">
-              <div class="text-4xl font-bold text-green-400 mb-2">{allProjects.length}</div>
-              <div class="text-gray-400">total_projects</div>
+              <div class="text-3xl sm:text-4xl font-bold text-green-400 mb-2">{allProjects.length}</div>
+              <div class="text-gray-400 text-sm">total_projects</div>
             </div>
             <div class="text-center">
-              <div class="text-4xl font-bold text-blue-400 mb-2">{mlProjects.length}</div>
-              <div class="text-gray-400">ml_models</div>
+              <div class="text-3xl sm:text-4xl font-bold text-blue-400 mb-2">{mlProjects.length}</div>
+              <div class="text-gray-400 text-sm">ml_models</div>
             </div>
             <div class="text-center">
-              <div class="text-4xl font-bold text-purple-400 mb-2">{webDevProjects.length}</div>
-              <div class="text-gray-400">web_apps</div>
+              <div class="text-3xl sm:text-4xl font-bold text-purple-400 mb-2">{webDevProjects.length}</div>
+              <div class="text-gray-400 text-sm">web_apps</div>
             </div>
           </div>
         </div>
       </section>
 
       <!-- Terminal CTA Section -->
-      <section class="py-16">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div class="bg-black/40 backdrop-blur-sm border border-gray-700/50 rounded-lg p-8 text-center font-mono">
-            <div class="text-green-400 text-2xl mb-4">
-              <span class="text-blue-400">$</span> ./collaborate --with=kevin
+      <section class="py-12 sm:py-16">
+        <div class="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8">
+          <div class="bg-black/40 backdrop-blur-sm border border-gray-700/50 rounded-lg p-6 sm:p-8 text-center font-mono">
+            <div class="text-green-400 text-lg sm:text-2xl mb-3 sm:mb-4 overflow-x-auto">
+              <span class="text-blue-400">$</span> <span class="whitespace-nowrap">./collaborate --with=kevin</span>
             </div>
-            <div class="text-gray-300 text-lg mb-8 max-w-2xl mx-auto">
+            <div class="text-gray-300 text-base sm:text-lg mb-6 sm:mb-8 max-w-2xl mx-auto px-2">
               # Ready to build something awesome together?
             </div>
             <a
               href="/contact"
-              class="inline-block bg-green-400/20 border border-green-400/50 text-green-400 hover:text-black hover:bg-green-400 font-medium py-3 px-8 transition-all"
+              class="inline-block bg-green-400/20 border border-green-400/50 text-green-400 hover:text-black hover:bg-green-400 font-medium py-2.5 sm:py-3 px-6 sm:px-8 transition-all text-sm sm:text-base whitespace-nowrap"
             >
               ./contact --kevin
             </a>

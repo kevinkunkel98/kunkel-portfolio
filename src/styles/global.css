@@ -126,3 +126,62 @@
 html {
   scroll-behavior: smooth;
 }
+
+/* Mobile-friendly prose improvements */
+.prose {
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  word-break: break-word;
+}
+
+.prose pre {
+  overflow-x: auto;
+  max-width: 100%;
+  margin: 1rem 0;
+}
+
+.prose code {
+  font-size: 0.875em;
+  padding: 0.125rem 0.25rem;
+  border-radius: 0.25rem;
+  background-color: rgba(0, 0, 0, 0.3);
+  word-break: break-all;
+}
+
+.prose pre code {
+  padding: 0;
+  background-color: transparent;
+  word-break: normal;
+  overflow-wrap: normal;
+}
+
+.prose img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 0.5rem;
+}
+
+.prose table {
+  display: block;
+  overflow-x: auto;
+  max-width: 100%;
+}
+
+.prose h1,
+.prose h2,
+.prose h3,
+.prose h4,
+.prose h5,
+.prose h6 {
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+}
+
+/* Better mobile touch targets */
+@media (max-width: 640px) {
+  button,
+  a {
+    min-height: 44px;
+    min-width: 44px;
+  }
+}

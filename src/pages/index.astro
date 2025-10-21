@@ -40,36 +40,36 @@ const featuredProjects = [
     <div class="absolute top-3/4 right-1/4 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl animate-pulse delay-700"></div>
     <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-indigo-500/10 rounded-full blur-3xl animate-pulse delay-1000"></div>
   </div>  <!-- Hero Section -->
-  <section class="min-h-screen flex items-center justify-center relative overflow-hidden">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+  <section class="min-h-screen flex items-center justify-center relative overflow-hidden px-3 sm:px-0">
+    <div class="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 w-full">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 items-center">
 
         <!-- Left side: Terminal info -->
-        <div class="text-center lg:text-left">
+        <div class="text-center lg:text-left order-2 lg:order-1">
           <div class="opacity-0 animate-fade-in-up" style="animation-delay: 0.2s;">
-            <div class="font-mono text-left max-w-4xl mx-auto lg:mx-0 mb-8">
-              <div class="text-gray-500 text-base mb-3">~/kevin-kunkel $</div>
-              <h1 class="text-4xl md:text-6xl lg:text-7xl font-normal mb-6 text-green-400">
+            <div class="font-mono text-left max-w-4xl mx-auto lg:mx-0 mb-6 sm:mb-8">
+              <div class="text-gray-500 text-sm sm:text-base mb-2 sm:mb-3">~/kevin-kunkel $</div>
+              <h1 class="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-normal mb-4 sm:mb-6 text-green-400">
                 ML Mozart
               </h1>
-              <div class="text-xl md:text-2xl lg:text-3xl text-gray-300 space-y-3 leading-relaxed">
+              <div class="text-base sm:text-xl md:text-2xl lg:text-3xl text-gray-300 space-y-2 sm:space-y-3 leading-relaxed">
                 <div><span class="text-blue-400">></span> Kevin Kunkel</div>
                 <div><span class="text-blue-400">></span> ML Engineer who dreams in Python</div>
                 <div><span class="text-blue-400">></span> Full-stack dev with a beer addiction</div>
                 <div><span class="text-blue-400">></span> Building stuff that (hopefully) doesn't break</div>
-                <div class="text-gray-500 text-lg mt-6">// Currently available for interesting projects</div>
+                <div class="text-gray-500 text-sm sm:text-lg mt-4 sm:mt-6">// Currently available for interesting projects</div>
               </div>
             </div>
           </div>
         </div>
 
         <!-- Right side: Kevin's Photo -->
-        <div class="flex justify-center lg:justify-end">
+        <div class="flex justify-center lg:justify-end order-1 lg:order-2">
           <div class="opacity-0 animate-fade-in-up" style="animation-delay: 0.6s;">
             <div class="relative">
               <!-- Photo container with terminal styling -->
               <div class="relative group">
-                <div class="w-96 h-96 lg:w-[28rem] lg:h-[28rem] relative overflow-hidden rounded-lg border-2 border-gray-700/50 bg-gradient-to-br from-purple-900/20 to-blue-900/20 backdrop-blur-sm">
+                <div class="w-72 h-72 sm:w-96 sm:h-96 lg:w-[28rem] lg:h-[28rem] relative overflow-hidden rounded-lg border-2 border-gray-700/50 bg-gradient-to-br from-purple-900/20 to-blue-900/20 backdrop-blur-sm">
                   <!-- Terminal window chrome -->
                   <div class="absolute top-0 left-0 right-0 h-6 bg-gray-900/80 border-b border-gray-700 flex items-center px-3 z-10">
                     <div class="flex space-x-1">
@@ -110,7 +110,7 @@ const featuredProjects = [
               </div>
 
               <!-- Terminal-style caption -->
-              <div class="mt-4 font-mono text-center">
+              <div class="mt-3 sm:mt-4 font-mono text-center">
                 <div class="text-gray-400 text-xs">
                   <span class="text-blue-400">$</span> display ./kevin_kunkel.jpg
                 </div>
@@ -125,9 +125,9 @@ const featuredProjects = [
     </div>
 
     <!-- Scroll indicator -->
-    <div class="opacity-0 animate-fade-in-up absolute bottom-8 left-1/2 transform -translate-x-1/2" style="animation-delay: 1.2s;">
+    <div class="opacity-0 animate-fade-in-up absolute bottom-4 sm:bottom-8 left-1/2 transform -translate-x-1/2" style="animation-delay: 1.2s;">
       <div class="animate-bounce">
-        <svg class="w-6 h-6 text-white/50" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <svg class="w-5 h-5 sm:w-6 sm:h-6 text-white/50" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"/>
         </svg>
       </div>
@@ -135,9 +135,9 @@ const featuredProjects = [
   </section>
 
   <!-- Terminal CV Section -->
-  <section class="py-20 bg-gradient-to-b from-black to-slate-900 relative">
-    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="bg-black/60 backdrop-blur-sm border border-gray-700/50 rounded-lg p-8 font-mono">
+  <section class="py-12 sm:py-20 bg-gradient-to-b from-black to-slate-900 relative">
+    <div class="max-w-6xl mx-auto px-3 sm:px-6 lg:px-8">
+      <div class="bg-black/60 backdrop-blur-sm border border-gray-700/50 rounded-lg p-4 sm:p-8 font-mono">
 
         <!-- Terminal Header -->
         <div class="flex items-center mb-6">
@@ -150,12 +150,12 @@ const featuredProjects = [
         </div>
 
         <!-- CV Header -->
-        <div class="text-green-400 text-lg mb-6">
-          <span class="text-blue-400">$</span> cat ./resume.json | jq '.'
+        <div class="text-green-400 text-base sm:text-lg mb-4 sm:mb-6 overflow-x-auto">
+          <span class="text-blue-400">$</span> <span class="whitespace-nowrap">cat ./resume.json | jq '.'</span>
         </div>
 
         <!-- CV Content in JSON-like format -->
-        <div class="text-gray-300 text-sm space-y-6">
+        <div class="text-gray-300 text-xs sm:text-sm space-y-4 sm:space-y-6 overflow-x-auto">
           <div>
             <span class="text-blue-400">"name":</span> <span class="text-green-400">"Kevin Kunkel"</span>,
           </div>
@@ -222,16 +222,16 @@ const featuredProjects = [
         </div>
 
         <!-- Terminal Commands -->
-        <div class="mt-8 pt-4 border-t border-gray-700/50">
+        <div class="mt-6 sm:mt-8 pt-3 sm:pt-4 border-t border-gray-700/50">
           <div class="text-gray-400 text-xs mb-2">Quick commands:</div>
-          <div class="flex flex-wrap gap-4 text-sm">
-            <a href="/projects" class="text-green-400 hover:text-green-300">
+          <div class="flex flex-col sm:flex-row sm:flex-wrap gap-2 sm:gap-4 text-xs sm:text-sm">
+            <a href="/projects" class="text-green-400 hover:text-green-300 whitespace-nowrap">
               <span class="text-blue-400">$</span> ./view-projects
             </a>
-            <a href="/contact" class="text-green-400 hover:text-green-300">
+            <a href="/contact" class="text-green-400 hover:text-green-300 whitespace-nowrap">
               <span class="text-blue-400">$</span> ./hire-kevin
             </a>
-            <a href="/blog" class="text-green-400 hover:text-green-300">
+            <a href="/blog" class="text-green-400 hover:text-green-300 whitespace-nowrap">
               <span class="text-blue-400">$</span> ./read-thoughts
             </a>
           </div>
@@ -241,30 +241,30 @@ const featuredProjects = [
   </section>
 
   <!-- Skills Constellation -->
-  <section class="py-20 bg-gradient-to-b from-slate-900 to-black relative overflow-hidden">
+  <section class="py-12 sm:py-20 bg-gradient-to-b from-slate-900 to-black relative overflow-hidden">
     <!-- Animated grid background -->
     <div class="absolute inset-0 bg-grid-white/[0.02] bg-grid-16"></div>
 
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-      <div class="text-center mb-16">
-        <div class="font-mono text-2xl md:text-4xl text-green-400 mb-4">
+    <div class="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 relative z-10">
+      <div class="text-center mb-10 sm:mb-16">
+        <div class="font-mono text-xl sm:text-2xl md:text-4xl text-green-400 mb-3 sm:mb-4">
           cat /dev/skills
         </div>
-        <div class="text-gray-500 font-mono text-sm">
+        <div class="text-gray-500 font-mono text-xs sm:text-sm px-2">
           # Tools I actually use (and don't just put on my resume)
         </div>
       </div>
 
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-16">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 mb-10 sm:mb-16">
         <!-- ML Stack -->
         <div class="group relative">
-          <div class="relative bg-gray-900/50 border border-gray-700 rounded-lg p-6 font-mono">
-            <div class="flex items-center mb-4">
+          <div class="relative bg-gray-900/50 border border-gray-700 rounded-lg p-4 sm:p-6 font-mono">
+            <div class="flex items-center mb-3 sm:mb-4">
               <span class="text-purple-400 mr-2">🧠</span>
-              <h3 class="text-lg font-normal text-white">ml_stack.py</h3>
+              <h3 class="text-base sm:text-lg font-normal text-white">ml_stack.py</h3>
             </div>
 
-            <div class="text-sm text-gray-300 space-y-2">
+            <div class="text-xs sm:text-sm text-gray-300 space-y-1.5 sm:space-y-2 overflow-x-auto">
               <div class="text-green-400"># Daily drivers</div>
               <div><span class="text-blue-400">import</span> torch, tensorflow <span class="text-gray-500"># The usual suspects</span></div>
               <div><span class="text-blue-400">from</span> transformers <span class="text-blue-400">import</span> * <span class="text-gray-500"># HuggingFace magic</span></div>
@@ -279,13 +279,13 @@ const featuredProjects = [
 
         <!-- Web Stack -->
         <div class="group relative">
-          <div class="relative bg-gray-900/50 border border-gray-700 rounded-lg p-6 font-mono">
-            <div class="flex items-center mb-4">
+          <div class="relative bg-gray-900/50 border border-gray-700 rounded-lg p-4 sm:p-6 font-mono">
+            <div class="flex items-center mb-3 sm:mb-4">
               <span class="text-blue-400 mr-2">⚡</span>
-              <h3 class="text-lg font-normal text-white">package.json</h3>
+              <h3 class="text-base sm:text-lg font-normal text-white">package.json</h3>
             </div>
 
-            <div class="text-sm text-gray-300 space-y-1">
+            <div class="text-xs sm:text-sm text-gray-300 space-y-0.5 sm:space-y-1 overflow-x-auto">
               <div class="text-yellow-400">{"{"}</div>
               <div class="ml-4"><span class="text-green-400">"dependencies"</span>: {"{"}</div>
               <div class="ml-8"><span class="text-green-400">"react"</span>: <span class="text-orange-400">"^18.x"</span>, <span class="text-gray-500">// Still the GOAT</span></div>
@@ -304,7 +304,7 @@ const featuredProjects = [
 
     </div>
   </section>  <!-- Project Showcase -->
-  <section class="py-20 bg-gradient-to-b from-black to-slate-900 relative overflow-hidden">
+  <section class="py-12 sm:py-20 bg-gradient-to-b from-black to-slate-900 relative overflow-hidden">
     <!-- Animated particles -->
     <div class="absolute inset-0">
       <div class="absolute top-20 left-10 w-2 h-2 bg-purple-500 rounded-full animate-ping"></div>
@@ -313,18 +313,18 @@ const featuredProjects = [
       <div class="absolute top-1/3 right-1/3 w-1 h-1 bg-cyan-500 rounded-full animate-pulse delay-500"></div>
     </div>
 
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-      <div class="text-center mb-16 font-mono">
-        <div class="text-2xl md:text-4xl text-green-400 mb-4">
+    <div class="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 relative z-10">
+      <div class="text-center mb-10 sm:mb-16 font-mono">
+        <div class="text-xl sm:text-2xl md:text-4xl text-green-400 mb-3 sm:mb-4">
           git log --oneline --graph
         </div>
-        <div class="text-gray-500 text-sm">
+        <div class="text-gray-500 text-xs sm:text-sm px-2">
           # Recent commits to my digital existence
         </div>
       </div>
 
       <!-- Project Grid with staggered animation -->
-      <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-16">
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 sm:gap-8 mb-10 sm:mb-16">
         {featuredProjects.map((project, index) => (
           <div
             class="opacity-0 animate-fade-in-up"
@@ -337,8 +337,8 @@ const featuredProjects = [
 
       <!-- Git-style CTA -->
       <div class="text-center font-mono">
-        <div class="bg-gray-900/50 border border-gray-700 rounded-lg p-4 inline-block">
-          <div class="text-green-400 text-sm">
+        <div class="bg-gray-900/50 border border-gray-700 rounded-lg p-3 sm:p-4 inline-block overflow-x-auto">
+          <div class="text-green-400 text-xs sm:text-sm whitespace-nowrap">
             <span class="text-blue-400">$</span>
             <a href="/projects" class="hover:underline">cd ./projects && ls -la</a>
           </div>
@@ -348,7 +348,7 @@ const featuredProjects = [
   </section>
 
   <!-- Final CTA - Cosmic Connection -->
-  <section class="py-24 bg-gradient-to-b from-slate-900 via-purple-900 to-black relative overflow-hidden">
+  <section class="py-16 sm:py-24 bg-gradient-to-b from-slate-900 via-purple-900 to-black relative overflow-hidden">
     <!-- Animated cosmic background -->
     <div class="absolute inset-0">
       <div class="absolute top-1/4 left-1/4 w-64 h-64 bg-purple-500/10 rounded-full blur-3xl animate-pulse"></div>
@@ -356,13 +356,13 @@ const featuredProjects = [
       <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-pink-500/5 rounded-full blur-3xl animate-pulse delay-500"></div>
     </div>
 
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
-      <div class="mb-8 font-mono">
-        <div class="text-2xl md:text-4xl text-green-400 mb-6">
-          sudo ./collaborate.sh
+    <div class="max-w-4xl mx-auto px-3 sm:px-6 lg:px-8 text-center relative z-10">
+      <div class="mb-6 sm:mb-8 font-mono">
+        <div class="text-xl sm:text-2xl md:text-4xl text-green-400 mb-4 sm:mb-6 overflow-x-auto">
+          <span class="whitespace-nowrap">sudo ./collaborate.sh</span>
         </div>
 
-        <div class="text-gray-300 space-y-2 text-lg">
+        <div class="text-gray-300 space-y-2 text-sm sm:text-lg px-2">
           <div><span class="text-gray-500">#</span> Got an interesting problem?</div>
           <div><span class="text-gray-500">#</span> Need someone who speaks both Python and human?</div>
           <div><span class="text-gray-500">#</span> Let's build something cool together.</div>
@@ -370,26 +370,26 @@ const featuredProjects = [
       </div>
 
       <div class="flex justify-center font-mono">
-        <div class="bg-gray-900/50 border border-gray-700 rounded-lg p-4">
-          <div class="text-green-400 text-sm space-y-2">
-            <div class="flex items-center space-x-2">
+        <div class="bg-gray-900/50 border border-gray-700 rounded-lg p-3 sm:p-4 w-full max-w-md overflow-x-auto">
+          <div class="text-green-400 text-xs sm:text-sm space-y-2">
+            <div class="flex items-center space-x-2 whitespace-nowrap">
               <span class="text-blue-400">$</span>
               <a href="/contact" class="hover:underline">echo "Let's chat" > /dev/coffee</a>
             </div>
-            <div class="flex items-center space-x-2">
+            <div class="flex items-center space-x-2 whitespace-nowrap overflow-x-auto">
               <span class="text-blue-400">$</span>
-              <a href="mailto:alex@domain.com" class="hover:underline">mail -s "Project idea" alex@domain.com</a>
+              <a href="mailto:alex@domain.com" class="hover:underline break-all">mail -s "Project idea" alex@domain.com</a>
             </div>
           </div>
         </div>
       </div>
 
       <!-- Status -->
-      <div class="mt-16 font-mono text-center">
-        <div class="text-gray-500 text-sm">
-          <span class="text-green-400">●</span> Available for interesting projects
-          <span class="text-yellow-400 ml-4">⚡</span> Usually responds within 24h
-          <span class="text-blue-400 ml-4">☕</span> Powered by coffee & curiosity
+      <div class="mt-10 sm:mt-16 font-mono text-center">
+        <div class="text-gray-500 text-xs sm:text-sm flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-4 px-2">
+          <span><span class="text-green-400">●</span> Available for interesting projects</span>
+          <span><span class="text-yellow-400">⚡</span> Usually responds within 24h</span>
+          <span><span class="text-blue-400">☕</span> Powered by coffee & curiosity</span>
         </div>
       </div>
     </div>

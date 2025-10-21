@@ -1,5 +1,5 @@
 ---
-title: 'Getting Started with Machine Learning in 2024'
+title: 'Getting Started with Machine Learning in 2025'
 description: 'A comprehensive guide for beginners looking to start their journey in machine learning, covering essential concepts, tools, and resources.'
 pubDate: 2024-01-15
 category: 'Machine Learning'
