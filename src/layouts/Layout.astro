@@ -4,20 +4,58 @@ import '../styles/global.css';
 export interface Props {
   title: string;
   description?: string;
+  image?: string;
+  url?: string;
 }
 
-const { title, description = "Portfolio showcasing ML and WebDev projects" } = Astro.props;
+const { 
+  title, 
+  description = "Kevin Kunkel - ML Engineer & Full-Stack Developer. Specializing in machine learning, LLM integration, and modern web development.",
+  image = "/kevin-hero.jpg",
+  url = Astro.url.pathname
+} = Astro.props;
+
+const canonicalURL = new URL(url, Astro.site || "https://kevinkunkel.dev");
+const socialImage = new URL(image, Astro.site || "https://kevinkunkel.dev");
 ---
 
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="description" content={description} />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="generator" content={Astro.generator} />
+    
+    <!-- Primary Meta Tags -->
     <title>{title}</title>
+    <meta name="title" content={title} />
+    <meta name="description" content={description} />
+    <meta name="author" content="Kevin Kunkel" />
+    <meta name="keywords" content="Kevin Kunkel, ML Engineer, Machine Learning, Full-Stack Developer, Web Development, Python, React, TypeScript, AI, LLM, Portfolio" />
+    <link rel="canonical" href={canonicalURL} />
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={socialImage} />
+    <meta property="og:site_name" content="Kevin Kunkel Portfolio" />
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content={canonicalURL} />
+    <meta property="twitter:title" content={title} />
+    <meta property="twitter:description" content={description} />
+    <meta property="twitter:image" content={socialImage} />
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    
+    <!-- Generator -->
+    <meta name="generator" content={Astro.generator} />
+    
+    <!-- Robots -->
+    <meta name="robots" content="index, follow" />
   </head>
   <body class="min-h-screen bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100">
     <slot />
