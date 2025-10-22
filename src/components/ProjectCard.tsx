@@ -21,13 +21,13 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
   };
 
   return (
-    <div className="group relative bg-black/40 backdrop-blur-xl border border-gray-700/50 rounded-2xl overflow-hidden hover:border-purple-500/50 transition-all duration-500 hover:scale-105 hover:-rotate-1">
+    <div className="group relative bg-black/40 backdrop-blur-xl border border-gray-700/50 rounded-2xl overflow-hidden hover:border-purple-500/50 transition-all duration-500 hover:scale-105 hover:-rotate-1 h-full flex flex-col">
       {/* Animated glow effect */}
       <div className="absolute inset-0 bg-gradient-to-r from-purple-600/20 to-blue-600/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-xl"></div>
-      
+
       {/* Project image with overlay */}
       {project.imageUrl && (
-        <div className="relative h-48 overflow-hidden">
+        <div className="relative h-48 overflow-hidden flex-shrink-0">
           <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent z-10"></div>
           <img
             src={project.imageUrl}
@@ -36,8 +36,8 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
           />
           <div className="absolute top-4 right-4 z-20">
             <span className={`px-3 py-1 text-xs font-bold rounded-full border backdrop-blur-sm ${
-              project.category === 'ML' 
-                ? 'bg-purple-500/20 text-purple-300 border-purple-500/30' 
+              project.category === 'ML'
+                ? 'bg-purple-500/20 text-purple-300 border-purple-500/30'
                 : 'bg-blue-500/20 text-blue-300 border-blue-500/30'
             }`}>
               {project.category}
@@ -46,12 +46,12 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
         </div>
       )}
 
-      <div className="p-6 relative z-10">
+      <div className="p-6 relative z-10 flex flex-col flex-grow min-h-[320px]">
         <h3 className="text-xl font-bold text-white mb-3 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-purple-400 group-hover:to-blue-400 transition-all duration-300">
           {project.title}
         </h3>
 
-        <p className="text-gray-300 mb-4 leading-relaxed">
+        <p className="text-gray-300 mb-4 leading-relaxed line-clamp-4 flex-grow">
           {project.description}
         </p>
 
@@ -60,7 +60,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
           {project.technologies.map((tech, index) => (
             <span
               key={index}
-              className="px-3 py-1 bg-gray-800/50 border border-gray-600/50 text-gray-300 text-sm rounded-full hover:bg-purple-500/20 hover:border-purple-500/50 hover:text-purple-300 transition-all duration-300 transform hover:scale-110"
+              className="px-3 py-1 bg-gray-800/50 border border-gray-600/50 text-gray-300 text-sm rounded-full hover:bg-purple-500/20 hover:border-purple-500/50 hover:text-purple-300 transition-all duration-300 transform hover:scale-110 whitespace-nowrap h-7 flex items-center"
               style={{
                 animationDelay: `${index * 0.1}s`
               }}
@@ -71,7 +71,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
         </div>
 
         {/* Action buttons */}
-        <div className="flex space-x-4">
+        <div className="flex space-x-4 mt-auto">
           {project.githubUrl && (
             <a
               href={project.githubUrl}
