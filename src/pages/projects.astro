@@ -5,55 +5,55 @@ import ProjectCard from '../components/ProjectCard';
 // Kevin's actual projects data
 const allProjects = [
   {
-    title: "Neural Style Transfer",
-    description: "Deep learning model that applies artistic styles to images using CNN architectures. Real-time processing with optimized inference pipeline.",
-    technologies: ["Python", "TensorFlow", "OpenCV", "FastAPI", "Docker"],
+    title: "FSR Rag Chat Assistant",
+    description: "The FSR Rag Chat Assistant is a Retrieval Augmented Generation (RAG) chatbot designed to support the student council of the computer science faculty at the University of Leipzig." +
+        "\n",
+    technologies: ["Ollama", "Spring AI", "React", "ShadcnUI", "PGVector Store"],
     category: "ML" as const,
     githubUrl: "https://github.com/kevinkunkel/neural-style-transfer",
-    imageUrl: "/projects/neural-style.jpg"
+      imageUrl: "/assets/fsrchat.png"
   },
   {
-    title: "Real-time Analytics Dashboard",
-    description: "Full-stack application for real-time data visualization and analytics. WebSocket connections for live updates, responsive design.",
-    technologies: ["React", "Node.js", "Socket.io", "D3.js", "MongoDB"],
+    title: "Computer Science Faculty Website",
+    description: "Web presence static page that displays all relevent informations, news and events related to the elected council members of the computer science faculty at the University of Leipzig.",
+    technologies: ["Astro.js", "Node.js", "Flowbite", "Netlify",],
     category: "WebDev" as const,
-    githubUrl: "https://github.com/kevinkunkel/analytics-dashboard",
-    liveUrl: "https://analytics.kevinkunkel.dev",
-    imageUrl: "/projects/dashboard.jpg"
+    liveUrl: "https://fsinf.informatik.uni-leipzig.de/",
+    imageUrl: "/assets/fsinf.png"
   },
   {
-    title: "Computer Vision Object Detection",
-    description: "Real-time object detection system using YOLO architecture. Optimized for edge deployment with 60+ FPS performance.",
-    technologies: ["Python", "YOLO", "OpenCV", "TensorRT", "CUDA"],
+    title: "90s Forum Post SVM Classifier",
+    description: "Support Vector Machine that classifies forum posts from the 90s into different topics based on their content using TF-IDF vectorization and gives insigns into early internet shitposting.",
+    technologies: ["Scikit-learn\n", "Kaggle", "FastAPI", "CUDA"],
     category: "ML" as const,
     githubUrl: "https://github.com/kevinkunkel/yolo-detection",
-    imageUrl: "/projects/object-detection.jpg"
+    imageUrl: "/assets/netscape.jpg"
   },
   {
-    title: "Microservices E-commerce API",
-    description: "Scalable microservices architecture for e-commerce platform. Event-driven design with Docker containers and API gateway.",
+    title: "Vilkulakis - The Online Game",
+    description: "Online Real Time Multiplayer of the card game Werwolves that has one lobby and supports 20 active players with a chat gui",
     technologies: ["Node.js", "Docker", "Redis", "PostgreSQL", "GraphQL"],
     category: "WebDev" as const,
     githubUrl: "https://github.com/kevinkunkel/microservices-ecommerce",
     liveUrl: "https://api.kevinkunkel.dev",
-    imageUrl: "/projects/microservices.jpg"
+    imageUrl: "/assets/vilkulakis.png"
   },
   {
-    title: "Time Series Anomaly Detection",
-    description: "ML pipeline for detecting anomalies in IoT sensor data using autoencoder networks. Real-time processing and alerting system.",
-    technologies: ["Python", "PyTorch", "Kafka", "InfluxDB", "Grafana"],
+    title: "Study BrAIn - Study Smarter Chat",
+    description: "RAG Chat that helps you study and chat with your lecture slides and embedd notes using GPT 3.5 and PGVe ChromaDB.",
+    technologies: ["Flask", "Bootstrap", "Langchain", "ChromaDB"],
     category: "ML" as const,
-    githubUrl: "https://github.com/kevinkunkel/anomaly-detection",
-    imageUrl: "/projects/anomaly-detection.jpg"
+    githubUrl: "https://github.com/kevinkunkel98/Study-Brain-Chatbot",
+    imageUrl: "/assets/studybrain.png"
   },
   {
-    title: "WebRTC Video Chat Platform",
-    description: "Real-time video conferencing application with WebRTC, signaling server, and responsive UI. Screen sharing and chat features.",
-    technologies: ["WebRTC", "Socket.io", "React", "Express", "WebGL"],
+    title: "Linux Dev Blog and Portfolio Website",
+    description: "My first real portfolio website that I used to document my journey into web development and Arch Linux customizations.",
+    technologies: ["AstroJS", "React", "Express", "Tailwind"],
     category: "WebDev" as const,
     githubUrl: "https://github.com/kevinkunkel/webrtc-platform",
     liveUrl: "https://chat.kevinkunkel.dev",
-    imageUrl: "/projects/webrtc.jpg"
+    imageUrl: "/assets/devblog.png"
   }
 ];
 
