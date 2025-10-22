@@ -41,72 +41,113 @@ const ContactForm: React.FC = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-6">
-      <div>
-        <label htmlFor="name" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-          Name
-        </label>
-        <input
-          type="text"
-          id="name"
-          name="name"
-          value={formData.name}
-          onChange={handleChange}
-          required
-          className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:text-white"
-        />
-      </div>
-
-      <div>
-        <label htmlFor="email" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-          Email
-        </label>
-        <input
-          type="email"
-          id="email"
-          name="email"
-          value={formData.email}
-          onChange={handleChange}
-          required
-          className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:text-white"
-        />
-      </div>
-
-      <div>
-        <label htmlFor="message" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-          Message
-        </label>
-        <textarea
-          id="message"
-          name="message"
-          value={formData.message}
-          onChange={handleChange}
-          rows={4}
-          required
-          className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:text-white"
-        />
-      </div>
-
-      <button
-        type="submit"
-        disabled={isSubmitting}
-        className="w-full bg-blue-600 hover:bg-blue-700 disabled:bg-blue-400 text-white font-medium py-2 px-4 rounded-md transition-colors"
-      >
-        {isSubmitting ? 'Sending...' : 'Send Message'}
-      </button>
-
-      {submitStatus === 'success' && (
-        <div className="p-4 bg-green-100 border border-green-400 text-green-700 rounded-md">
-          Thank you! Your message has been sent successfully.
+    <div className="bg-black/60 backdrop-blur-sm border border-gray-700/50 p-6 rounded-lg font-mono">
+      {/* Terminal Header */}
+      <div className="flex items-center gap-2 mb-4 pb-2 border-b border-gray-700/50">
+        <div className="flex gap-1.5">
+          <div className="w-3 h-3 rounded-full bg-red-500"></div>
+          <div className="w-3 h-3 rounded-full bg-yellow-500"></div>
+          <div className="w-3 h-3 rounded-full bg-green-500"></div>
         </div>
-      )}
+        <span className="text-green-500 text-sm ml-2">~/contact-form</span>
+      </div>
 
-      {submitStatus === 'error' && (
-        <div className="p-4 bg-red-100 border border-red-400 text-red-700 rounded-md">
-          Sorry, there was an error sending your message. Please try again.
+      <form onSubmit={handleSubmit} className="space-y-6">
+        <div>
+          <label htmlFor="name" className="block text-green-500 text-sm mb-2 flex items-center">
+            <span className="text-green-400">$</span>
+            <span className="ml-2">--name</span>
+          </label>
+          <input
+            type="text"
+            id="name"
+            name="name"
+            value={formData.name}
+            onChange={handleChange}
+            required
+            placeholder="Enter your name..."
+            className="w-full px-4 py-3 bg-gray-900 border-2 border-green-500/50 text-green-400 rounded font-mono text-sm focus:outline-none focus:border-green-500 focus:ring-2 focus:ring-green-500/20 placeholder-green-800 transition-all"
+          />
         </div>
-      )}
-    </form>
+
+        <div>
+          <label htmlFor="email" className="block text-green-500 text-sm mb-2 flex items-center">
+            <span className="text-green-400">$</span>
+            <span className="ml-2">--email</span>
+          </label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            value={formData.email}
+            onChange={handleChange}
+            required
+            placeholder="your.email@example.com"
+            className="w-full px-4 py-3 bg-gray-900 border-2 border-green-500/50 text-green-400 rounded font-mono text-sm focus:outline-none focus:border-green-500 focus:ring-2 focus:ring-green-500/20 placeholder-green-800 transition-all"
+          />
+        </div>
+
+        <div>
+          <label htmlFor="message" className="block text-green-500 text-sm mb-2 flex items-center">
+            <span className="text-green-400">$</span>
+            <span className="ml-2">--message</span>
+          </label>
+          <textarea
+            id="message"
+            name="message"
+            value={formData.message}
+            onChange={handleChange}
+            rows={5}
+            required
+            placeholder="Type your message here..."
+            className="w-full px-4 py-3 bg-gray-900 border-2 border-green-500/50 text-green-400 rounded font-mono text-sm focus:outline-none focus:border-green-500 focus:ring-2 focus:ring-green-500/20 placeholder-green-800 resize-none transition-all"
+          />
+        </div>
+
+        <button
+          type="submit"
+          disabled={isSubmitting}
+          className="w-full bg-green-600 hover:bg-green-500 disabled:bg-gray-700 disabled:text-gray-500 text-black font-bold py-3 px-4 rounded font-mono text-sm transition-all transform hover:scale-[1.02] active:scale-[0.98] border-2 border-green-500 shadow-lg shadow-green-500/20"
+        >
+          <span className="flex items-center justify-center gap-2">
+            <span>{isSubmitting ? '⏳' : '>'}</span>
+            <span>{isSubmitting ? 'EXECUTING...' : 'EXECUTE SEND_MESSAGE'}</span>
+          </span>
+        </button>
+
+        {submitStatus === 'success' && (
+          <div className="p-4 bg-green-900/30 border-2 border-green-500 text-green-400 rounded font-mono text-sm">
+            <div className="flex items-start gap-2">
+              <span className="text-green-500">✓</span>
+              <div>
+                <div className="font-bold mb-1">[SUCCESS]</div>
+                <div>Message transmitted successfully. Response received: 200 OK</div>
+              </div>
+            </div>
+          </div>
+        )}
+
+        {submitStatus === 'error' && (
+          <div className="p-4 bg-red-900/30 border-2 border-red-500 text-red-400 rounded font-mono text-sm">
+            <div className="flex items-start gap-2">
+              <span className="text-red-500">✗</span>
+              <div>
+                <div className="font-bold mb-1">[ERROR]</div>
+                <div>Transmission failed. Please retry operation.</div>
+              </div>
+            </div>
+          </div>
+        )}
+
+        {/* Terminal cursor effect when typing */}
+        {(formData.name || formData.email || formData.message) && (
+          <div className="text-green-500 text-xs opacity-60 flex items-center gap-2">
+            <span className="animate-pulse">▊</span>
+            <span>Awaiting input...</span>
+          </div>
+        )}
+      </form>
+    </div>
   );
 };
 

@@ -2,8 +2,14 @@
 const currentYear = new Date().getFullYear();
 ---
 
-<footer class="bg-black border-t border-gray-800 font-mono">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+<footer class="relative font-mono isolate bg-black">
+  <!-- Additional background layers -->
+  <div class="absolute inset-0 bg-gradient-to-b from-slate-950/50 to-black"></div>
+
+  <!-- Subtle glow effect at top -->
+  <div class="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-purple-500/30 to-transparent"></div>
+
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 relative z-10">
     <!-- Terminal window -->
     <div class="bg-gray-900 border border-gray-700 rounded-lg overflow-hidden">
       <!-- Terminal header -->
@@ -15,7 +21,7 @@ const currentYear = new Date().getFullYear();
         </div>
         <div class="text-gray-400 text-sm ml-4">kevin@localhost:~</div>
       </div>
-      
+
       <!-- Terminal content -->
       <div class="p-6 text-sm text-gray-300 space-y-3">
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -27,7 +33,7 @@ const currentYear = new Date().getFullYear();
             <div><span class="text-blue-400">></span> location: Earth</div>
             <div><span class="text-blue-400">></span> coffee_level: High</div>
           </div>
-          
+
           <!-- Navigation -->
           <div class="space-y-2">
             <div class="text-green-400"># Quick Access</div>
@@ -35,7 +41,7 @@ const currentYear = new Date().getFullYear();
             <div><span class="text-blue-400">$</span> <a href="/blog" class="hover:text-white">cat ./thoughts.md</a></div>
             <div><span class="text-blue-400">$</span> <a href="/contact" class="hover:text-white">ping kevin</a></div>
           </div>
-          
+
           <!-- Social links -->
           <div class="space-y-2">
             <div class="text-green-400"># External Links</div>
@@ -44,7 +50,7 @@ const currentYear = new Date().getFullYear();
             <div><span class="text-blue-400">$</span> <a href="mailto:kevin@kevinkunkel.dev" class="hover:text-white">mail kevin@kevinkunkel.dev</a></div>
           </div>
         </div>
-        
+
         <!-- Bottom line -->
         <div class="border-t border-gray-700 pt-4 mt-6">
           <div class="flex flex-col md:flex-row justify-between items-start md:items-center space-y-2 md:space-y-0">
@@ -56,7 +62,7 @@ const currentYear = new Date().getFullYear();
             </div>
           </div>
         </div>
-        
+
         <!-- Cursor -->
         <div class="flex items-center">
           <span class="text-green-400">kevin@localhost</span>
