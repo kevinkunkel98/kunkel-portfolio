@@ -27,12 +27,23 @@ const ContactForm: React.FC = () => {
     e.preventDefault();
     setIsSubmitting(true);
 
-    // Simulate form submission
     try {
-      // In a real app, you would send this to your backend
-      await new Promise(resolve => setTimeout(resolve, 1000));
-      setSubmitStatus('success');
-      setFormData({ name: '', email: '', message: '' });
+      // Submit to Netlify Forms
+      const form = e.target as HTMLFormElement;
+      const formData = new FormData(form);
+
+      const response = await fetch('/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: new URLSearchParams(formData as any).toString()
+      });
+
+      if (response.ok) {
+        setSubmitStatus('success');
+        setFormData({ name: '', email: '', message: '' });
+      } else {
+        setSubmitStatus('error');
+      }
     } catch (error) {
       setSubmitStatus('error');
     } finally {
@@ -52,7 +63,13 @@ const ContactForm: React.FC = () => {
         <span className="text-green-500 text-sm ml-2">~/contact-form</span>
       </div>
 
-      <form onSubmit={handleSubmit} className="space-y-6">
+      <form onSubmit={handleSubmit} className="space-y-6" name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+        {/* Hidden fields for Netlify */}
+        <input type="hidden" name="form-name" value="contact" />
+        <div hidden>
+          <input name="bot-field" />
+        </div>
+
         <div>
           <label htmlFor="name" className="block text-green-500 text-sm mb-2 flex items-center">
             <span className="text-green-400">$</span>
