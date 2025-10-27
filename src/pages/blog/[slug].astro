@@ -32,7 +32,12 @@ function getReadingTime(content: string) {
 }
 ---
 
-<BaseLayout title={entry.data.title} description={entry.data.description}>
+<BaseLayout
+  title={entry.data.title}
+  description={entry.data.description}
+  image={entry.data.heroImage || '/kevin-hero.jpg'}
+  url={`/blog/${entry.slug}/`}
+>
   <!-- Global Space Background -->
   <div class="fixed inset-0 -z-10 overflow-hidden">
     <div class="absolute inset-0 bg-gradient-to-b from-black via-purple-950/50 to-slate-950"></div>
