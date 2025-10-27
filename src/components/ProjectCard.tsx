@@ -46,12 +46,12 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
         </div>
       )}
 
-      <div className="p-6 relative z-10 flex flex-col flex-grow min-h-[320px]">
+      <div className="p-6 relative z-10 flex flex-col flex-grow min-h-[380px]">
         <h3 className="text-xl font-bold text-white mb-3 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-purple-400 group-hover:to-blue-400 transition-all duration-300">
           {project.title}
         </h3>
 
-        <p className="text-gray-300 mb-4 leading-relaxed line-clamp-4 flex-grow">
+        <p className="text-gray-300 mb-4 leading-relaxed line-clamp-6 flex-grow">
           {project.description}
         </p>
 
