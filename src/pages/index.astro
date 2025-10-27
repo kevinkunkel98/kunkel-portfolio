@@ -146,7 +146,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
                   <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                     <div class="absolute bottom-4 left-4 right-4 text-white">
                       <div class="text-sm font-mono">
-                        <div class="text-xs text-gray-300 mt-1">Ready to jam & code</div>
+                        <div class="text-xs text-gray-300 mt-1">There is no place like 127.0.0.1</div>
                       </div>
                     </div>
                   </div>
@@ -308,7 +308,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
                 <span class="text-blue-400">$</span> ./view-projects
               </a>
               <a href="/contact" class="text-green-400 hover:text-green-300 whitespace-nowrap">
-                <span class="text-blue-400">$</span> ./hire-kevin
+                <span class="text-blue-400">$</span> ./contact-kevin
               </a>
               <a href="/blog" class="text-green-400 hover:text-green-300 whitespace-nowrap">
                 <span class="text-blue-400">$</span> ./read-thoughts
@@ -392,6 +392,11 @@ import BaseLayout from '../layouts/BaseLayout.astro';
               <div><span class="text-blue-400">import</span> cv2, matplotlib</div>
               <div class="text-green-400 pt-2"># Deployment & MLOps</div>
               <div><span class="text-blue-400">import</span> mlflow, docker</div>
+              <div class="text-green-400 pt-2"># Classical NLP & Linear models</div>
+              <div><span class="text-blue-400">from</span> sklearn.feature_extraction.text <span class="text-blue-400">import</span> TfidfVectorizer</div>
+              <div><span class="text-blue-400">from</span> sklearn.svm <span class="text-blue-400">import</span> LinearSVC <span class="text-gray-500">// Fast linear classifier</span></div>
+              <div><span class="text-blue-400">from</span> sklearn.pipeline <span class="text-blue-400">import</span> make_pipeline</div>
+              <div><span class="text-blue-400">model</span> = make_pipeline(TfidfVectorizer(max_features=10_000), LinearSVC()) <span class="text-gray-500">// Text → features → classification</span></div>
             </div>
           </div>
         </div>
@@ -407,12 +412,14 @@ import BaseLayout from '../layouts/BaseLayout.astro';
             <div class="text-xs sm:text-sm text-gray-300 space-y-0.5 sm:space-y-1 overflow-x-auto">
               <div class="text-yellow-400">{"{"}</div>
               <div class="ml-4"><span class="text-green-400">"dependencies"</span>: {"{"}</div>
-              <div class="ml-8"><span class="text-green-400">"react"</span>: <span class="text-orange-400">"^18.x"</span>, <span class="text-gray-500">// Still the GOAT</span></div>
-              <div class="ml-8"><span class="text-green-400">"typescript"</span>: <span class="text-orange-400">"latest"</span>, <span class="text-gray-500">// Life saver</span></div>
-              <div class="ml-8"><span class="text-green-400">"next.js"</span>: <span class="text-orange-400">"^14.x"</span>, <span class="text-gray-500">// Full-stack magic</span></div>
-              <div class="ml-8"><span class="text-green-400">"node.js"</span>: <span class="text-orange-400">"LTS"</span>, <span class="text-gray-500">// Backend buddy</span></div>
-              <div class="ml-8"><span class="text-green-400">"postgresql"</span>: <span class="text-orange-400">"^15"</span>, <span class="text-gray-500">// Reliable data</span></div>
-              <div class="ml-8"><span class="text-green-400">"docker"</span>: <span class="text-orange-400">"latest"</span> <span class="text-gray-500">// It works on my machine™</span></div>
+                <div class="ml-8"><span class="text-green-400">"react"</span>: <span class="text-orange-400">"^18.x"</span>, <span class="text-gray-500">// Still the GOAT</span></div>
+                <div class="ml-8"><span class="text-green-400">"typescript"</span>: <span class="text-orange-400">"latest"</span>, <span class="text-gray-500">// Life saver</span></div>
+                <div class="ml-8"><span class="text-green-400">"next.js"</span>: <span class="text-orange-400">"^14.x"</span>, <span class="text-gray-500">// Full-stack magic</span></div>
+                <div class="ml-8"><span class="text-green-400">"node.js"</span>: <span class="text-orange-400">"LTS"</span>, <span class="text-gray-500">// Backend buddy</span></div>
+                <div class="ml-8"><span class="text-green-400">"postgresql"</span>: <span class="text-orange-400">"^15"</span>, <span class="text-gray-500">// Reliable data</span></div>
+                <div class="ml-8"><span class="text-green-400">"shadcn/ui"</span>: <span class="text-orange-400">"latest"</span>, <span class="text-gray-500">// Beautiful components</span></div>
+                <div class="ml-8"><span class="text-green-400">"vite"</span>: <span class="text-orange-400">"latest"</span>, <span class="text-gray-500">// Lightning fast builds</span></div>
+                <div class="ml-8"><span class="text-green-400">"docker"</span>: <span class="text-orange-400">"latest"</span> <span class="text-gray-500">// It works on my machine™</span></div>
               <div class="ml-4">{"}"}</div>
               <div class="text-yellow-400">{"}"}</div>
             </div>
