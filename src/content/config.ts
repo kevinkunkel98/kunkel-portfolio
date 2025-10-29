@@ -9,7 +9,7 @@ const blog = defineCollection({
     updatedDate: z.coerce.date().optional(),
     heroImage: z.string().optional(),
     tags: z.array(z.string()).optional(),
-    category: z.enum(['Machine Learning', 'Web Development', 'Tutorial', 'Opinion']).default('Tutorial'),
+    category: z.enum(['Machine Learning', 'Web Development', 'Tutorial', 'Linux', 'Theming', 'Terminal', 'Opinion']).default('Tutorial'),
   }),
 });
 
