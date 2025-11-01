@@ -2,6 +2,7 @@
 title: 'Getting started with Neovim using NvChad'
 description: 'How to use a pretty solid Neovim configuration to start your journey.'
 pubDate: 2022-09-23
+category: 'Development Tools'
 tags: ['vim', 'docs']
 ---
 

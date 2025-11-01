@@ -2,6 +2,7 @@
 title: 'Battery Optimization with TLP'
 description: 'Improving Battery Life on Linux Laptops.'
 pubDate: 2024-05-09
+category: 'Linux'
 tags: ['hardware']
 ---
 

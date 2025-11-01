@@ -63,59 +63,92 @@ function formatDate(date: Date) {
     </div>
   </section>
 
-  <!-- Migration Notice Section -->
-  <section class="py-12 sm:py-16 relative min-h-[60vh] flex items-center justify-center">
-    <div class="max-w-3xl mx-auto px-3 sm:px-6 lg:px-8">
-      <div class="bg-black/60 backdrop-blur-sm border border-yellow-500/50 rounded-lg p-8 sm:p-12 font-mono">
-        <!-- Terminal Header -->
-        <div class="flex items-center gap-2 mb-6 pb-4 border-b border-gray-700/50">
-          <div class="flex gap-1.5">
-            <div class="w-3 h-3 rounded-full bg-red-500"></div>
-            <div class="w-3 h-3 rounded-full bg-yellow-500"></div>
-            <div class="w-3 h-3 rounded-full bg-green-500"></div>
-          </div>
-          <span class="text-yellow-500 text-sm ml-2">~/migration_status</span>
-        </div>
+  <!-- Blog Posts Section -->
+  <section class="py-12 sm:py-16 relative">
+    <div class="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8">
+      <!-- Category Filter Buttons -->
+      <div class="mb-8 flex flex-wrap gap-2 justify-center">
+        {categories.map((category, index) => (
+          <button
+            class={`filter-btn px-4 py-2 rounded font-mono text-sm transition-colors ${
+              index === 0
+                ? 'bg-green-600 text-white'
+                : 'bg-gray-800 text-gray-300 hover:bg-gray-700'
+            }`}
+            data-category={category}
+            type="button"
+          >
+            {category}
+          </button>
+        ))}
+      </div>
 
-        <div class="text-center space-y-6">
-          <!-- Warning Icon -->
-          <div class="text-6xl animate-pulse">
-            ⚠️
-          </div>
+      <!-- Blog Posts Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+        {sortedPosts.map(post => (
+          <article
+            class="post-item bg-black/40 backdrop-blur-sm border border-gray-700/50 rounded-lg overflow-hidden flex flex-col h-full transition-all hover:scale-105 hover:border-green-500/50"
+            data-category={post.data.category}
+          >
+            {/* Hero Image */}
+            {post.data.heroImage && (
+              <div class="w-full h-48 overflow-hidden">
+                <img
+                  src={post.data.heroImage}
+                  alt={post.data.title}
+                  class="w-full h-full object-cover"
+                  loading="lazy"
+                />
+              </div>
+            )}
 
-          <!-- Title -->
-          <div class="text-yellow-400 text-xl sm:text-2xl font-bold">
-            <span class="text-blue-400">$</span> ./migration --status
-          </div>
+            <div class="p-6 flex flex-col flex-grow">
+              {/* Tags */}
+              <div class="flex flex-wrap gap-2 mb-3">
+                {post.data.tags && post.data.tags.map(tag => (
+                  <span class="inline-block bg-blue-900/40 text-blue-300 px-2 py-1 rounded text-xs font-mono">
+                    {tag}
+                  </span>
+                ))}
+              </div>
 
-          <!-- Message -->
-          <div class="text-gray-300 space-y-4">
-            <p class="text-lg sm:text-xl">
-              <span class="text-yellow-400">WARNING:</span> Blog section under construction
-            </p>
-            <div class="text-sm sm:text-base text-left bg-gray-900/50 p-4 rounded border border-yellow-500/30">
-              <div class="text-green-400 mb-2"># Migration Status</div>
-              <div><span class="text-blue-400">></span> Status: IN_PROGRESS</div>
-              <div><span class="text-blue-400">></span> Source: Old portfolio site</div>
-              <div><span class="text-blue-400">></span> ETA: Soon™</div>
-              <div><span class="text-blue-400">></span> Progress: [████░░░░░░] 40%</div>
+              {/* Title */}
+              <h2 class="text-xl font-bold text-green-400 mb-2 font-mono">
+                <a href={`/blog/${post.slug}/`} class="hover:underline">
+                  {post.data.title}
+                </a>
+              </h2>
+
+              {/* Meta Info */}
+              <div class="text-gray-400 text-xs font-mono mb-3">
+                {formatDate(post.data.pubDate)}
+                {post.data.category && (
+                  <>
+                    {' '}• {post.data.category}
+                  </>
+                )}
+              </div>
+
+              {/* Description */}
+              <div class="text-gray-300 text-sm line-clamp-3 mb-4 flex-grow">
+                {post.data.description}
+              </div>
+
+              {/* Read More Link */}
+              <div class="mt-auto">
+                <a
+                  href={`/blog/${post.slug}/`}
+                  class="inline-flex items-center gap-2 text-blue-400 hover:text-blue-300 font-mono text-sm transition-colors"
+                >
+                  Read more
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M17.25 6.75L21 10.5m0 0l-3.75 3.75M21 10.5H3" />
+                  </svg>
+                </a>
+              </div>
             </div>
-            <p class="text-gray-400 text-sm">
-              Currently migrating content from the old site. Check back soon for fresh content!
-            </p>
-          </div>
-
-          <!-- Back Button -->
-          <div class="pt-4">
-            <a
-              href="/"
-              class="inline-flex items-center gap-2 bg-green-600 hover:bg-green-500 text-black font-bold py-3 px-6 rounded transition-all transform hover:scale-105"
-            >
-              <span>←</span>
-              <span>cd ..</span>
-            </a>
-          </div>
-        </div>
+          </article>
+        ))}
       </div>
     </div>
   </section>
@@ -144,19 +177,18 @@ function formatDate(date: Date) {
 
         // Update active button
         filterBtns.forEach(b => {
-          b.classList.remove('bg-blue-600', 'text-white');
-          b.classList.add('bg-gray-200', 'dark:bg-gray-700', 'text-gray-700', 'dark:text-gray-300');
+          b.classList.remove('bg-green-600', 'text-white');
+          b.classList.add('bg-gray-800', 'text-gray-300');
         });
-        btn.classList.add('bg-blue-600', 'text-white');
-        btn.classList.remove('bg-gray-200', 'dark:bg-gray-700', 'text-gray-700', 'dark:text-gray-300');
+        btn.classList.add('bg-green-600', 'text-white');
+        btn.classList.remove('bg-gray-800', 'text-gray-300');
 
         // Filter posts
         postItems.forEach(item => {
-          const htmlItem = item as HTMLElement;
           if (category === 'All' || item.getAttribute('data-category') === category) {
-            htmlItem.style.display = 'block';
+            (item as HTMLElement).style.display = 'block';
           } else {
-            htmlItem.style.display = 'none';
+            (item as HTMLElement).style.display = 'none';
           }
         });
       });
