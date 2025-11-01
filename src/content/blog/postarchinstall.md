@@ -1,16 +1,10 @@
 ---
-author: Kevin Kunkel
-pubDatetime: 2023-07-24T15:20:35Z
-title: Post Arch Installation
-postSlug: ""
-featured: true
-draft: false
-tags:
-  - arch
-  - docs
-ogImage: ""
-description:
-  Installing neccesary packages and setting up Arch for daily use.
+title: 'Post Arch Installation'
+description: 'Installing necessary packages and setting up Arch for daily use.'
+pubDate: 2023-07-24
+category: 'Linux'
+tags: ['Linux', 'Arch Linux', 'Tutorial']
+heroImage: '/blog-ml-intro.jpg'
 ---
 
 ![arch](/assets/arch-linux.jpg)

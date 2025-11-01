@@ -1,8 +1,8 @@
 ---
-title: Creating a Flask Project
-description: Installing and setting up the Flask-Framework for python web developement.
+title: 'Creating a Flask Project'
+description: 'Installing and setting up the Flask-Framework for python web development.'
 pubDate: 2023-01-15
-category: 'Machine Learning'
+category: 'Web Development'
 tags: ['Flask', 'Beginner', 'Python', 'Tutorial']
 heroImage: '/blog-ml-intro.jpg'
 ---

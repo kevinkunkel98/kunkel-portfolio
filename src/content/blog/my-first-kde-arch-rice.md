@@ -1,15 +1,10 @@
 ---
-author: Kevin Kunkel
-pubDatetime: 2024-03-08
-title: My first KDE rice!
-postSlug: kde-arch-rice
-featured: false
-draft: false
-tags:
-  - rice
-  - kde
-ogImage: ""
-description: Sharing my first ever KDE rice.
+title: 'My first KDE rice!'
+description: 'Sharing my first ever KDE rice.'
+pubDate: 2024-03-08
+category: 'Linux'
+tags: ['Linux', 'KDE', 'Rice', 'Theme']
+heroImage: '/blog-ml-intro.jpg'
 ---
 
 ![KDErice](/assets/kderice.jpeg)

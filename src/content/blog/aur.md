@@ -1,12 +1,10 @@
 ---
-title: Introducing the AUR
-description:
-  Utilizing amazing software diversity.
+title: 'Introducing the AUR'
+description: 'Utilizing amazing software diversity.'
 pubDate: 2024-01-15
 category: 'Linux'
 tags: ['Linux', 'Arch Linux', 'AUR', 'Tutorial']
 heroImage: '/blog-ml-intro.jpg'
-
 ---
 
 One of the reasons I love Arch is the extensive community-maintained Arch User Repository (AUR). Here is a quick tutorial on how to get started and install your first AUR packages using the yay installation helper.
