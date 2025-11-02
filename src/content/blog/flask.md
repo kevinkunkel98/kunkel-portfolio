@@ -4,7 +4,7 @@ description: 'Installing and setting up the Flask-Framework for python web devel
 pubDate: 2023-01-15
 category: 'Web Development'
 tags: ['Flask', 'Beginner', 'Python', 'Tutorial']
-heroImage: '/blog-ml-intro.jpg'
+heroImage: 'assets/flask.webp'
 ---
 
 Flask is a simple python webframework that is easy to start and setup. This is a quick start guide to get the fundamentals going.

@@ -4,10 +4,8 @@ description: 'Installing necessary packages and setting up Arch for daily use.'
 pubDate: 2023-07-24
 category: 'Linux'
 tags: ['Linux', 'Arch Linux', 'Tutorial']
-heroImage: '/blog-ml-intro.jpg'
+heroImage: '/assets/arch-linux.jpg'
 ---
-
-![arch](/assets/arch-linux.jpg)
 
 This documentation is a copy paste guide for terminal commands and settings to setup arch linux after a successful installation. I am using KDE Plasma as a desktop environment.
 ## Table of contents

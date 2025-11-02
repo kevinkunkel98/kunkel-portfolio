@@ -4,10 +4,10 @@ description: 'Comprehensive list of important Linux commands.'
 pubDate: 2023-10-09
 category: 'Terminal'
 tags: ['Linux', 'Bash', 'Terminal']
-heroImage: '/blog-ml-intro.jpg'
+heroImage: '/assets/terminal2.jpg'
 ---
 
-![terminal](/assets/terminal2.jpg)
+![terminal](/assets/terminal.jpg)
 
 In this Blog Post. I am going to write down a list of basic and very common linux commands to kick start the terminal. Remember the less you are using the GUI the more intimate you get with your machine and operating system!
 

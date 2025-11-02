@@ -4,7 +4,7 @@ description: 'Overcoming annoying manual Discord updates.'
 pubDate: 2023-10-09
 category: 'Linux'
 tags: ['Linux', 'Arch Linux', 'Discord', 'Tutorial']
-heroImage: '/blog-ml-intro.jpg'
+heroImage: '/assets/discord.jpg'
 ---
 
 ## Updating Discord Manually
