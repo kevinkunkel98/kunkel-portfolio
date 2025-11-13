@@ -1,28 +1,8 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import { getCollection } from 'astro:content';
-
-// Get all blog posts
-const allPosts = await getCollection('blog');
-
-// Sort posts by publication date (newest first)
-const sortedPosts = allPosts.sort((a, b) =>
-  new Date(b.data.pubDate).getTime() - new Date(a.data.pubDate).getTime()
-);
-
-// Group posts by category
-const categories = ['All', ...new Set(sortedPosts.map(post => post.data.category))];
-
-function formatDate(date: Date) {
-  return new Date(date).toLocaleDateString('en-US', {
-    year: 'numeric',
-    month: 'long',
-    day: 'numeric'
-  });
-}
 ---
 
-<BaseLayout title="Kevin's Random Thoughts - /dev/blog" description="Random thoughts, tutorials, and rants about code, ML, and life">
+<BaseLayout title="ML Models Playground - Kevin Kunkel" description="Interactive overview of machine learning models and algorithms">
   <!-- Global Space Background -->
   <div class="fixed inset-0 -z-10 overflow-hidden">
     <div class="absolute inset-0 bg-gradient-to-b from-black via-purple-950/50 to-slate-950"></div>
@@ -54,67 +34,398 @@ function formatDate(date: Date) {
     <div class="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8">
       <div class="text-center font-mono">
         <div class="text-xl sm:text-2xl md:text-4xl text-green-400 mb-3 sm:mb-4">
-          cat ./random_thoughts.md
+          python3 ml_models.py --explore
         </div>
         <div class="text-gray-400 text-xs sm:text-sm max-w-3xl mx-auto px-2">
-          # Brain dumps, tutorials, and occasional neurodivergent rants.
+          # Interactive ML Models Playground
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Migration Notice Section -->
-  <section class="py-12 sm:py-16 relative min-h-[60vh] flex items-center justify-center">
-    <div class="max-w-3xl mx-auto px-3 sm:px-6 lg:px-8">
-      <div class="bg-black/60 backdrop-blur-sm border border-yellow-500/50 rounded-lg p-8 sm:p-12 font-mono">
-        <!-- Terminal Header -->
-        <div class="flex items-center gap-2 mb-6 pb-4 border-b border-gray-700/50">
-          <div class="flex gap-1.5">
-            <div class="w-3 h-3 rounded-full bg-red-500"></div>
-            <div class="w-3 h-3 rounded-full bg-yellow-500"></div>
-            <div class="w-3 h-3 rounded-full bg-green-500"></div>
+  <!-- ML Models Overview Section -->
+  <section class="py-12 sm:py-16 relative">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+      <!-- ML Models Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+        <!-- Linear Regression -->
+        <div class="bg-black/40 backdrop-blur-sm border border-green-500/30 rounded-lg p-6 hover:border-green-500/60 transition-all group">
+          <div class="flex items-center gap-3 mb-4">
+            <div class="w-12 h-12 bg-gradient-to-br from-green-500/20 to-green-600/20 rounded-lg flex items-center justify-center">
+              <span class="text-2xl">📈</span>
+            </div>
+            <h3 class="text-xl font-bold text-green-400 font-mono">Linear Regression</h3>
           </div>
-          <span class="text-yellow-500 text-sm ml-2">~/migration_status</span>
+          <p class="text-gray-300 text-sm mb-4 leading-relaxed">
+            Predicts continuous values by fitting a linear equation. Best for trends and forecasting.
+          </p>
+          <div class="space-y-2 text-xs font-mono">
+            <div class="text-blue-400">// Use cases:</div>
+            <div class="text-gray-400">• Price prediction</div>
+            <div class="text-gray-400">• Sales forecasting</div>
+            <div class="text-gray-400">• Risk assessment</div>
+          </div>
+          <div class="mt-4 pt-4 border-t border-gray-700/50">
+            <code class="text-xs text-purple-400">y = mx + b</code>
+          </div>
         </div>
 
-        <div class="text-center space-y-6">
-          <!-- Warning Icon -->
-          <div class="text-6xl animate-pulse">
-            ⚠️
-          </div>
-
-          <!-- Title -->
-          <div class="text-yellow-400 text-xl sm:text-2xl font-bold">
-            <span class="text-blue-400">$</span> ./migration --status
-          </div>
-
-          <!-- Message -->
-          <div class="text-gray-300 space-y-4">
-            <p class="text-lg sm:text-xl">
-              <span class="text-yellow-400">WARNING:</span> Blog section under construction
-            </p>
-            <div class="text-sm sm:text-base text-left bg-gray-900/50 p-4 rounded border border-yellow-500/30">
-              <div class="text-green-400 mb-2"># Migration Status</div>
-              <div><span class="text-blue-400">></span> Status: IN_PROGRESS</div>
-              <div><span class="text-blue-400">></span> Source: Old portfolio site</div>
-              <div><span class="text-blue-400">></span> ETA: Soon™</div>
-              <div><span class="text-blue-400">></span> Progress: [████░░░░░░] 40%</div>
+        <!-- Logistic Regression -->
+        <div class="bg-black/40 backdrop-blur-sm border border-blue-500/30 rounded-lg p-6 hover:border-blue-500/60 transition-all group">
+          <div class="flex items-center gap-3 mb-4">
+            <div class="w-12 h-12 bg-gradient-to-br from-blue-500/20 to-blue-600/20 rounded-lg flex items-center justify-center">
+              <span class="text-2xl">🎯</span>
             </div>
-            <p class="text-gray-400 text-sm">
-              Currently migrating content from the old site. Check back soon for fresh content!
-            </p>
+            <h3 class="text-xl font-bold text-blue-400 font-mono">Logistic Regression</h3>
           </div>
+          <p class="text-gray-300 text-sm mb-4 leading-relaxed">
+            Binary classification using sigmoid function. Outputs probability between 0 and 1.
+          </p>
+          <div class="space-y-2 text-xs font-mono">
+            <div class="text-blue-400">// Use cases:</div>
+            <div class="text-gray-400">• Spam detection</div>
+            <div class="text-gray-400">• Disease diagnosis</div>
+            <div class="text-gray-400">• Customer churn</div>
+          </div>
+          <div class="mt-4 pt-4 border-t border-gray-700/50">
+            <code class="text-xs text-purple-400">P(y=1) = 1/(1+e^(-z))</code>
+          </div>
+        </div>
 
-          <!-- Back Button -->
-          <div class="pt-4">
-            <a
-              href="/"
-              class="inline-flex items-center gap-2 bg-green-600 hover:bg-green-500 text-black font-bold py-3 px-6 rounded transition-all transform hover:scale-105"
-            >
-              <span>←</span>
-              <span>cd ..</span>
-            </a>
+        <!-- Support Vector Machine -->
+        <div class="bg-black/40 backdrop-blur-sm border border-purple-500/30 rounded-lg p-6 hover:border-purple-500/60 transition-all group">
+          <div class="flex items-center gap-3 mb-4">
+            <div class="w-12 h-12 bg-gradient-to-br from-purple-500/20 to-purple-600/20 rounded-lg flex items-center justify-center">
+              <span class="text-2xl">⚡</span>
+            </div>
+            <h3 class="text-xl font-bold text-purple-400 font-mono">SVM</h3>
           </div>
+          <p class="text-gray-300 text-sm mb-4 leading-relaxed">
+            Finds optimal hyperplane to separate classes. Powerful for high-dimensional spaces.
+          </p>
+          <div class="space-y-2 text-xs font-mono">
+            <div class="text-blue-400">// Use cases:</div>
+            <div class="text-gray-400">• Image classification</div>
+            <div class="text-gray-400">• Text categorization</div>
+            <div class="text-gray-400">• Face detection</div>
+          </div>
+          <div class="mt-4 pt-4 border-t border-gray-700/50">
+            <code class="text-xs text-purple-400">max margin classifier</code>
+          </div>
+        </div>
+
+        <!-- Decision Trees -->
+        <div class="bg-black/40 backdrop-blur-sm border border-yellow-500/30 rounded-lg p-6 hover:border-yellow-500/60 transition-all group">
+          <div class="flex items-center gap-3 mb-4">
+            <div class="w-12 h-12 bg-gradient-to-br from-yellow-500/20 to-yellow-600/20 rounded-lg flex items-center justify-center">
+              <span class="text-2xl">🌳</span>
+            </div>
+            <h3 class="text-xl font-bold text-yellow-400 font-mono">Decision Trees</h3>
+          </div>
+          <p class="text-gray-300 text-sm mb-4 leading-relaxed">
+            Tree-like decision model. Easy to interpret and visualize decision paths.
+          </p>
+          <div class="space-y-2 text-xs font-mono">
+            <div class="text-blue-400">// Use cases:</div>
+            <div class="text-gray-400">• Credit scoring</div>
+            <div class="text-gray-400">• Fraud detection</div>
+            <div class="text-gray-400">• Medical diagnosis</div>
+          </div>
+          <div class="mt-4 pt-4 border-t border-gray-700/50">
+            <code class="text-xs text-purple-400">if-else rules</code>
+          </div>
+        </div>
+
+        <!-- Random Forest -->
+        <div class="bg-black/40 backdrop-blur-sm border border-emerald-500/30 rounded-lg p-6 hover:border-emerald-500/60 transition-all group">
+          <div class="flex items-center gap-3 mb-4">
+            <div class="w-12 h-12 bg-gradient-to-br from-emerald-500/20 to-emerald-600/20 rounded-lg flex items-center justify-center">
+              <span class="text-2xl">🌲</span>
+            </div>
+            <h3 class="text-xl font-bold text-emerald-400 font-mono">Random Forest</h3>
+          </div>
+          <p class="text-gray-300 text-sm mb-4 leading-relaxed">
+            Ensemble of decision trees. Reduces overfitting through bagging and voting.
+          </p>
+          <div class="space-y-2 text-xs font-mono">
+            <div class="text-blue-400">// Use cases:</div>
+            <div class="text-gray-400">• Feature importance</div>
+            <div class="text-gray-400">• Risk prediction</div>
+            <div class="text-gray-400">• Recommendation systems</div>
+          </div>
+          <div class="mt-4 pt-4 border-t border-gray-700/50">
+            <code class="text-xs text-purple-400">ensemble learning</code>
+          </div>
+        </div>
+
+        <!-- K-Nearest Neighbors -->
+        <div class="bg-black/40 backdrop-blur-sm border border-pink-500/30 rounded-lg p-6 hover:border-pink-500/60 transition-all group">
+          <div class="flex items-center gap-3 mb-4">
+            <div class="w-12 h-12 bg-gradient-to-br from-pink-500/20 to-pink-600/20 rounded-lg flex items-center justify-center">
+              <span class="text-2xl">🎲</span>
+            </div>
+            <h3 class="text-xl font-bold text-pink-400 font-mono">K-NN</h3>
+          </div>
+          <p class="text-gray-300 text-sm mb-4 leading-relaxed">
+            Classifies based on nearest neighbors. Simple yet effective for many tasks.
+          </p>
+          <div class="space-y-2 text-xs font-mono">
+            <div class="text-blue-400">// Use cases:</div>
+            <div class="text-gray-400">• Pattern recognition</div>
+            <div class="text-gray-400">• Anomaly detection</div>
+            <div class="text-gray-400">• Recommendation</div>
+          </div>
+          <div class="mt-4 pt-4 border-t border-gray-700/50">
+            <code class="text-xs text-purple-400">distance-based</code>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Interactive Demo Section -->
+      <div class="mt-12">
+        <div class="text-center mb-8">
+          <h3 class="text-2xl font-bold text-green-400 font-mono mb-2">
+            🎮 Interactive Playground
+          </h3>
+          <p class="text-gray-400 text-sm">
+            Experiment with ML models in real-time
+          </p>
+        </div>
+
+        <!-- Simple Linear Regression Demo -->
+        <div class="max-w-6xl mx-auto">
+          <div class="bg-gray-900/50 rounded-lg p-6 border border-green-500/30">
+            <div class="flex items-center gap-2 mb-4">
+              <span class="text-green-400 font-mono text-sm">$</span>
+              <span class="text-gray-300 font-mono text-sm">linear_regression_demo.py</span>
+            </div>
+
+            <div class="space-y-4">
+              <div>
+                <label class="text-gray-400 text-sm font-mono mb-2 block">
+                  Adjust slope (m):
+                </label>
+                <input
+                  type="range"
+                  id="slope-slider"
+                  min="-5"
+                  max="5"
+                  step="0.1"
+                  value="1"
+                  class="w-full h-2 bg-gray-700 rounded-lg appearance-none cursor-pointer accent-green-500"
+                />
+                <div class="text-green-400 font-mono text-sm mt-1">
+                  m = <span id="slope-value">1.0</span>
+                </div>
+              </div>
+
+              <div>
+                <label class="text-gray-400 text-sm font-mono mb-2 block">
+                  Adjust intercept (b):
+                </label>
+                <input
+                  type="range"
+                  id="intercept-slider"
+                  min="-10"
+                  max="10"
+                  step="0.5"
+                  value="0"
+                  class="w-full h-2 bg-gray-700 rounded-lg appearance-none cursor-pointer accent-blue-500"
+                />
+                <div class="text-blue-400 font-mono text-sm mt-1">
+                  b = <span id="intercept-value">0.0</span>
+                </div>
+              </div>
+
+              <!-- Visualization Canvas -->
+              <div class="bg-black/60 rounded-lg p-6 border border-gray-600/30">
+                <canvas id="regression-canvas" width="800" height="400" class="w-full"></canvas>
+              </div>
+
+              <div class="text-center">
+                <code class="text-purple-400 font-mono">
+                  y = <span id="equation-m">1.0</span>x + <span id="equation-b">0.0</span>
+                </code>
+              </div>
+
+              <!-- Loss Function Display -->
+              <div class="bg-black/60 rounded-lg p-4 border border-yellow-500/30">
+                <div class="text-yellow-400 font-mono text-sm mb-2">Loss Function (MSE):</div>
+                <div class="text-center">
+                  <code class="text-yellow-400 font-mono text-lg">
+                    Loss = <span id="mse-value">0.00</span>
+                  </code>
+                </div>
+                <div class="text-xs text-gray-400 font-mono mt-2 text-center">
+                  Mean Squared Error = Σ(y_actual - y_predicted)² / n
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- SVM Interactive Demo -->
+        <div class="mt-8 max-w-6xl mx-auto">
+          <div class="bg-gray-900/50 rounded-lg p-6 border border-purple-500/30">
+            <div class="flex items-center gap-2 mb-4">
+              <span class="text-purple-400 font-mono text-sm">$</span>
+              <span class="text-gray-300 font-mono text-sm">svm_classifier.py</span>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-6">
+              <!-- Canvas -->
+              <div>
+                <div class="bg-black/60 rounded-lg p-6 border border-gray-600/30">
+                  <canvas id="svm-canvas" width="500" height="500" class="w-full cursor-crosshair"></canvas>
+                </div>
+                <div class="mt-3 text-xs font-mono text-gray-400 text-center">
+                  Click to add points • Different sides = different classes
+                </div>
+              </div>
+
+              <!-- Controls -->
+              <div class="space-y-4">
+                <div>
+                  <label class="text-gray-400 text-sm font-mono mb-2 block">
+                    Margin Width:
+                  </label>
+                  <input
+                    type="range"
+                    id="margin-slider"
+                    min="10"
+                    max="100"
+                    step="5"
+                    value="50"
+                    class="w-full h-2 bg-gray-700 rounded-lg appearance-none cursor-pointer accent-purple-500"
+                  />
+                  <div class="text-purple-400 font-mono text-sm mt-1">
+                    margin = <span id="margin-value">50</span>px
+                  </div>
+                </div>
+
+                <div class="flex gap-2">
+                  <button id="clear-svm" class="flex-1 px-4 py-2 bg-red-500/20 border border-red-500/50 text-red-400 rounded hover:bg-red-500/30 transition-colors font-mono text-sm">
+                    Clear Points
+                  </button>
+                  <button id="toggle-class" class="flex-1 px-4 py-2 bg-purple-500/20 border border-purple-500/50 text-purple-400 rounded hover:bg-purple-500/30 transition-colors font-mono text-sm">
+                    Class: <span id="current-class">A</span>
+                  </button>
+                </div>
+
+                <div class="bg-black/60 rounded-lg p-4 border border-gray-600/30 space-y-2 text-xs font-mono">
+                  <div class="text-purple-400">// SVM Concepts:</div>
+                  <div class="text-gray-300">• Purple line = decision boundary</div>
+                  <div class="text-gray-300">• Dashed lines = support margins</div>
+                  <div class="text-gray-300">• Maximizes distance between classes</div>
+                  <div class="text-gray-300">• Works great for high-dimensional data</div>
+                </div>
+
+                <div class="bg-black/60 rounded-lg p-4 border border-gray-600/30">
+                  <code class="text-xs text-purple-400">
+                    max |w| s.t. y_i(w·x_i + b) ≥ 1
+                  </code>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- K-Means Clustering Interactive Demo -->
+        <div class="mt-8 max-w-6xl mx-auto">
+          <div class="bg-gray-900/50 rounded-lg p-6 border border-pink-500/30">
+            <div class="flex items-center gap-2 mb-4">
+              <span class="text-pink-400 font-mono text-sm">$</span>
+              <span class="text-gray-300 font-mono text-sm">kmeans_clustering.py</span>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-6">
+              <!-- Canvas -->
+              <div>
+                <div class="bg-black/60 rounded-lg p-6 border border-gray-600/30">
+                  <canvas id="kmeans-canvas" width="500" height="500" class="w-full"></canvas>
+                </div>
+                <div class="mt-3 text-xs font-mono text-gray-400 text-center">
+                  Watch clusters form automatically
+                </div>
+              </div>
+
+              <!-- Controls -->
+              <div class="space-y-4">
+                <div>
+                  <label class="text-gray-400 text-sm font-mono mb-2 block">
+                    Number of Clusters (k):
+                  </label>
+                  <input
+                    type="range"
+                    id="k-slider"
+                    min="2"
+                    max="6"
+                    step="1"
+                    value="3"
+                    class="w-full h-2 bg-gray-700 rounded-lg appearance-none cursor-pointer accent-pink-500"
+                  />
+                  <div class="text-pink-400 font-mono text-sm mt-1">
+                    k = <span id="k-value">3</span> clusters
+                  </div>
+                </div>
+
+                <div>
+                  <label class="text-gray-400 text-sm font-mono mb-2 block">
+                    Number of Points:
+                  </label>
+                  <input
+                    type="range"
+                    id="points-slider"
+                    min="20"
+                    max="200"
+                    step="20"
+                    value="100"
+                    class="w-full h-2 bg-gray-700 rounded-lg appearance-none cursor-pointer accent-cyan-500"
+                  />
+                  <div class="text-cyan-400 font-mono text-sm mt-1">
+                    n = <span id="points-value">100</span> points
+                  </div>
+                </div>
+
+                <div class="flex gap-2">
+                  <button id="regenerate-kmeans" class="flex-1 px-4 py-2 bg-pink-500/20 border border-pink-500/50 text-pink-400 rounded hover:bg-pink-500/30 transition-colors font-mono text-sm">
+                    Regenerate Data
+                  </button>
+                  <button id="step-kmeans" class="flex-1 px-4 py-2 bg-cyan-500/20 border border-cyan-500/50 text-cyan-400 rounded hover:bg-cyan-500/30 transition-colors font-mono text-sm">
+                    Step Forward
+                  </button>
+                </div>
+
+                <div class="bg-black/60 rounded-lg p-4 border border-gray-600/30 space-y-2 text-xs font-mono">
+                  <div class="text-pink-400">// K-Means Algorithm:</div>
+                  <div class="text-gray-300">1. Initialize k random centroids</div>
+                  <div class="text-gray-300">2. Assign points to nearest centroid</div>
+                  <div class="text-gray-300">3. Update centroids to cluster means</div>
+                  <div class="text-gray-300">4. Repeat until convergence</div>
+                  <div class="text-gray-300 mt-2">Iterations: <span id="iterations">0</span></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ML Resources -->
+      <div class="mt-8 text-center">
+        <div class="inline-flex flex-wrap gap-4 justify-center items-center text-sm font-mono">
+          <span class="text-gray-400">Explore more:</span>
+          <a href="https://scikit-learn.org" target="_blank" class="text-green-400 hover:text-green-300 transition-colors">
+            scikit-learn →
+          </a>
+          <a href="https://www.tensorflow.org" target="_blank" class="text-blue-400 hover:text-blue-300 transition-colors">
+            TensorFlow →
+          </a>
+          <a href="https://pytorch.org" target="_blank" class="text-purple-400 hover:text-purple-300 transition-colors">
+            PyTorch →
+          </a>
         </div>
       </div>
     </div>
@@ -122,47 +433,391 @@ function formatDate(date: Date) {
 
 </BaseLayout>
 
-<!-- Blog Posts Section (Commented Out for Migration)
-
-<!--
-<style>
-  .line-clamp-3 {
-    display: -webkit-box;
-    -webkit-line-clamp: 3;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-  }
-</style>
-
 <script>
-  // Category filtering functionality
-  document.addEventListener('DOMContentLoaded', () => {
-    const filterBtns = document.querySelectorAll('.filter-btn');
-    const postItems = document.querySelectorAll('.post-item');
+  // Interactive Linear Regression Demo
+  const canvas = document.getElementById('regression-canvas') as HTMLCanvasElement;
+  const ctx = canvas?.getContext('2d');
+  const slopeSlider = document.getElementById('slope-slider') as HTMLInputElement;
+  const interceptSlider = document.getElementById('intercept-slider') as HTMLInputElement;
+  const slopeValue = document.getElementById('slope-value');
+  const interceptValue = document.getElementById('intercept-value');
+  const equationM = document.getElementById('equation-m');
+  const equationB = document.getElementById('equation-b');
+  const mseValue = document.getElementById('mse-value');
 
-    filterBtns.forEach(btn => {
-      btn.addEventListener('click', () => {
-        const category = btn.getAttribute('data-category');
+  if (ctx && slopeSlider && interceptSlider) {
+    // Generate sample data points
+    const dataPoints: [number, number][] = [];
+    for (let i = 0; i < 20; i++) {
+      const x = Math.random() * 10;
+      const y = 1.5 * x + 2 + (Math.random() - 0.5) * 3;
+      dataPoints.push([x, y]);
+    }
 
-        // Update active button
-        filterBtns.forEach(b => {
-          b.classList.remove('bg-blue-600', 'text-white');
-          b.classList.add('bg-gray-200', 'dark:bg-gray-700', 'text-gray-700', 'dark:text-gray-300');
-        });
-        btn.classList.add('bg-blue-600', 'text-white');
-        btn.classList.remove('bg-gray-200', 'dark:bg-gray-700', 'text-gray-700', 'dark:text-gray-300');
+    function calculateMSE(m: number, b: number): number {
+      let sumSquaredError = 0;
+      for (const [x, y] of dataPoints) {
+        const predicted = m * x + b;
+        const error = y - predicted;
+        sumSquaredError += error * error;
+      }
+      return sumSquaredError / dataPoints.length;
+    }
 
-        // Filter posts
-        postItems.forEach(item => {
-          const htmlItem = item as HTMLElement;
-          if (category === 'All' || item.getAttribute('data-category') === category) {
-            htmlItem.style.display = 'block';
-          } else {
-            htmlItem.style.display = 'none';
-          }
-        });
+    function drawGraph(m: number, b: number) {
+      if (!ctx || !canvas) return;
+
+      // Clear canvas
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+      // Set up coordinate system
+      const padding = 40;
+      const width = canvas.width - 2 * padding;
+      const height = canvas.height - 2 * padding;
+
+      // Draw axes
+      ctx.strokeStyle = '#4b5563';
+      ctx.lineWidth = 1;
+      ctx.beginPath();
+      ctx.moveTo(padding, padding);
+      ctx.lineTo(padding, canvas.height - padding);
+      ctx.lineTo(canvas.width - padding, canvas.height - padding);
+      ctx.stroke();
+
+      // Draw data points
+      ctx.fillStyle = '#22c55e';
+      dataPoints.forEach(([x, y]) => {
+        const px = padding + (x / 10) * width;
+        const py = canvas.height - padding - (y / 15) * height;
+        ctx.beginPath();
+        ctx.arc(px, py, 4, 0, Math.PI * 2);
+        ctx.fill();
       });
+
+      // Draw regression line
+      ctx.strokeStyle = '#3b82f6';
+      ctx.lineWidth = 2;
+      ctx.beginPath();
+      const x1 = 0;
+      const y1 = m * x1 + b;
+      const x2 = 10;
+      const y2 = m * x2 + b;
+
+      const px1 = padding + (x1 / 10) * width;
+      const py1 = canvas.height - padding - (y1 / 15) * height;
+      const px2 = padding + (x2 / 10) * width;
+      const py2 = canvas.height - padding - (y2 / 15) * height;
+
+      ctx.moveTo(px1, py1);
+      ctx.lineTo(px2, py2);
+      ctx.stroke();
+
+      // Draw labels
+      ctx.fillStyle = '#9ca3af';
+      ctx.font = '12px monospace';
+      ctx.fillText('x', canvas.width - padding + 10, canvas.height - padding + 5);
+      ctx.fillText('y', padding - 15, padding - 10);
+    }
+
+    function updateGraph() {
+      const m = parseFloat(slopeSlider.value);
+      const b = parseFloat(interceptSlider.value);
+
+      if (slopeValue) slopeValue.textContent = m.toFixed(1);
+      if (interceptValue) interceptValue.textContent = b.toFixed(1);
+      if (equationM) equationM.textContent = m.toFixed(1);
+      if (equationB) equationB.textContent = b >= 0 ? `+ ${b.toFixed(1)}` : b.toFixed(1);
+
+      // Calculate and display MSE
+      const mse = calculateMSE(m, b);
+      if (mseValue) mseValue.textContent = mse.toFixed(2);
+
+      drawGraph(m, b);
+    }
+
+    slopeSlider.addEventListener('input', updateGraph);
+    interceptSlider.addEventListener('input', updateGraph);
+
+    // Initial draw
+    updateGraph();
+  }
+
+  // Interactive SVM Demo
+  const svmCanvas = document.getElementById('svm-canvas') as HTMLCanvasElement;
+  const svmCtx = svmCanvas?.getContext('2d');
+  const marginSlider = document.getElementById('margin-slider') as HTMLInputElement;
+  const marginValue = document.getElementById('margin-value');
+  const clearSvmBtn = document.getElementById('clear-svm');
+  const toggleClassBtn = document.getElementById('toggle-class');
+  const currentClassSpan = document.getElementById('current-class');
+
+  if (svmCtx && svmCanvas) {
+    let currentClass: 'A' | 'B' = 'A';
+    const pointsA: [number, number][] = [];
+    const pointsB: [number, number][] = [];
+
+    // Add initial sample points
+    // Class A points (left side - blue)
+    const initialPointsA: [number, number][] = [
+      [80, 100], [100, 200], [120, 150], [90, 250], [110, 180],
+      [70, 300], [95, 350], [115, 280], [85, 400], [105, 320]
+    ];
+
+    // Class B points (right side - red)
+    const initialPointsB: [number, number][] = [
+      [320, 120], [350, 180], [380, 140], [340, 240], [360, 200],
+      [390, 300], [370, 350], [400, 280], [330, 380], [355, 420]
+    ];
+
+    pointsA.push(...initialPointsA);
+    pointsB.push(...initialPointsB);
+
+    function drawSVM() {
+      if (!svmCtx || !svmCanvas) return;
+
+      svmCtx.clearRect(0, 0, svmCanvas.width, svmCanvas.height);
+
+      // Draw decision boundary (vertical line in middle)
+      const centerX = svmCanvas.width / 2;
+      const margin = parseFloat(marginSlider?.value || '50');
+
+      // Draw margins (dashed lines)
+      svmCtx.strokeStyle = '#a855f7';
+      svmCtx.setLineDash([5, 5]);
+      svmCtx.lineWidth = 1;
+
+      svmCtx.beginPath();
+      svmCtx.moveTo(centerX - margin, 0);
+      svmCtx.lineTo(centerX - margin, svmCanvas.height);
+      svmCtx.stroke();
+
+      svmCtx.beginPath();
+      svmCtx.moveTo(centerX + margin, 0);
+      svmCtx.lineTo(centerX + margin, svmCanvas.height);
+      svmCtx.stroke();
+
+      // Draw decision boundary (solid line)
+      svmCtx.setLineDash([]);
+      svmCtx.strokeStyle = '#a855f7';
+      svmCtx.lineWidth = 2;
+      svmCtx.beginPath();
+      svmCtx.moveTo(centerX, 0);
+      svmCtx.lineTo(centerX, svmCanvas.height);
+      svmCtx.stroke();
+
+      // Draw class A points (left side - blue)
+      svmCtx.fillStyle = '#3b82f6';
+      pointsA.forEach(([x, y]) => {
+        svmCtx.beginPath();
+        svmCtx.arc(x, y, 6, 0, Math.PI * 2);
+        svmCtx.fill();
+      });
+
+      // Draw class B points (right side - red)
+      svmCtx.fillStyle = '#ef4444';
+      pointsB.forEach(([x, y]) => {
+        svmCtx.beginPath();
+        svmCtx.arc(x, y, 6, 0, Math.PI * 2);
+        svmCtx.fill();
+      });
+
+      // Draw labels
+      svmCtx.fillStyle = '#3b82f6';
+      svmCtx.font = '14px monospace';
+      svmCtx.fillText('Class A', 10, 20);
+
+      svmCtx.fillStyle = '#ef4444';
+      svmCtx.fillText('Class B', svmCanvas.width - 70, 20);
+    }
+
+    svmCanvas.addEventListener('click', (e) => {
+      const rect = svmCanvas.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+
+      if (currentClass === 'A') {
+        pointsA.push([x, y]);
+      } else {
+        pointsB.push([x, y]);
+      }
+      drawSVM();
     });
-  });
+
+    clearSvmBtn?.addEventListener('click', () => {
+      pointsA.length = 0;
+      pointsB.length = 0;
+      drawSVM();
+    });
+
+    toggleClassBtn?.addEventListener('click', () => {
+      currentClass = currentClass === 'A' ? 'B' : 'A';
+      if (currentClassSpan) currentClassSpan.textContent = currentClass;
+    });
+
+    marginSlider?.addEventListener('input', () => {
+      if (marginValue) marginValue.textContent = marginSlider.value;
+      drawSVM();
+    });
+
+    drawSVM();
+  }
+
+  // Interactive K-Means Demo
+  const kmeansCanvas = document.getElementById('kmeans-canvas') as HTMLCanvasElement;
+  const kmeansCtx = kmeansCanvas?.getContext('2d');
+  const kSlider = document.getElementById('k-slider') as HTMLInputElement;
+  const kValue = document.getElementById('k-value');
+  const pointsSlider = document.getElementById('points-slider') as HTMLInputElement;
+  const pointsValue = document.getElementById('points-value');
+  const regenerateBtn = document.getElementById('regenerate-kmeans');
+  const stepBtn = document.getElementById('step-kmeans');
+  const iterationsSpan = document.getElementById('iterations');
+
+  if (kmeansCtx && kmeansCanvas) {
+    let points: [number, number][] = [];
+    let centroids: [number, number][] = [];
+    let assignments: number[] = [];
+    let iterations = 0;
+    const colors = ['#3b82f6', '#ef4444', '#22c55e', '#f59e0b', '#8b5cf6', '#ec4899'];
+
+    function generatePoints(n: number) {
+      points = [];
+      const k = parseInt(kSlider?.value || '3');
+
+      // Generate clusters
+      for (let cluster = 0; cluster < k; cluster++) {
+        const centerX = Math.random() * (kmeansCanvas.width - 100) + 50;
+        const centerY = Math.random() * (kmeansCanvas.height - 100) + 50;
+
+        for (let i = 0; i < n / k; i++) {
+          const angle = Math.random() * Math.PI * 2;
+          const distance = Math.random() * 60;
+          const x = centerX + Math.cos(angle) * distance;
+          const y = centerY + Math.sin(angle) * distance;
+          points.push([Math.max(10, Math.min(kmeansCanvas.width - 10, x)),
+                       Math.max(10, Math.min(kmeansCanvas.height - 10, y))]);
+        }
+      }
+    }
+
+    function initializeCentroids() {
+      const k = parseInt(kSlider?.value || '3');
+      centroids = [];
+      for (let i = 0; i < k; i++) {
+        centroids.push([
+          Math.random() * (kmeansCanvas.width - 40) + 20,
+          Math.random() * (kmeansCanvas.height - 40) + 20
+        ]);
+      }
+      assignments = new Array(points.length).fill(0);
+      iterations = 0;
+      if (iterationsSpan) iterationsSpan.textContent = '0';
+    }
+
+    function assignPoints() {
+      for (let i = 0; i < points.length; i++) {
+        const [px, py] = points[i];
+        let minDist = Infinity;
+        let minIdx = 0;
+
+        for (let j = 0; j < centroids.length; j++) {
+          const [cx, cy] = centroids[j];
+          const dist = Math.sqrt((px - cx) ** 2 + (py - cy) ** 2);
+          if (dist < minDist) {
+            minDist = dist;
+            minIdx = j;
+          }
+        }
+        assignments[i] = minIdx;
+      }
+    }
+
+    function updateCentroids() {
+      const k = centroids.length;
+      const newCentroids: [number, number][] = new Array(k).fill(null).map(() => [0, 0]);
+      const counts = new Array(k).fill(0);
+
+      for (let i = 0; i < points.length; i++) {
+        const cluster = assignments[i];
+        newCentroids[cluster][0] += points[i][0];
+        newCentroids[cluster][1] += points[i][1];
+        counts[cluster]++;
+      }
+
+      for (let i = 0; i < k; i++) {
+        if (counts[i] > 0) {
+          centroids[i] = [newCentroids[i][0] / counts[i], newCentroids[i][1] / counts[i]];
+        }
+      }
+
+      iterations++;
+      if (iterationsSpan) iterationsSpan.textContent = iterations.toString();
+    }
+
+    function drawKMeans() {
+      if (!kmeansCtx || !kmeansCanvas) return;
+
+      kmeansCtx.clearRect(0, 0, kmeansCanvas.width, kmeansCanvas.height);
+
+      // Draw points
+      for (let i = 0; i < points.length; i++) {
+        const [x, y] = points[i];
+        const cluster = assignments[i];
+        kmeansCtx.fillStyle = colors[cluster % colors.length];
+        kmeansCtx.beginPath();
+        kmeansCtx.arc(x, y, 4, 0, Math.PI * 2);
+        kmeansCtx.fill();
+      }
+
+      // Draw centroids
+      for (let i = 0; i < centroids.length; i++) {
+        const [x, y] = centroids[i];
+        kmeansCtx.fillStyle = colors[i % colors.length];
+        kmeansCtx.strokeStyle = '#ffffff';
+        kmeansCtx.lineWidth = 2;
+        kmeansCtx.beginPath();
+        kmeansCtx.arc(x, y, 10, 0, Math.PI * 2);
+        kmeansCtx.fill();
+        kmeansCtx.stroke();
+
+        // Draw X in center
+        kmeansCtx.strokeStyle = '#000000';
+        kmeansCtx.lineWidth = 2;
+        kmeansCtx.beginPath();
+        kmeansCtx.moveTo(x - 4, y - 4);
+        kmeansCtx.lineTo(x + 4, y + 4);
+        kmeansCtx.moveTo(x + 4, y - 4);
+        kmeansCtx.lineTo(x - 4, y + 4);
+        kmeansCtx.stroke();
+      }
+    }
+
+    function reset() {
+      const n = parseInt(pointsSlider?.value || '100');
+      generatePoints(n);
+      initializeCentroids();
+      assignPoints();
+      drawKMeans();
+    }
+
+    kSlider?.addEventListener('input', () => {
+      if (kValue) kValue.textContent = kSlider.value;
+      reset();
+    });
+
+    pointsSlider?.addEventListener('input', () => {
+      if (pointsValue) pointsValue.textContent = pointsSlider.value;
+    });
+
+    regenerateBtn?.addEventListener('click', reset);
+
+    stepBtn?.addEventListener('click', () => {
+      assignPoints();
+      updateCentroids();
+      drawKMeans();
+    });
+
+    // Initial setup
+    reset();
+  }
 </script>
--->
