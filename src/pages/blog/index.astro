@@ -51,7 +51,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
 
         <!-- Linear Regression -->
-        <div class="bg-black/40 backdrop-blur-sm border border-green-500/30 rounded-lg p-6 hover:border-green-500/60 transition-all group">
+        <a href="/blog/linear-regression" class="bg-black/40 backdrop-blur-sm border border-green-500/30 rounded-lg p-6 hover:border-green-500/60 transition-all group hover:scale-105 hover:shadow-xl hover:shadow-green-500/20 cursor-pointer">
           <div class="flex items-center gap-3 mb-4">
             <div class="w-12 h-12 bg-gradient-to-br from-green-500/20 to-green-600/20 rounded-lg flex items-center justify-center">
               <span class="text-2xl">📈</span>
@@ -67,13 +67,14 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
             <div class="text-gray-400">• Sales forecasting</div>
             <div class="text-gray-400">• Risk assessment</div>
           </div>
-          <div class="mt-4 pt-4 border-t border-gray-700/50">
+          <div class="mt-4 pt-4 border-t border-gray-700/50 flex justify-between items-center">
             <code class="text-xs text-purple-400">y = mx + b</code>
+            <span class="text-xs text-green-400 opacity-0 group-hover:opacity-100 transition-opacity">Read tutorial →</span>
           </div>
-        </div>
+        </a>
 
         <!-- Logistic Regression -->
-        <div class="bg-black/40 backdrop-blur-sm border border-blue-500/30 rounded-lg p-6 hover:border-blue-500/60 transition-all group">
+        <a href="/blog/logistic-regression" class="bg-black/40 backdrop-blur-sm border border-blue-500/30 rounded-lg p-6 hover:border-blue-500/60 transition-all group hover:scale-105 hover:shadow-xl hover:shadow-blue-500/20 cursor-pointer">
           <div class="flex items-center gap-3 mb-4">
             <div class="w-12 h-12 bg-gradient-to-br from-blue-500/20 to-blue-600/20 rounded-lg flex items-center justify-center">
               <span class="text-2xl">🎯</span>
@@ -89,13 +90,14 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
             <div class="text-gray-400">• Disease diagnosis</div>
             <div class="text-gray-400">• Customer churn</div>
           </div>
-          <div class="mt-4 pt-4 border-t border-gray-700/50">
+          <div class="mt-4 pt-4 border-t border-gray-700/50 flex justify-between items-center">
             <code class="text-xs text-purple-400">P(y=1) = 1/(1+e^(-z))</code>
+            <span class="text-xs text-blue-400 opacity-0 group-hover:opacity-100 transition-opacity">Read tutorial →</span>
           </div>
-        </div>
+        </a>
 
         <!-- Support Vector Machine -->
-        <div class="bg-black/40 backdrop-blur-sm border border-purple-500/30 rounded-lg p-6 hover:border-purple-500/60 transition-all group">
+        <a href="/blog/support-vector-machines" class="bg-black/40 backdrop-blur-sm border border-purple-500/30 rounded-lg p-6 hover:border-purple-500/60 transition-all group hover:scale-105 hover:shadow-xl hover:shadow-purple-500/20 cursor-pointer">
           <div class="flex items-center gap-3 mb-4">
             <div class="w-12 h-12 bg-gradient-to-br from-purple-500/20 to-purple-600/20 rounded-lg flex items-center justify-center">
               <span class="text-2xl">⚡</span>
@@ -111,13 +113,14 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
             <div class="text-gray-400">• Text categorization</div>
             <div class="text-gray-400">• Face detection</div>
           </div>
-          <div class="mt-4 pt-4 border-t border-gray-700/50">
+          <div class="mt-4 pt-4 border-t border-gray-700/50 flex justify-between items-center">
             <code class="text-xs text-purple-400">max margin classifier</code>
+            <span class="text-xs text-purple-400 opacity-0 group-hover:opacity-100 transition-opacity">Read tutorial →</span>
           </div>
-        </div>
+        </a>
 
         <!-- Decision Trees -->
-        <div class="bg-black/40 backdrop-blur-sm border border-yellow-500/30 rounded-lg p-6 hover:border-yellow-500/60 transition-all group">
+        <a href="/blog/decision-trees" class="bg-black/40 backdrop-blur-sm border border-yellow-500/30 rounded-lg p-6 hover:border-yellow-500/60 transition-all group hover:scale-105 hover:shadow-xl hover:shadow-yellow-500/20 cursor-pointer">
           <div class="flex items-center gap-3 mb-4">
             <div class="w-12 h-12 bg-gradient-to-br from-yellow-500/20 to-yellow-600/20 rounded-lg flex items-center justify-center">
               <span class="text-2xl">🌳</span>
@@ -133,13 +136,14 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
             <div class="text-gray-400">• Fraud detection</div>
             <div class="text-gray-400">• Medical diagnosis</div>
           </div>
-          <div class="mt-4 pt-4 border-t border-gray-700/50">
+          <div class="mt-4 pt-4 border-t border-gray-700/50 flex justify-between items-center">
             <code class="text-xs text-purple-400">if-else rules</code>
+            <span class="text-xs text-yellow-400 opacity-0 group-hover:opacity-100 transition-opacity">Read tutorial →</span>
           </div>
-        </div>
+        </a>
 
         <!-- Random Forest -->
-        <div class="bg-black/40 backdrop-blur-sm border border-emerald-500/30 rounded-lg p-6 hover:border-emerald-500/60 transition-all group">
+        <a href="/blog/random-forest" class="bg-black/40 backdrop-blur-sm border border-emerald-500/30 rounded-lg p-6 hover:border-emerald-500/60 transition-all group hover:scale-105 hover:shadow-xl hover:shadow-emerald-500/20 cursor-pointer">
           <div class="flex items-center gap-3 mb-4">
             <div class="w-12 h-12 bg-gradient-to-br from-emerald-500/20 to-emerald-600/20 rounded-lg flex items-center justify-center">
               <span class="text-2xl">🌲</span>
@@ -155,13 +159,14 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
             <div class="text-gray-400">• Risk prediction</div>
             <div class="text-gray-400">• Recommendation systems</div>
           </div>
-          <div class="mt-4 pt-4 border-t border-gray-700/50">
+          <div class="mt-4 pt-4 border-t border-gray-700/50 flex justify-between items-center">
             <code class="text-xs text-purple-400">ensemble learning</code>
+            <span class="text-xs text-emerald-400 opacity-0 group-hover:opacity-100 transition-opacity">Read tutorial →</span>
           </div>
-        </div>
+        </a>
 
         <!-- K-Nearest Neighbors -->
-        <div class="bg-black/40 backdrop-blur-sm border border-pink-500/30 rounded-lg p-6 hover:border-pink-500/60 transition-all group">
+        <a href="/blog/k-nearest-neighbors" class="bg-black/40 backdrop-blur-sm border border-pink-500/30 rounded-lg p-6 hover:border-pink-500/60 transition-all group hover:scale-105 hover:shadow-xl hover:shadow-pink-500/20 cursor-pointer">
           <div class="flex items-center gap-3 mb-4">
             <div class="w-12 h-12 bg-gradient-to-br from-pink-500/20 to-pink-600/20 rounded-lg flex items-center justify-center">
               <span class="text-2xl">🎲</span>
@@ -177,10 +182,11 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
             <div class="text-gray-400">• Anomaly detection</div>
             <div class="text-gray-400">• Recommendation</div>
           </div>
-          <div class="mt-4 pt-4 border-t border-gray-700/50">
+          <div class="mt-4 pt-4 border-t border-gray-700/50 flex justify-between items-center">
             <code class="text-xs text-purple-400">distance-based</code>
+            <span class="text-xs text-pink-400 opacity-0 group-hover:opacity-100 transition-opacity">Read tutorial →</span>
           </div>
-        </div>
+        </a>
 
       </div>
 
