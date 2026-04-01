@@ -1,86 +1,95 @@
 ---
+import ThemeToggle from './ThemeToggle';
+
 const navItems = [
-  { name: 'Home', href: '/' },
-  { name: 'Projects', href: '/projects' },
-  { name: 'ML-Models', href: '/blog' },
-  { name: 'Contact', href: '/contact' },
+  { path: '/home',     href: '/' },
+  { path: '/projects', href: '/projects' },
+  { path: '/blog',     href: '/blog' },
+  { path: '/contact',  href: '/contact' },
 ];
 
 const currentPath = Astro.url.pathname;
+
+function isActive(href: string) {
+  if (href === '/') return currentPath === '/';
+  return currentPath.startsWith(href);
+}
 ---
 
-<nav class="bg-black/80 backdrop-blur-xl border-b border-gray-800/50 sticky top-0 z-50">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="flex justify-between h-16">
-      <div class="flex items-center">
-        <a href="/" class="flex-shrink-0 flex items-center group font-mono">
-          <span class="text-xl text-green-400 group-hover:text-white transition-colors">
-            ~/kevin-kunkel $
-          </span>
-        </a>
-      </div>
+<nav style="position: sticky; top: 0; z-index: 50; background: var(--bg-surface); border-bottom: 1px solid var(--border);">
+  <div style="max-width: 80rem; margin: 0 auto; padding: 0 1.5rem; display: flex; align-items: center; justify-content: space-between; height: 48px;">
 
-      <!-- Desktop Navigation -->
-      <div class="hidden md:flex items-center space-x-6 font-mono">
-        {navItems.map((item) => (
-          <a
-            href={item.href}
-            class={`text-sm transition-colors duration-300 ${
-              currentPath === item.href || (item.href !== '/' && currentPath.startsWith(item.href))
-                ? 'text-green-400'
-                : 'text-gray-400 hover:text-white'
-            }`}
-          >
-            <span class="text-blue-400">./</span>{item.name.toLowerCase()}
-          </a>
-        ))}
-      </div>
+    <!-- Terminal prompt (left) -->
+    <a href="/" style="font-size: 0.875rem; text-decoration: none; display: flex; align-items: center; gap: 4px; color: var(--accent-magenta);">
+      <span style="color: var(--accent-violet);">❯</span>
+      <span> kevin</span><span style="color: var(--accent-magenta);">@</span><span>portfolio</span><span style="color: var(--text-muted);">:~$</span>
+    </a>
 
-      <!-- Mobile menu button -->
-      <div class="md:hidden flex items-center">
-        <button
-          id="mobile-menu-button"
-          type="button"
-          class="p-2 rounded-lg text-gray-300 hover:text-white hover:bg-white/10 transition-all duration-300"
-          aria-controls="mobile-menu"
-          aria-expanded="false"
-        >
-          <span class="sr-only">Open main menu</span>
-          <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-          </svg>
-        </button>
-      </div>
-    </div>
-  </div>
-
-  <!-- Mobile menu -->
-  <div class="md:hidden hidden" id="mobile-menu">
-    <div class="px-4 pt-2 pb-3 space-y-2 bg-black/90 backdrop-blur-xl border-t border-gray-800/50 font-mono">
+    <!-- Desktop links (right) -->
+    <div class="nav-desktop" style="display: flex; align-items: center; gap: 24px;">
       {navItems.map((item) => (
         <a
           href={item.href}
-          class={`block px-3 py-2 text-sm transition-colors duration-300 ${
-            currentPath === item.href || (item.href !== '/' && currentPath.startsWith(item.href))
-              ? 'text-green-400'
-              : 'text-gray-400 hover:text-white'
-          }`}
+          style={`font-size: 0.8125rem; text-decoration: none; color: ${isActive(item.href) ? 'var(--accent-magenta)' : 'var(--text-muted)'}; transition: color 0.2s;`}
+          onmouseover="this.style.color='var(--accent-magenta)'"
+          onmouseout={`this.style.color='${isActive(item.href) ? 'var(--accent-magenta)' : 'var(--text-muted)'}'`}
         >
-          <span class="text-blue-400">$</span> cd ./{item.name.toLowerCase()}
+          {item.path}
         </a>
       ))}
+      <ThemeToggle client:load />
+    </div>
+
+    <!-- Mobile hamburger -->
+    <button
+      id="mobile-menu-button"
+      type="button"
+      aria-controls="mobile-menu"
+      aria-expanded="false"
+      style="display: none; background: transparent; border: 1px solid var(--border); border-radius: 4px; padding: 6px; cursor: pointer; color: var(--text-muted);"
+      class="nav-mobile-btn"
+    >
+      <span class="sr-only">Open main menu</span>
+      <svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+      </svg>
+    </button>
+  </div>
+
+  <!-- Mobile menu -->
+  <div
+    id="mobile-menu"
+    style="display: none; background: var(--bg-surface); border-top: 1px solid var(--border); padding: 12px 24px 16px;"
+  >
+    {navItems.map((item) => (
+      <a
+        href={item.href}
+        style={`display: block; padding: 8px 0; font-size: 0.875rem; text-decoration: none; color: ${isActive(item.href) ? 'var(--accent-magenta)' : 'var(--text-muted)'}; border-bottom: 1px solid var(--border);`}
+      >
+        <span style="color: var(--accent-violet);">$</span> cd {item.path}
+      </a>
+    ))}
+    <div style="margin-top: 12px;">
+      <ThemeToggle client:load />
     </div>
   </div>
 </nav>
 
+<style>
+  @media (max-width: 768px) {
+    .nav-desktop { display: none !important; }
+    .nav-mobile-btn { display: flex !important; }
+  }
+</style>
+
 <script>
-  // Mobile menu toggle
   const button = document.getElementById('mobile-menu-button');
   const menu = document.getElementById('mobile-menu');
-
   if (button && menu) {
     button.addEventListener('click', () => {
-      menu.classList.toggle('hidden');
+      const isOpen = menu.style.display === 'block';
+      menu.style.display = isOpen ? 'none' : 'block';
+      button.setAttribute('aria-expanded', String(!isOpen));
     });
   }
 </script>
