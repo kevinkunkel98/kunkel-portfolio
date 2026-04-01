@@ -1,0 +1,108 @@
+{
+  "name": "kunkel-dark",
+  "type": "dark",
+  "colors": {
+    "editor.background": "#1a1033",
+    "editor.foreground": "#c4b5fd",
+    "editor.lineHighlightBackground": "#2d1a5e30",
+    "editorLineNumber.foreground": "#2d1a5e",
+    "editorCursor.foreground": "#e879f9"
+  },
+  "tokenColors": [
+    {
+      "name": "Comment",
+      "scope": ["comment", "punctuation.definition.comment"],
+      "settings": { "foreground": "#a78bfa", "fontStyle": "italic" }
+    },
+    {
+      "name": "String",
+      "scope": ["string", "string.quoted", "string.template"],
+      "settings": { "foreground": "#e879f9" }
+    },
+    {
+      "name": "Keyword",
+      "scope": [
+        "keyword",
+        "keyword.control",
+        "keyword.operator",
+        "storage",
+        "storage.type",
+        "storage.modifier"
+      ],
+      "settings": { "foreground": "#7c3aed" }
+    },
+    {
+      "name": "Function",
+      "scope": [
+        "entity.name.function",
+        "support.function",
+        "meta.function-call"
+      ],
+      "settings": { "foreground": "#f0abfc" }
+    },
+    {
+      "name": "Class / Type",
+      "scope": [
+        "entity.name.type",
+        "entity.name.class",
+        "support.class",
+        "entity.other.inherited-class"
+      ],
+      "settings": { "foreground": "#c4b5fd" }
+    },
+    {
+      "name": "Number / Constant",
+      "scope": [
+        "constant.numeric",
+        "constant.language",
+        "constant.other"
+      ],
+      "settings": { "foreground": "#e879f9" }
+    },
+    {
+      "name": "Variable",
+      "scope": ["variable", "variable.other"],
+      "settings": { "foreground": "#c4b5fd" }
+    },
+    {
+      "name": "Parameter",
+      "scope": ["variable.parameter"],
+      "settings": { "foreground": "#f0abfc" }
+    },
+    {
+      "name": "Punctuation",
+      "scope": ["punctuation", "meta.brace"],
+      "settings": { "foreground": "#a78bfa" }
+    },
+    {
+      "name": "Tag",
+      "scope": ["entity.name.tag", "meta.tag"],
+      "settings": { "foreground": "#7c3aed" }
+    },
+    {
+      "name": "Attribute",
+      "scope": ["entity.other.attribute-name"],
+      "settings": { "foreground": "#e879f9" }
+    },
+    {
+      "name": "Import / Module",
+      "scope": ["keyword.control.import", "keyword.control.from"],
+      "settings": { "foreground": "#7c3aed" }
+    },
+    {
+      "name": "Operator",
+      "scope": ["keyword.operator", "punctuation.separator"],
+      "settings": { "foreground": "#7c3aed" }
+    },
+    {
+      "name": "Boolean / Null",
+      "scope": ["constant.language.boolean", "constant.language.null"],
+      "settings": { "foreground": "#e879f9" }
+    },
+    {
+      "name": "Shell builtin",
+      "scope": ["support.function.builtin.shell"],
+      "settings": { "foreground": "#7c3aed" }
+    }
+  ]
+}
