@@ -1,58 +1,23 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import TerminalCard from '../components/TerminalCard.astro';
 import ContactForm from '../components/ContactForm';
 ---
 
 <BaseLayout title="Contact - Get In Touch" description="Get in touch for opportunities, collaborations, or just to say hello">
-  <!-- Global Space Background -->
-  <div class="fixed inset-0 -z-10 overflow-hidden">
-    <div class="absolute inset-0 bg-gradient-to-b from-black via-purple-950/50 to-slate-950"></div>
-
-    <!-- Deep space gradient layers -->
-    <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-purple-900/25 via-slate-950/45 to-black"></div>
-
-    <!-- Large nebula effects -->
-    <div class="absolute top-0 left-1/4 w-[600px] h-[600px] bg-purple-800/13 rounded-full blur-[120px] animate-pulse"></div>
-    <div class="absolute top-1/3 right-1/4 w-[500px] h-[500px] bg-blue-800/10 rounded-full blur-[100px] animate-pulse" style="animation-delay: 1s;"></div>
-    <div class="absolute bottom-1/4 left-1/3 w-[550px] h-[550px] bg-indigo-800/13 rounded-full blur-[110px] animate-pulse" style="animation-delay: 2s;"></div>
-    <div class="absolute top-1/2 right-1/3 w-[450px] h-[450px] bg-pink-800/10 rounded-full blur-[90px] animate-pulse" style="animation-delay: 1.5s;"></div>
-
-    <!-- Star field effect -->
-    <div class="absolute inset-0 opacity-30">
-      <div class="absolute top-[10%] left-[15%] w-1 h-1 bg-white rounded-full animate-pulse"></div>
-      <div class="absolute top-[20%] left-[80%] w-1 h-1 bg-white rounded-full animate-pulse" style="animation-delay: 0.5s;"></div>
-      <div class="absolute top-[40%] left-[25%] w-0.5 h-0.5 bg-blue-200 rounded-full animate-pulse" style="animation-delay: 1s;"></div>
-      <div class="absolute top-[60%] left-[70%] w-1 h-1 bg-purple-200 rounded-full animate-pulse" style="animation-delay: 1.5s;"></div>
-      <div class="absolute top-[80%] left-[40%] w-0.5 h-0.5 bg-white rounded-full animate-pulse" style="animation-delay: 2s;"></div>
-      <div class="absolute top-[30%] left-[60%] w-1 h-1 bg-indigo-200 rounded-full animate-pulse" style="animation-delay: 0.8s;"></div>
-      <div class="absolute top-[70%] left-[20%] w-0.5 h-0.5 bg-pink-200 rounded-full animate-pulse" style="animation-delay: 1.2s;"></div>
-      <div class="absolute top-[50%] left-[90%] w-1 h-1 bg-white rounded-full animate-pulse" style="animation-delay: 1.8s;"></div>
-    </div>
-  </div>
-
-  <div>
-    <!-- Terminal Header Section -->
-    <section class="py-12 sm:py-16 relative">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="text-center font-mono">
-          <div class="text-2xl md:text-4xl text-green-400 mb-4">
-            ./contact --kevin
-          </div>
-          <div class="text-gray-400 text-sm max-w-3xl mx-auto">
-            # Opening communication channels... Ready to connect!
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section class="py-12 sm:py-16 relative">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <!-- Terminal Contact Form -->
-        <div class="max-w-3xl mx-auto">
+  <section style="padding: 4rem 1rem; display: flex; flex-direction: column; align-items: center;">
+    <div style="max-width: 40rem; width: 100%;">
+      <p style="font-family: var(--font-mono); font-size: 0.875rem; color: var(--accent-magenta); margin-bottom: 0.5rem;">
+        // ping kevin
+      </p>
+      <p style="font-family: var(--font-mono); font-size: 0.875rem; color: var(--text-muted); margin-bottom: 1.5rem;">
+        # Get in touch for opportunities, collaborations, or just to say hello
+      </p>
+      <TerminalCard filename="contact.sh">
+        <div style="padding: 1.5rem;">
           <ContactForm client:load />
         </div>
-      </div>
-    </section>
-  </div>
+      </TerminalCard>
+    </div>
+  </section>
 </BaseLayout>
