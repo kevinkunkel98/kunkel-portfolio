@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import TerminalCard from '../components/TerminalCard.astro';
 ---
 
 <BaseLayout
@@ -8,482 +9,425 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   image="/optimized-og.png"
   url="/"
 >
-  <!-- Global Space Background -->
-  <div class="fixed inset-0 -z-10 overflow-hidden">
-    <div class="absolute inset-0 bg-gradient-to-b from-black via-purple-950/50 to-slate-950"></div>
-
-    <!-- Deep space gradient layers -->
-    <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-purple-900/25 via-slate-950/45 to-black"></div>
-
-    <!-- Large nebula effects -->
-    <div class="absolute top-0 left-1/4 w-[600px] h-[600px] bg-purple-800/13 rounded-full blur-[120px] animate-pulse"></div>
-    <div class="absolute top-1/3 right-1/4 w-[500px] h-[500px] bg-blue-800/10 rounded-full blur-[100px] animate-pulse" style="animation-delay: 1s;"></div>
-    <div class="absolute bottom-1/4 left-1/3 w-[550px] h-[550px] bg-indigo-800/13 rounded-full blur-[110px] animate-pulse" style="animation-delay: 2s;"></div>
-    <div class="absolute top-1/2 right-1/3 w-[450px] h-[450px] bg-pink-800/10 rounded-full blur-[90px] animate-pulse" style="animation-delay: 1.5s;"></div>
-
-    <!-- Star field effect -->
-    <div class="absolute inset-0 opacity-30">
-      <div class="absolute top-[10%] left-[15%] w-1 h-1 bg-white rounded-full animate-pulse"></div>
-      <div class="absolute top-[20%] left-[80%] w-1 h-1 bg-white rounded-full animate-pulse" style="animation-delay: 0.5s;"></div>
-      <div class="absolute top-[40%] left-[25%] w-0.5 h-0.5 bg-blue-200 rounded-full animate-pulse" style="animation-delay: 1s;"></div>
-      <div class="absolute top-[60%] left-[70%] w-1 h-1 bg-purple-200 rounded-full animate-pulse" style="animation-delay: 1.5s;"></div>
-      <div class="absolute top-[80%] left-[40%] w-0.5 h-0.5 bg-white rounded-full animate-pulse" style="animation-delay: 2s;"></div>
-      <div class="absolute top-[30%] left-[60%] w-1 h-1 bg-indigo-200 rounded-full animate-pulse" style="animation-delay: 0.8s;"></div>
-      <div class="absolute top-[70%] left-[20%] w-0.5 h-0.5 bg-pink-200 rounded-full animate-pulse" style="animation-delay: 1.2s;"></div>
-      <div class="absolute top-[50%] left-[90%] w-1 h-1 bg-white rounded-full animate-pulse" style="animation-delay: 1.8s;"></div>
-    </div>
-  </div>
 
   <!-- Hero Section -->
-  <section class="min-h-screen flex items-center justify-center relative overflow-hidden px-3 sm:px-0">
-    <div class="absolute inset-0 overflow-hidden">
-    </div>
-    <div class="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 w-full">
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 items-center">
+  <section style="min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 2rem 1rem;">
+    <div style="max-width: 80rem; width: 100%; margin: 0 auto;">
+      <div class="hero-grid animate-fade-in-up">
 
-        <!-- Left side: Terminal info -->
-        <div class="text-center lg:text-left order-2 lg:order-1">
-          <div class="opacity-0 animate-fade-in-up" style="animation-delay: 0.2s;">
-            <!-- Terminal window frame -->
-            <div class="bg-gray-900/30 backdrop-blur-sm border border-gray-700/50 rounded-lg p-6 sm:p-8 shadow-2xl shadow-purple-900/20">
-              <!-- Terminal header -->
-              <div class="flex items-center mb-6 pb-3 border-b border-gray-700/30">
-                <div class="flex space-x-2">
-                  <div class="w-3 h-3 bg-red-500 rounded-full"></div>
-                  <div class="w-3 h-3 bg-yellow-500 rounded-full"></div>
-                  <div class="w-3 h-3 bg-green-500 rounded-full"></div>
-                </div>
-                <div class="text-gray-400 text-sm ml-4 font-mono">kevin@portfolio: ~</div>
-              </div>
+        <!-- Left: Terminal intro card -->
+        <TerminalCard filename="kevin@portfolio:~$">
+          <div style="padding: 1.5rem; font-family: inherit;">
 
-              <div class="font-mono text-left">
-                <!-- Command prompt -->
-                <div class="text-green-400 text-sm mb-4">
-                  <span class="text-blue-400">$</span> whoami
-                </div>
-
-                <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-transparent bg-clip-text bg-gradient-to-r from-green-400 via-blue-400 to-purple-400 animate-pulse">
-                  Kevin Kunkel
-                </h1>
-
-                <!-- Command prompt -->
-                <div class="text-green-400 text-sm mb-3">
-                  <span class="text-blue-400">$</span> cat ./roles.txt
-                </div>
-
-                <div class="text-base sm:text-xl md:text-2xl space-y-2 leading-relaxed">
-                  <div class="hover:text-green-400 transition-colors cursor-default group">
-                    <span class="text-blue-400">></span>
-                    <span class="text-gray-300 group-hover:translate-x-1 inline-block transition-transform">ML Mozart</span>
-                    <span class="text-purple-400 opacity-0 group-hover:opacity-100 transition-opacity ml-2">🧠</span>
-                  </div>
-                  <div class="hover:text-green-400 transition-colors cursor-default group">
-                    <span class="text-blue-400">></span>
-                    <span class="text-gray-300 group-hover:translate-x-1 inline-block transition-transform">LLM Whisperer</span>
-                    <span class="text-purple-400 opacity-0 group-hover:opacity-100 transition-opacity ml-2">💬</span>
-                  </div>
-                  <div class="hover:text-green-400 transition-colors cursor-default group">
-                    <span class="text-blue-400">></span>
-                    <span class="text-gray-300 group-hover:translate-x-1 inline-block transition-transform">Fullstack Dev</span>
-                    <span class="text-purple-400 opacity-0 group-hover:opacity-100 transition-opacity ml-2">⚡</span>
-                  </div>
-                  <div class="hover:text-green-400 transition-colors cursor-default group">
-                    <span class="text-blue-400">></span>
-                    <span class="text-gray-300 group-hover:translate-x-1 inline-block transition-transform">Elected Student Council</span>
-                    <span class="text-purple-400 opacity-0 group-hover:opacity-100 transition-opacity ml-2">📢</span>
-                  </div>
-
-                  <!-- Quote Section -->
-                  <div class="mt-6 pt-4 border-t border-gray-700/30">
-                    <blockquote class="relative pl-4 border-l-2 border-purple-400/50">
-                      <div class="text-purple-400 text-3xl absolute -left-2 -top-2">"</div>
-                      <div class="text-gray-300 text-base italic leading-relaxed">
-                        Wer Zukunftsmusik hören will muss zur Gitarre greifen
-                      </div>
-                      <div class="text-gray-500 text-sm mt-2">
-                        — Personal motto
-                      </div>
-                    </blockquote>
-                  </div>
-                </div>
-
-                <!-- Status line -->
-                <div class="mt-6 pt-4 border-t border-gray-700/30">
-                  <div class="flex items-center gap-2 text-sm">
-                    <span class="text-green-400 animate-pulse">●</span>
-                    <span class="text-gray-400">Status:</span>
-                    <span class="text-green-400">alive</span>
-                  </div>
-                </div>
-              </div>
+            <!-- $ whoami -->
+            <div style="font-size: 0.85rem; margin-bottom: 1rem;">
+              <span style="color: var(--accent-violet);">$</span>
+              <span style="color: var(--text-secondary);"> whoami</span>
             </div>
-          </div>
-        </div>
 
-        <!-- Right side: Kevin's Photo -->
-        <div class="flex justify-center lg:justify-end order-1 lg:order-2">
-          <div class="opacity-0 animate-fade-in-up" style="animation-delay: 0.6s;">
-            <div class="relative">
-              <!-- Photo container with terminal styling -->
-              <div class="relative group">
-                <div class="w-72 h-72 sm:w-96 sm:h-96 lg:w-[28rem] lg:h-[28rem] relative overflow-hidden rounded-lg border-2 border-gray-700/50 bg-gradient-to-br from-purple-900/20 to-blue-900/20 backdrop-blur-sm">
-                  <!-- Terminal window chrome -->
-                  <div class="absolute top-0 left-0 right-0 h-6 bg-gray-900/80 border-b border-gray-700 flex items-center px-3 z-10">
-                    <div class="flex space-x-1">
-                      <div class="w-2 h-2 bg-red-500 rounded-full"></div>
-                      <div class="w-2 h-2 bg-yellow-500 rounded-full"></div>
-                      <div class="w-2 h-2 bg-green-500 rounded-full"></div>
-                    </div>
-                    <div class="text-gray-400 text-xs ml-2">~/kevin.jpg</div>
-                  </div>
-                  <!-- The actual photo -->
-                  <!-- The actual photo -->
-                  <img
-                    src="/kevin-hero.jpg"
-                    alt="Kevin Kunkel with electric guitar and aviator sunglasses"
-                    class="absolute inset-0 w-full h-full object-cover mt-6 hover:scale-105 transition-transform duration-500"
-                    onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
-                  />
+            <h1 style="font-size: clamp(2rem, 5vw, 3.5rem); font-weight: 700; margin: 0 0 1.5rem 0; color: var(--text-primary); line-height: 1.1;">
+              Kevin Kunkel
+            </h1>
 
-                  <!-- Fallback if image doesn't load -->
-                  <div class="absolute inset-0 mt-6 bg-gradient-to-br from-purple-900/40 to-blue-900/40 hidden items-center justify-center">
-                    <div class="text-center font-mono">
-                      <div class="text-4xl mb-2">🎸</div>
-                      <div class="text-green-400 text-sm">Kevin Kunkel</div>
-                      <div class="text-yellow-400 text-xs mt-2">Photo loading...</div>
-                    </div>
-                  </div>                  <!-- Hover overlay -->
-                  <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                    <div class="absolute bottom-4 left-4 right-4 text-white">
-                      <div class="text-sm font-mono">
-                        <div class="text-xs text-gray-300 mt-1">There is no place like 127.0.0.1</div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <!-- Terminal-style caption -->
-              <div class="mt-3 sm:mt-4 font-mono text-center">
-                <div class="text-gray-400 text-xs">
-                  <span class="text-blue-400">$</span> display ./kevin_kunkel.jpg
-                </div>
-              </div>
+            <!-- $ cat ./roles.txt -->
+            <div style="font-size: 0.85rem; margin-bottom: 0.75rem;">
+              <span style="color: var(--accent-violet);">$</span>
+              <span style="color: var(--text-secondary);"> cat ./roles.txt</span>
             </div>
-          </div>
-        </div>
-      </div>
-    </div>
 
-  </section>
-
-  <!-- Terminal CV Section -->
-  <section class="py-6 sm:py-12 relative">
-    <div class="max-w-6xl mx-auto px-3 sm:px-6 lg:px-8">
-      <div class="bg-black/60 backdrop-blur-sm border border-gray-700/50 rounded-lg p-4 sm:p-8 font-mono">
-
-        <!-- Terminal Header -->
-        <div class="flex items-center mb-6">
-          <div class="flex space-x-2">
-            <div class="w-3 h-3 bg-red-500 rounded-full"></div>
-            <div class="w-3 h-3 bg-yellow-500 rounded-full"></div>
-            <div class="w-3 h-3 bg-green-500 rounded-full"></div>
-          </div>
-          <div class="text-gray-400 text-sm ml-4">kevin@terminal: ~/cv</div>
-        </div>
-
-        <!-- Interactive Terminal Command Line -->
-        <div class="bg-gray-900/50 rounded p-3 hover:bg-gray-900/70 transition-all group cursor-pointer mb-4" id="cv-toggle-command">
-          <div class="flex items-center justify-between">
-            <div class="flex items-center gap-2 text-sm sm:text-base">
-              <span class="text-blue-400">$</span>
-              <span class="text-green-400">cat ./resume.json | jq '.'</span>
-              <span class="text-gray-500 text-xs opacity-0 group-hover:opacity-100 transition-opacity ml-2"># Toggle CV</span>
-            </div>
-            <div class="flex items-center gap-2">
-              <span class="text-yellow-400 text-xs opacity-0 group-hover:opacity-100 transition-opacity">Click to execute</span>
-              <span class="w-2 h-4 bg-green-400 animate-pulse"></span>
-            </div>
-          </div>
-        </div>
-
-        <!-- CV Content in JSON-like format (Hidden by default) -->
-        <div id="cv-content" class="hidden transition-all duration-500 overflow-hidden" style="opacity: 0; max-height: 0;">
-        <div class="text-gray-300 text-xs sm:text-sm space-y-4 sm:space-y-6 overflow-x-auto pt-4">
-          <div>
-            <span class="text-blue-400">"name":</span> <span class="text-green-400">"Kevin Kunkel"</span>,
-          </div>
-
-          <div>
-            <span class="text-blue-400">"role":</span> <span class="text-green-400">"AI Engineer & Full-Stack Developer"</span>,
-          </div>
-
-          <div>
-            <span class="text-blue-400">"experience":</span> [
-            <div class="ml-4 space-y-3">
+            <div style="font-size: 1.1rem; line-height: 2; margin-bottom: 1.5rem;">
               <div>
-                {
-                <div class="ml-4">
-                  <span class="text-blue-400">"position":</span> <span class="text-green-400">"AI Engineer"</span>,<br/>
-                  <span class="text-blue-400">"company":</span> <span class="text-green-400">"Exxeta AG"</span>,<br/>
-                    <span class="text-blue-400">"location":</span> <span class="text-green-400">"Leipzig"</span>,<br/>
-                    <span class="text-blue-400">"period":</span> <span class="text-green-400">"2025-present"</span>,<br/>
-                  <span class="text-blue-400">"stack":</span> [<span class="text-yellow-400">"FastAPI", "Openwebui", "LiteLLM", "Keycloak", "Kubernetes"</span>]
-                </div>
-                },
-              </div>
-
-                <div>
-                    {
-                        <div class="ml-4">
-                            <span class="text-blue-400">"position":</span> <span class="text-green-400">"Fullstack Developer"</span>,<br/>
-                            <span class="text-blue-400">"company":</span> <span class="text-green-400">"Exxeta AG"</span>,<br/>
-                            <span class="text-blue-400">"location":</span> <span class="text-green-400">"Leipzig"</span>,<br/>
-                            <span class="text-blue-400">"period":</span> <span class="text-green-400">"2024-2025"</span>,<br/>
-                            <span class="text-blue-400">"stack":</span> [<span class="text-yellow-400">"Spring Boot", "FastAPI", "React", "Docker", "AWS"</span>]
-                        </div>
-                    },
-                </div>
-
-
-            <div>
-                {
-                    <div class="ml-4">
-                        <span class="text-blue-400">"position":</span> <span class="text-green-400">"Junior Consultant"</span>,<br/>
-                        <span class="text-blue-400">"company":</span> <span class="text-green-400">"M&L AG"</span>,<br/>
-                        <span class="text-blue-400">"location":</span> <span class="text-green-400">"Frankfurt"</span>,<br/>
-                        <span class="text-blue-400">"period":</span> <span class="text-green-400">"2020-2021"</span>,<br/>
-                        <span class="text-blue-400">"stack":</span> [<span class="text-yellow-400">"Python", "GIS"</span>]
-                    </div>
-                },
-            </div>
-
-              <div>
-                {
-                <div class="ml-4">
-                  <span class="text-blue-400">"position":</span> <span class="text-green-400">"Fullstack Developer"</span>,<br/>
-                  <span class="text-blue-400">"company":</span> <span class="text-green-400">"M&L AG"</span>,<br/>
-                    <span class="text-blue-400">"location":</span> <span class="text-green-400">"Frankfurt"</span>,<br/>
-                    <span class="text-blue-400">"period":</span> <span class="text-green-400">"2017-2019"</span>,<br/>
-                  <span class="text-blue-400">"stack":</span> [<span class="text-yellow-400">"Spring Boot", "Bootstrap", "Docker", "MySQL"</span>]
-                </div>
-                }
-              </div>
-            </div>
-            ],
-          </div>
-
-          <div>
-            <span class="text-blue-400">"skills":</span> {
-            <div class="ml-4">
-              <span class="text-blue-400">"languages":</span> [<span class="text-yellow-400">"Python", "JavaScript", "TypeScript", "Java"</span>],<br/>
-              <span class="text-blue-400">"ml_frameworks":</span> [<span class="text-yellow-400">"PyTorch", "TensorFlow", "Scikit-learn", "Transformers"</span>],<br/>
-              <span class="text-blue-400">"web_tech":</span> [<span class="text-yellow-400">"React", "Next.js", "Node.js", "Express"</span>],<br/>
-              <span class="text-blue-400">"databases":</span> [<span class="text-yellow-400">"PostgreSQL", "MongoDB", "PGVector", "InfluxDB"</span>],<br/>
-              <span class="text-blue-400">"devops":</span> [<span class="text-yellow-400">"Docker", "Kubernetes", "AWS", "GitHub Actions"</span>]
-            </div>
-            },
-          </div>
-
-          <div>
-<span class="text-blue-400">"education":</span> [
-            <div class="ml-4 space-y-3">
-              <div>
-                {
-                <div class="ml-4">
-                  <span class="text-blue-400">"degree":</span> <span class="text-green-400">"M.Sc. Computer Science"</span>,<br/>
-                  <span class="text-blue-400">"university":</span> <span class="text-green-400">"University of Leipzig"</span>,<br/>
-                  <span class="text-blue-400">"years":</span> <span class="text-green-400">"2021 - today"</span>
-                </div>
-                },
+                <span style="color: var(--accent-violet);">❯</span>
+                <span style="color: var(--text-secondary);"> ML Mozart</span>
               </div>
               <div>
-                {
-                <div class="ml-4">
-                  <span class="text-blue-400">"degree":</span> <span class="text-green-400">"B.Sc. Business Informatics"</span>,<br/>
-                  <span class="text-blue-400">"university":</span> <span class="text-green-400">"Berufsakademie Rhein-Main"</span>,<br/>
-                  <span class="text-blue-400">"years":</span> <span class="text-green-400">"2017-2020"</span>
-                </div>
-                }
+                <span style="color: var(--accent-violet);">❯</span>
+                <span style="color: var(--text-secondary);"> LLM Whisperer</span>
+              </div>
+              <div>
+                <span style="color: var(--accent-violet);">❯</span>
+                <span style="color: var(--text-secondary);"> Fullstack Dev</span>
+              </div>
+              <div>
+                <span style="color: var(--accent-violet);">❯</span>
+                <span style="color: var(--text-secondary);"> Elected Student Council</span>
               </div>
             </div>
-            ]
-          </div>
 
-          <!-- Terminal Commands (inside CV content) -->
-          <div class="mt-6 sm:mt-8 pt-3 sm:pt-4 border-t border-gray-700/50">
-            <div class="text-gray-400 text-xs mb-2">Quick commands:</div>
-            <div class="flex flex-col sm:flex-row sm:flex-wrap gap-2 sm:gap-4 text-xs sm:text-sm">
-              <a href="/projects" class="text-green-400 hover:text-green-300 whitespace-nowrap">
-                <span class="text-blue-400">$</span> ./view-projects
-              </a>
-              <a href="/contact" class="text-green-400 hover:text-green-300 whitespace-nowrap">
-                <span class="text-blue-400">$</span> ./contact-kevin
-              </a>
-              <a href="/blog" class="text-green-400 hover:text-green-300 whitespace-nowrap">
-                <span class="text-blue-400">$</span> ./read-thoughts
-              </a>
+            <!-- German quote -->
+            <blockquote style="border-left: 2px solid var(--accent-violet); padding-left: 1rem; margin: 0 0 1.5rem 0;">
+              <p style="color: var(--text-secondary); font-style: italic; margin: 0 0 0.25rem 0; line-height: 1.6;">
+                Wer Zukunftsmusik hören will muss zur Gitarre greifen
+              </p>
+              <footer style="color: var(--text-muted); font-size: 0.8rem;">— Personal motto</footer>
+            </blockquote>
+
+            <!-- Status line -->
+            <div style="border-top: 1px solid var(--border); padding-top: 1rem; display: flex; align-items: center; gap: 0.5rem; font-size: 0.85rem;">
+              <span style="color: #28ca41; animation: pulse 2s infinite;">●</span>
+              <span style="color: var(--text-muted);">Status:</span>
+              <span style="color: #28ca41;">alive</span>
+            </div>
+
+          </div>
+        </TerminalCard>
+
+        <!-- Right: Photo card -->
+        <TerminalCard filename="~/kevin.jpg">
+          <div class="photo-container" style="position: relative; overflow: hidden;">
+            <img
+              src="/kevin-hero.jpg"
+              alt="Kevin Kunkel with electric guitar and aviator sunglasses"
+              style="width: 100%; display: block; object-fit: cover; max-height: 480px; transition: transform 0.5s ease;"
+              onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+              class="photo-hover"
+            />
+            <!-- Fallback if image doesn't load -->
+            <div style="display: none; min-height: 300px; background: linear-gradient(135deg, color-mix(in srgb, var(--accent-violet) 20%, transparent), color-mix(in srgb, var(--accent-magenta) 20%, transparent)); align-items: center; justify-content: center; flex-direction: column; gap: 0.5rem;">
+              <span style="font-size: 3rem;">🎸</span>
+              <span style="color: #28ca41; font-size: 0.875rem;">Kevin Kunkel</span>
+              <span style="color: var(--text-muted); font-size: 0.75rem;">Photo loading...</span>
+            </div>
+            <!-- Hover overlay -->
+            <div class="photo-overlay" style="position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, transparent 50%); opacity: 0; transition: opacity 0.3s ease; display: flex; align-items: flex-end; padding: 1rem;">
+              <span style="color: #fff; font-size: 0.8rem; font-family: inherit;">There is no place like 127.0.0.1</span>
             </div>
           </div>
-        </div>
-        </div>
+        </TerminalCard>
 
-        <script>
-          // Toggle CV content visibility
-          const toggleButton = document.getElementById('cv-toggle-command');
-          const cvContent = document.getElementById('cv-content');
-
-          toggleButton?.addEventListener('click', () => {
-            if (!cvContent) return;
-
-            if (cvContent.classList.contains('hidden')) {
-              // Show CV with animation
-              cvContent.classList.remove('hidden');
-              setTimeout(() => {
-                if (cvContent) {
-                  cvContent.style.opacity = '1';
-                  cvContent.style.maxHeight = '5000px';
-                }
-              }, 10);
-
-              // Add execution feedback
-              const feedback = document.createElement('div');
-              feedback.className = 'text-green-400 text-xs mt-2 animate-fade-in-up';
-              feedback.textContent = '✓ Executing command...';
-              toggleButton?.appendChild(feedback);
-
-              setTimeout(() => {
-                feedback.remove();
-              }, 1500);
-            } else {
-              // Hide CV
-              cvContent.style.opacity = '0';
-              cvContent.style.maxHeight = '0';
-              setTimeout(() => {
-                if (cvContent) {
-                  cvContent.classList.add('hidden');
-                }
-              }, 500);
-            }
-          });
-        </script>
       </div>
     </div>
   </section>
 
-  <!-- Skills Constellation -->
-  <section class="py-12 sm:py-20 relative overflow-hidden">
+  <!-- CV Section -->
+  <section style="padding: 3rem 1rem;">
+    <div style="max-width: 72rem; margin: 0 auto;">
+      <TerminalCard filename="resume.json">
+        <div style="padding: 1rem 1.5rem; font-family: inherit;">
 
-    <div class="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 relative z-10">
-      <div class="text-center mb-10 sm:mb-16">
-        <div class="font-mono text-xl sm:text-2xl md:text-4xl text-green-400 mb-3 sm:mb-4">
-          cat /dev/skills
+          <!-- Toggle command bar -->
+          <div
+            id="cv-toggle-command"
+            style="background: color-mix(in srgb, var(--bg-elevated) 60%, transparent); border-radius: 4px; padding: 0.75rem 1rem; cursor: pointer; margin-bottom: 0.5rem; display: flex; align-items: center; justify-content: space-between; transition: background 0.2s ease;"
+          >
+            <div style="display: flex; align-items: center; gap: 0.5rem; font-size: 0.9rem;">
+              <span style="color: var(--accent-violet);">$</span>
+              <span style="color: #28ca41;"> cat ./resume.json | jq '.'</span>
+              <span id="cv-toggle-hint" style="color: var(--text-muted); font-size: 0.75rem; opacity: 0.6;"># Toggle CV</span>
+            </div>
+            <span style="width: 2px; height: 1rem; background: #28ca41; display: inline-block; animation: pulse 1s infinite;"></span>
+          </div>
+
+          <!-- CV Content (hidden by default) -->
+          <div id="cv-content" class="hidden" style="opacity: 0; max-height: 0; overflow: hidden; transition: opacity 0.4s ease, max-height 0.5s ease;">
+            <div style="color: var(--text-secondary); font-size: 0.85rem; padding-top: 1rem; overflow-x: auto;">
+
+              <div style="margin-bottom: 0.75rem;">
+                <span style="color: var(--accent-violet);">"name":</span> <span style="color: #28ca41;">"Kevin Kunkel"</span>,
+              </div>
+
+              <div style="margin-bottom: 0.75rem;">
+                <span style="color: var(--accent-violet);">"role":</span> <span style="color: #28ca41;">"AI Engineer &amp; Full-Stack Developer"</span>,
+              </div>
+
+              <div style="margin-bottom: 1rem;">
+                <span style="color: var(--accent-violet);">"experience":</span> [
+                <div style="margin-left: 1.5rem; margin-top: 0.5rem;">
+
+                  <div style="margin-bottom: 0.75rem;">
+                    &#123;
+                    <div style="margin-left: 1.5rem;">
+                      <span style="color: var(--accent-violet);">"position":</span> <span style="color: #28ca41;">"AI Engineer"</span>,<br/>
+                      <span style="color: var(--accent-violet);">"company":</span> <span style="color: #28ca41;">"Exxeta AG"</span>,<br/>
+                      <span style="color: var(--accent-violet);">"location":</span> <span style="color: #28ca41;">"Leipzig"</span>,<br/>
+                      <span style="color: var(--accent-violet);">"period":</span> <span style="color: #28ca41;">"2025-present"</span>,<br/>
+                      <span style="color: var(--accent-violet);">"stack":</span> [<span style="color: var(--accent-magenta);">"FastAPI", "Openwebui", "LiteLLM", "Keycloak", "Kubernetes"</span>]
+                    </div>
+                    &#125;,
+                  </div>
+
+                  <div style="margin-bottom: 0.75rem;">
+                    &#123;
+                    <div style="margin-left: 1.5rem;">
+                      <span style="color: var(--accent-violet);">"position":</span> <span style="color: #28ca41;">"Fullstack Developer"</span>,<br/>
+                      <span style="color: var(--accent-violet);">"company":</span> <span style="color: #28ca41;">"Exxeta AG"</span>,<br/>
+                      <span style="color: var(--accent-violet);">"location":</span> <span style="color: #28ca41;">"Leipzig"</span>,<br/>
+                      <span style="color: var(--accent-violet);">"period":</span> <span style="color: #28ca41;">"2024-2025"</span>,<br/>
+                      <span style="color: var(--accent-violet);">"stack":</span> [<span style="color: var(--accent-magenta);">"Spring Boot", "FastAPI", "React", "Docker", "AWS"</span>]
+                    </div>
+                    &#125;,
+                  </div>
+
+                  <div style="margin-bottom: 0.75rem;">
+                    &#123;
+                    <div style="margin-left: 1.5rem;">
+                      <span style="color: var(--accent-violet);">"position":</span> <span style="color: #28ca41;">"Junior Consultant"</span>,<br/>
+                      <span style="color: var(--accent-violet);">"company":</span> <span style="color: #28ca41;">"M&amp;L AG"</span>,<br/>
+                      <span style="color: var(--accent-violet);">"location":</span> <span style="color: #28ca41;">"Frankfurt"</span>,<br/>
+                      <span style="color: var(--accent-violet);">"period":</span> <span style="color: #28ca41;">"2020-2021"</span>,<br/>
+                      <span style="color: var(--accent-violet);">"stack":</span> [<span style="color: var(--accent-magenta);">"Python", "GIS"</span>]
+                    </div>
+                    &#125;,
+                  </div>
+
+                  <div style="margin-bottom: 0.75rem;">
+                    &#123;
+                    <div style="margin-left: 1.5rem;">
+                      <span style="color: var(--accent-violet);">"position":</span> <span style="color: #28ca41;">"Fullstack Developer"</span>,<br/>
+                      <span style="color: var(--accent-violet);">"company":</span> <span style="color: #28ca41;">"M&amp;L AG"</span>,<br/>
+                      <span style="color: var(--accent-violet);">"location":</span> <span style="color: #28ca41;">"Frankfurt"</span>,<br/>
+                      <span style="color: var(--accent-violet);">"period":</span> <span style="color: #28ca41;">"2017-2019"</span>,<br/>
+                      <span style="color: var(--accent-violet);">"stack":</span> [<span style="color: var(--accent-magenta);">"Spring Boot", "Bootstrap", "Docker", "MySQL"</span>]
+                    </div>
+                    &#125;
+                  </div>
+
+                </div>
+                ],
+              </div>
+
+              <div style="margin-bottom: 1rem;">
+                <span style="color: var(--accent-violet);">"skills":</span> &#123;
+                <div style="margin-left: 1.5rem;">
+                  <span style="color: var(--accent-violet);">"languages":</span> [<span style="color: var(--accent-magenta);">"Python", "JavaScript", "TypeScript", "Java"</span>],<br/>
+                  <span style="color: var(--accent-violet);">"ml_frameworks":</span> [<span style="color: var(--accent-magenta);">"PyTorch", "TensorFlow", "Scikit-learn", "Transformers"</span>],<br/>
+                  <span style="color: var(--accent-violet);">"web_tech":</span> [<span style="color: var(--accent-magenta);">"React", "Next.js", "Node.js", "Express"</span>],<br/>
+                  <span style="color: var(--accent-violet);">"databases":</span> [<span style="color: var(--accent-magenta);">"PostgreSQL", "MongoDB", "PGVector", "InfluxDB"</span>],<br/>
+                  <span style="color: var(--accent-violet);">"devops":</span> [<span style="color: var(--accent-magenta);">"Docker", "Kubernetes", "AWS", "GitHub Actions"</span>]
+                </div>
+                &#125;,
+              </div>
+
+              <div style="margin-bottom: 1rem;">
+                <span style="color: var(--accent-violet);">"education":</span> [
+                <div style="margin-left: 1.5rem;">
+
+                  <div style="margin-bottom: 0.75rem;">
+                    &#123;
+                    <div style="margin-left: 1.5rem;">
+                      <span style="color: var(--accent-violet);">"degree":</span> <span style="color: #28ca41;">"M.Sc. Computer Science"</span>,<br/>
+                      <span style="color: var(--accent-violet);">"university":</span> <span style="color: #28ca41;">"University of Leipzig"</span>,<br/>
+                      <span style="color: var(--accent-violet);">"years":</span> <span style="color: #28ca41;">"2021 - today"</span>
+                    </div>
+                    &#125;,
+                  </div>
+
+                  <div style="margin-bottom: 0.5rem;">
+                    &#123;
+                    <div style="margin-left: 1.5rem;">
+                      <span style="color: var(--accent-violet);">"degree":</span> <span style="color: #28ca41;">"B.Sc. Business Informatics"</span>,<br/>
+                      <span style="color: var(--accent-violet);">"university":</span> <span style="color: #28ca41;">"Berufsakademie Rhein-Main"</span>,<br/>
+                      <span style="color: var(--accent-violet);">"years":</span> <span style="color: #28ca41;">"2017-2020"</span>
+                    </div>
+                    &#125;
+                  </div>
+
+                </div>
+                ]
+              </div>
+
+              <!-- Quick command links -->
+              <div style="border-top: 1px solid var(--border); padding-top: 1rem; margin-top: 1rem;">
+                <div style="color: var(--text-muted); font-size: 0.75rem; margin-bottom: 0.5rem;">Quick commands:</div>
+                <div style="display: flex; flex-wrap: wrap; gap: 1rem; font-size: 0.85rem;">
+                  <a href="/projects" style="color: #28ca41; text-decoration: none;">
+                    <span style="color: var(--accent-violet);">$</span> ./view-projects
+                  </a>
+                  <a href="/contact" style="color: #28ca41; text-decoration: none;">
+                    <span style="color: var(--accent-violet);">$</span> ./contact-kevin
+                  </a>
+                  <a href="/blog" style="color: #28ca41; text-decoration: none;">
+                    <span style="color: var(--accent-violet);">$</span> ./read-thoughts
+                  </a>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
         </div>
-        <div class="text-gray-500 font-mono text-xs sm:text-sm px-2">
+      </TerminalCard>
+    </div>
+  </section>
+
+  <!-- Skills Section -->
+  <section style="padding: 3rem 1rem;">
+    <div style="max-width: 80rem; margin: 0 auto;">
+
+      <div style="text-align: center; margin-bottom: 2.5rem;">
+        <div style="font-family: inherit; font-size: clamp(1.25rem, 3vw, 2rem); color: #28ca41; margin-bottom: 0.5rem;">
+          // cat /dev/skills
+        </div>
+        <div style="color: var(--text-muted); font-size: 0.8rem;">
           # Tools I actually use (and don't just put on my resume)
         </div>
       </div>
 
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 mb-10 sm:mb-16">
-        <!-- ML Stack -->
-        <div class="group relative">
-          <div class="relative bg-gray-900/50 border border-gray-700 rounded-lg p-4 sm:p-6 font-mono">
-            <div class="flex items-center mb-3 sm:mb-4">
-              <span class="text-purple-400 mr-2">🧠</span>
-              <h3 class="text-base sm:text-lg font-normal text-white">ml_stack.py</h3>
-            </div>
+      <div class="skills-grid">
 
-            <div class="text-xs sm:text-sm text-gray-300 space-y-1.5 sm:space-y-2 overflow-x-auto">
-              <div class="text-green-400"># Daily drivers</div>
-              <div><span class="text-blue-400">import</span> torch, tensorflow <span class="text-gray-500"># The usual suspects</span></div>
-              <div><span class="text-blue-400">from</span> transformers <span class="text-blue-400">import</span> * <span class="text-gray-500"># HuggingFace magic</span></div>
-              <div><span class="text-blue-400">import</span> numpy, pandas <span class="text-gray-500"># Data wrangling</span></div>
-              <div class="text-green-400 pt-2"># When things get visual</div>
-              <div><span class="text-blue-400">import</span> cv2, matplotlib</div>
-              <div class="text-green-400 pt-2"># Deployment & MLOps</div>
-              <div><span class="text-blue-400">import</span> mlflow, docker</div>
-              <div class="text-green-400 pt-2"># Classical NLP & Linear models</div>
-              <div><span class="text-blue-400">from</span> sklearn.feature_extraction.text <span class="text-blue-400">import</span> TfidfVectorizer</div>
-              <div><span class="text-blue-400">from</span> sklearn.svm <span class="text-blue-400">import</span> LinearSVC <span class="text-gray-500">// Fast linear classifier</span></div>
-              <div><span class="text-blue-400">from</span> sklearn.pipeline <span class="text-blue-400">import</span> make_pipeline</div>
-              <div><span class="text-blue-400">model</span> = make_pipeline(TfidfVectorizer(max_features=10_000), LinearSVC()) <span class="text-gray-500">// Text → features → classification</span></div>
-            </div>
+        <!-- ML Stack -->
+        <TerminalCard filename="ml_stack.py">
+          <div style="padding: 1.25rem 1.5rem; font-size: 0.8rem; color: var(--text-secondary); line-height: 1.8; overflow-x: auto;">
+            <div style="color: #28ca41;"># Daily drivers</div>
+            <div><span style="color: var(--accent-violet);">import</span> torch, tensorflow <span style="color: var(--text-muted);"># The usual suspects</span></div>
+            <div><span style="color: var(--accent-violet);">from</span> transformers <span style="color: var(--accent-violet);">import</span> * <span style="color: var(--text-muted);"># HuggingFace magic</span></div>
+            <div><span style="color: var(--accent-violet);">import</span> numpy, pandas <span style="color: var(--text-muted);"># Data wrangling</span></div>
+            <div style="color: #28ca41; padding-top: 0.5rem;"># When things get visual</div>
+            <div><span style="color: var(--accent-violet);">import</span> cv2, matplotlib</div>
+            <div style="color: #28ca41; padding-top: 0.5rem;"># Deployment &amp; MLOps</div>
+            <div><span style="color: var(--accent-violet);">import</span> mlflow, docker</div>
+            <div style="color: #28ca41; padding-top: 0.5rem;"># Classical NLP &amp; Linear models</div>
+            <div><span style="color: var(--accent-violet);">from</span> sklearn.feature_extraction.text <span style="color: var(--accent-violet);">import</span> TfidfVectorizer</div>
+            <div><span style="color: var(--accent-violet);">from</span> sklearn.svm <span style="color: var(--accent-violet);">import</span> LinearSVC <span style="color: var(--text-muted);">// Fast linear classifier</span></div>
+            <div><span style="color: var(--accent-violet);">from</span> sklearn.pipeline <span style="color: var(--accent-violet);">import</span> make_pipeline</div>
+            <div style="word-break: break-all;"><span style="color: var(--accent-violet);">model</span> = make_pipeline(TfidfVectorizer(max_features=10_000), LinearSVC()) <span style="color: var(--text-muted);">// Text → features → classification</span></div>
           </div>
-        </div>
+        </TerminalCard>
 
         <!-- Web Stack -->
-        <div class="group relative">
-          <div class="relative bg-gray-900/50 border border-gray-700 rounded-lg p-4 sm:p-6 font-mono">
-            <div class="flex items-center mb-3 sm:mb-4">
-              <span class="text-blue-400 mr-2">⚡</span>
-              <h3 class="text-base sm:text-lg font-normal text-white">package.json</h3>
-            </div>
-
-            <div class="text-xs sm:text-sm text-gray-300 space-y-0.5 sm:space-y-1 overflow-x-auto">
-              <div class="text-yellow-400">{"{"}</div>
-              <div class="ml-4"><span class="text-green-400">"dependencies"</span>: {"{"}</div>
-                <div class="ml-8"><span class="text-green-400">"react"</span>: <span class="text-orange-400">"^18.x"</span>, <span class="text-gray-500">// Still the GOAT</span></div>
-                <div class="ml-8"><span class="text-green-400">"typescript"</span>: <span class="text-orange-400">"latest"</span>, <span class="text-gray-500">// Life saver</span></div>
-                <div class="ml-8"><span class="text-green-400">"next.js"</span>: <span class="text-orange-400">"^14.x"</span>, <span class="text-gray-500">// Full-stack magic</span></div>
-                <div class="ml-8"><span class="text-green-400">"node.js"</span>: <span class="text-orange-400">"LTS"</span>, <span class="text-gray-500">// Backend buddy</span></div>
-                <div class="ml-8"><span class="text-green-400">"postgresql"</span>: <span class="text-orange-400">"^15"</span>, <span class="text-gray-500">// Reliable data</span></div>
-                <div class="ml-8"><span class="text-green-400">"shadcn/ui"</span>: <span class="text-orange-400">"latest"</span>, <span class="text-gray-500">// Beautiful components</span></div>
-                <div class="ml-8"><span class="text-green-400">"vite"</span>: <span class="text-orange-400">"latest"</span>, <span class="text-gray-500">// Lightning fast builds</span></div>
-                <div class="ml-8"><span class="text-green-400">"tailwindcss"</span>: <span class="text-orange-400">"latest"</span>, <span class="text-gray-500">// Utility-first styling</span></div>
-                <div class="ml-8"><span class="text-green-400">"docker"</span>: <span class="text-orange-400">"latest"</span> <span class="text-gray-500">// It works on my machine™</span></div>
-              <div class="ml-4">{"}"}</div>
-              <div class="text-yellow-400">{"}"}</div>
-            </div>
+        <TerminalCard filename="package.json">
+          <div style="padding: 1.25rem 1.5rem; font-size: 0.8rem; color: var(--text-secondary); line-height: 1.8; overflow-x: auto;">
+            <div style="color: var(--accent-magenta);">{"{"}</div>
+            <div style="margin-left: 1.5rem;"><span style="color: #28ca41;">"dependencies"</span>: {"{"}</div>
+            <div style="margin-left: 3rem;"><span style="color: #28ca41;">"react"</span>: <span style="color: var(--accent-magenta);">"^18.x"</span>, <span style="color: var(--text-muted);">// Still the GOAT</span></div>
+            <div style="margin-left: 3rem;"><span style="color: #28ca41;">"typescript"</span>: <span style="color: var(--accent-magenta);">"latest"</span>, <span style="color: var(--text-muted);">// Life saver</span></div>
+            <div style="margin-left: 3rem;"><span style="color: #28ca41;">"next.js"</span>: <span style="color: var(--accent-magenta);">"^14.x"</span>, <span style="color: var(--text-muted);">// Full-stack magic</span></div>
+            <div style="margin-left: 3rem;"><span style="color: #28ca41;">"node.js"</span>: <span style="color: var(--accent-magenta);">"LTS"</span>, <span style="color: var(--text-muted);">// Backend buddy</span></div>
+            <div style="margin-left: 3rem;"><span style="color: #28ca41;">"postgresql"</span>: <span style="color: var(--accent-magenta);">"^15"</span>, <span style="color: var(--text-muted);">// Reliable data</span></div>
+            <div style="margin-left: 3rem;"><span style="color: #28ca41;">"shadcn/ui"</span>: <span style="color: var(--accent-magenta);">"latest"</span>, <span style="color: var(--text-muted);">// Beautiful components</span></div>
+            <div style="margin-left: 3rem;"><span style="color: #28ca41;">"vite"</span>: <span style="color: var(--accent-magenta);">"latest"</span>, <span style="color: var(--text-muted);">// Lightning fast builds</span></div>
+            <div style="margin-left: 3rem;"><span style="color: #28ca41;">"tailwindcss"</span>: <span style="color: var(--accent-magenta);">"latest"</span>, <span style="color: var(--text-muted);">// Utility-first styling</span></div>
+            <div style="margin-left: 3rem;"><span style="color: #28ca41;">"docker"</span>: <span style="color: var(--accent-magenta);">"latest"</span> <span style="color: var(--text-muted);">// It works on my machine™</span></div>
+            <div style="margin-left: 1.5rem;">{"}"}</div>
+            <div style="color: var(--accent-magenta);">{"}"}</div>
           </div>
+        </TerminalCard>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section style="padding: 3rem 1rem;">
+    <div style="max-width: 56rem; margin: 0 auto;">
+
+      <div style="text-align: center; margin-bottom: 2.5rem;">
+        <div style="font-family: inherit; font-size: clamp(1.25rem, 3vw, 2rem); color: #28ca41; margin-bottom: 0.5rem;">
+          // cat ./faq.md
+        </div>
+        <div style="color: var(--text-muted); font-size: 0.8rem;">
+          # Frequently asked questions
         </div>
       </div>
 
+      <TerminalCard filename="faq.md">
+        <div style="padding: 1.5rem 2rem; font-family: inherit;">
+          <div style="display: flex; flex-direction: column; gap: 2rem;">
 
-    </div>
-    <!-- Terminal FAQ Section -->
-    <section class="py-16 relative">
-      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="text-center mb-10 sm:mb-16">
-          <div class="font-mono text-xl sm:text-2xl md:text-4xl text-green-400 mb-3 sm:mb-4">
-            cat ./faq.md
-          </div>
-          <div class="text-gray-500 font-mono text-xs sm:text-sm px-2">
-            # Frequently asked questions
-          </div>
-        </div>
-
-        <div class="bg-black/40 backdrop-blur-sm border border-gray-700/50 rounded-lg p-8 font-mono">
-          <div class="space-y-8">
-
-            <div class="border-l-2 border-green-400/50 pl-4">
-              <div class="text-blue-400 text-lg mb-2">
+            <div style="border-left: 2px solid var(--accent-violet); padding-left: 1rem;">
+              <div style="color: var(--accent-violet); font-size: 1rem; margin-bottom: 0.5rem; font-weight: 600;">
                 ## What got you into Computer Science?
               </div>
-              <p class="text-gray-300 leading-relaxed">
+              <p style="color: var(--text-secondary); line-height: 1.7; margin: 0;">
                 Most of my closest friends went into media and art. They wondered why someone with creative cravings like me went into tech. But honestly? I feel like CS gives you the ultimate ability to express yourself philosophically and artistically while also solving a multitude of interesting problems!
               </p>
             </div>
 
-            <div class="border-l-2 border-green-400/50 pl-4">
-              <div class="text-blue-400 text-lg mb-2">
+            <div style="border-left: 2px solid var(--accent-violet); padding-left: 1rem;">
+              <div style="color: var(--accent-violet); font-size: 1rem; margin-bottom: 0.5rem; font-weight: 600;">
                 ## What kind of projects do you work on?
               </div>
-              <p class="text-gray-300 leading-relaxed">
+              <p style="color: var(--text-secondary); line-height: 1.7; margin: 0;">
                 Both ML projects (computer vision, NLP, data analysis) and web development (fullstack applications, APIs, frontend interfaces). Particularly interested in projects that combine both domains. I also try to use ML wherever possible to lift the heavy weight from LLMs.
               </p>
             </div>
 
-            <div class="border-l-2 border-green-400/50 pl-4">
-              <div class="text-blue-400 text-lg mb-2">
+            <div style="border-left: 2px solid var(--accent-violet); padding-left: 1rem;">
+              <div style="color: var(--accent-violet); font-size: 1rem; margin-bottom: 0.5rem; font-weight: 600;">
                 ## Do we even need traditional ML in 2025?
               </div>
-              <p class="text-gray-300 leading-relaxed">
+              <p style="color: var(--text-secondary); line-height: 1.7; margin: 0;">
                 Absolutely! While AI, especially LLMs, have taken the spotlight, classical ML techniques remain invaluable for structured data, time-series analysis, and scenarios where interpretability is crucial. A balanced approach often yields the best results. For a lot of tasks it's a matter of "sledgehammer vs scalpel".
               </p>
             </div>
+
           </div>
         </div>
-      </div>
-    </section>
+      </TerminalCard>
+
+    </div>
   </section>
+
+  <!-- CV toggle script -->
+  <script>
+    const toggleBtn = document.getElementById('cv-toggle-command');
+    const cvContent = document.getElementById('cv-content');
+
+    toggleBtn?.addEventListener('click', () => {
+      if (!cvContent) return;
+
+      if (cvContent.classList.contains('hidden')) {
+        cvContent.classList.remove('hidden');
+        requestAnimationFrame(() => {
+          if (cvContent) {
+            cvContent.style.opacity = '1';
+            cvContent.style.maxHeight = '6000px';
+          }
+        });
+
+        const feedback = document.createElement('span');
+        feedback.style.cssText = 'color: #28ca41; font-size: 0.75rem; margin-left: 0.75rem;';
+        feedback.textContent = '✓ Executing...';
+        toggleBtn.querySelector('div')?.appendChild(feedback);
+        setTimeout(() => feedback.remove(), 1500);
+      } else {
+        cvContent.style.opacity = '0';
+        cvContent.style.maxHeight = '0';
+        setTimeout(() => cvContent?.classList.add('hidden'), 500);
+      }
+    });
+  </script>
+
+  <!-- Hover effects for photo -->
+  <style>
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      align-items: start;
+    }
+
+    @media (max-width: 768px) {
+      .hero-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+    }
+
+    @media (max-width: 768px) {
+      .skills-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .photo-hover:hover {
+      transform: scale(1.03);
+    }
+
+    .photo-hover:hover + div + .photo-overlay,
+    .photo-hover:hover ~ .photo-overlay {
+      opacity: 1 !important;
+    }
+
+    /* Wrap photo container to enable hover on overlay */
+    .photo-container:hover .photo-overlay {
+      opacity: 1 !important;
+    }
+  </style>
+
 </BaseLayout>
