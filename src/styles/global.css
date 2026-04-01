@@ -131,3 +131,85 @@ body {
 .animate-fade-in-up {
   animation: fade-in-up 0.6s ease-out forwards;
 }
+
+/* ─── Code block terminal chrome overrides ─── */
+
+/* Strip Typography's default pre styling — our JS wrapper handles chrome */
+.prose pre {
+  background-color: transparent !important;
+  border: none !important;
+  border-radius: 0 !important;
+  padding: 0 !important;
+  margin: 1.25rem 0 !important;
+}
+
+/* Shiki-generated code block */
+.astro-code {
+  background-color: var(--bg-elevated) !important;
+  padding: 1rem 1.25rem !important;
+  overflow-x: auto;
+  margin: 0 !important;
+  border-radius: 0 !important;
+  font-size: 0.875rem;
+  line-height: 1.6;
+}
+
+/* Terminal card wrapper injected by script */
+.code-terminal-card {
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  overflow: hidden;
+  margin: 1.25rem 0;
+}
+
+.code-terminal-header {
+  background: var(--bg-elevated);
+  border-bottom: 1px solid var(--border);
+  padding: 6px 12px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.code-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  display: inline-block;
+  flex-shrink: 0;
+}
+.code-dot-red    { background: #ff5f57; }
+.code-dot-yellow { background: #ffbd2e; }
+.code-dot-green  { background: #28ca41; }
+
+.code-filename {
+  font-family: inherit;
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  flex: 1;
+}
+
+.copy-btn {
+  font-family: inherit;
+  font-size: 0.7rem;
+  padding: 2px 8px;
+  border: 1px solid var(--border);
+  border-radius: 3px;
+  background: transparent;
+  color: var(--text-muted);
+  cursor: pointer;
+  line-height: 1.4;
+  transition: color 0.15s, border-color 0.15s;
+  min-height: unset;
+  min-width: unset;
+}
+
+.copy-btn:hover {
+  color: var(--accent-magenta);
+  border-color: var(--accent-magenta);
+}
+
+.copy-btn.copied {
+  color: #28ca41;
+  border-color: #28ca41;
+}
