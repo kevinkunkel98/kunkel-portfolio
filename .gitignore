@@ -26,5 +26,8 @@ pnpm-debug.log*
 # Superpowers brainstorm sessions
 .superpowers/
 
+# Git worktrees
+.worktrees/
+
 # Local Netlify folder
 .netlify
