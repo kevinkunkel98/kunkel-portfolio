@@ -52,9 +52,15 @@ const ContactForm: React.FC = () => {
   };
 
   return (
-    <div className="bg-black/60 backdrop-blur-sm border border-gray-700/50 p-6 rounded-lg font-mono">
+    <div
+      className="backdrop-blur-sm p-6 rounded-lg font-mono"
+      style={{ background: 'var(--bg-surface)', border: '1px solid var(--border)' }}
+    >
       {/* Terminal Header */}
-      <div className="flex items-center gap-2 mb-4 pb-2 border-b border-gray-700/50">
+      <div
+        className="flex items-center gap-2 mb-4 pb-2"
+        style={{ borderBottom: '1px solid var(--border)' }}
+      >
         <div className="flex gap-1.5">
           <div className="w-3 h-3 rounded-full bg-red-500"></div>
           <div className="w-3 h-3 rounded-full bg-yellow-500"></div>
@@ -71,7 +77,11 @@ const ContactForm: React.FC = () => {
         </div>
 
         <div>
-          <label htmlFor="name" className="block text-green-500 text-sm mb-2 flex items-center">
+          <label
+            htmlFor="name"
+            className="block text-sm mb-2 flex items-center"
+            style={{ color: 'var(--text-muted)' }}
+          >
             <span className="text-green-400">$</span>
             <span className="ml-2">--name</span>
           </label>
@@ -83,12 +93,21 @@ const ContactForm: React.FC = () => {
             onChange={handleChange}
             required
             placeholder="Enter your name..."
-            className="w-full px-4 py-3 bg-gray-900 border-2 border-green-500/50 text-green-400 rounded font-mono text-sm focus:outline-none focus:border-green-500 focus:ring-2 focus:ring-green-500/20 placeholder-green-800 transition-all"
+            className="w-full px-4 py-3 rounded font-mono text-sm focus:outline-none transition-all"
+            style={{
+              background: 'var(--bg-elevated)',
+              border: '1px solid var(--border)',
+              color: 'var(--text-secondary)',
+            }}
           />
         </div>
 
         <div>
-          <label htmlFor="email" className="block text-green-500 text-sm mb-2 flex items-center">
+          <label
+            htmlFor="email"
+            className="block text-sm mb-2 flex items-center"
+            style={{ color: 'var(--text-muted)' }}
+          >
             <span className="text-green-400">$</span>
             <span className="ml-2">--email</span>
           </label>
@@ -100,12 +119,21 @@ const ContactForm: React.FC = () => {
             onChange={handleChange}
             required
             placeholder="your.email@example.com"
-            className="w-full px-4 py-3 bg-gray-900 border-2 border-green-500/50 text-green-400 rounded font-mono text-sm focus:outline-none focus:border-green-500 focus:ring-2 focus:ring-green-500/20 placeholder-green-800 transition-all"
+            className="w-full px-4 py-3 rounded font-mono text-sm focus:outline-none transition-all"
+            style={{
+              background: 'var(--bg-elevated)',
+              border: '1px solid var(--border)',
+              color: 'var(--text-secondary)',
+            }}
           />
         </div>
 
         <div>
-          <label htmlFor="message" className="block text-green-500 text-sm mb-2 flex items-center">
+          <label
+            htmlFor="message"
+            className="block text-sm mb-2 flex items-center"
+            style={{ color: 'var(--text-muted)' }}
+          >
             <span className="text-green-400">$</span>
             <span className="ml-2">--message</span>
           </label>
@@ -117,14 +145,24 @@ const ContactForm: React.FC = () => {
             rows={5}
             required
             placeholder="Type your message here..."
-            className="w-full px-4 py-3 bg-gray-900 border-2 border-green-500/50 text-green-400 rounded font-mono text-sm focus:outline-none focus:border-green-500 focus:ring-2 focus:ring-green-500/20 placeholder-green-800 resize-none transition-all"
+            className="w-full px-4 py-3 rounded font-mono text-sm focus:outline-none resize-none transition-all"
+            style={{
+              background: 'var(--bg-elevated)',
+              border: '1px solid var(--border)',
+              color: 'var(--text-secondary)',
+            }}
           />
         </div>
 
         <button
           type="submit"
           disabled={isSubmitting}
-          className="w-full bg-green-600 hover:bg-green-500 disabled:bg-gray-700 disabled:text-gray-500 text-black font-bold py-3 px-4 rounded font-mono text-sm transition-all transform hover:scale-[1.02] active:scale-[0.98] border-2 border-green-500 shadow-lg shadow-green-500/20"
+          className="w-full font-bold py-3 px-4 rounded font-mono text-sm transition-all transform hover:scale-[1.02] active:scale-[0.98] shadow-lg"
+          style={{
+            background: isSubmitting ? 'var(--bg-elevated)' : 'var(--accent-violet)',
+            color: isSubmitting ? 'var(--text-muted)' : 'var(--text-secondary)',
+            border: '1px solid var(--border)',
+          }}
         >
           <span className="flex items-center justify-center gap-2">
             <span>{isSubmitting ? '⏳' : '>'}</span>
@@ -133,9 +171,16 @@ const ContactForm: React.FC = () => {
         </button>
 
         {submitStatus === 'success' && (
-          <div className="p-4 bg-green-900/30 border-2 border-green-500 text-green-400 rounded font-mono text-sm">
+          <div
+            className="p-4 rounded font-mono text-sm"
+            style={{
+              background: 'var(--bg-elevated)',
+              border: '1px solid var(--accent-magenta)',
+              color: 'var(--text-muted)',
+            }}
+          >
             <div className="flex items-start gap-2">
-              <span className="text-green-500">✓</span>
+              <span style={{ color: 'var(--accent-magenta)' }}>✓</span>
               <div>
                 <div className="font-bold mb-1">[SUCCESS]</div>
                 <div>Message transmitted successfully. Response received: 200 OK</div>
@@ -145,9 +190,16 @@ const ContactForm: React.FC = () => {
         )}
 
         {submitStatus === 'error' && (
-          <div className="p-4 bg-red-900/30 border-2 border-red-500 text-red-400 rounded font-mono text-sm">
+          <div
+            className="p-4 rounded font-mono text-sm"
+            style={{
+              background: 'var(--bg-elevated)',
+              border: '1px solid var(--accent-magenta)',
+              color: 'var(--text-muted)',
+            }}
+          >
             <div className="flex items-start gap-2">
-              <span className="text-red-500">✗</span>
+              <span style={{ color: 'var(--accent-magenta)' }}>✗</span>
               <div>
                 <div className="font-bold mb-1">[ERROR]</div>
                 <div>Transmission failed. Please retry operation.</div>
@@ -158,7 +210,10 @@ const ContactForm: React.FC = () => {
 
         {/* Terminal cursor effect when typing */}
         {(formData.name || formData.email || formData.message) && (
-          <div className="text-green-500 text-xs opacity-60 flex items-center gap-2">
+          <div
+            className="text-xs opacity-60 flex items-center gap-2"
+            style={{ color: 'var(--text-muted)' }}
+          >
             <span className="animate-pulse">▊</span>
             <span>Awaiting input...</span>
           </div>
