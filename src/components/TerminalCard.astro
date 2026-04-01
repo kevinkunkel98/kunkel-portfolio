@@ -1,0 +1,32 @@
+---
+export interface Props {
+  filename: string;
+  class?: string;
+}
+
+const { filename, class: className = '' } = Astro.props;
+---
+
+<div
+  class={`terminal-card ${className}`}
+  style="border: 1px solid var(--border); border-radius: 6px; overflow: hidden; background: var(--bg-surface);"
+>
+  <!-- Terminal header strip -->
+  <div
+    style="background: var(--bg-elevated); padding: 6px 12px; display: flex; align-items: center; gap: 8px; border-bottom: 1px solid var(--border);"
+  >
+    <!-- Traffic lights -->
+    <div style="display: flex; gap: 5px; flex-shrink: 0;">
+      <span style="width: 10px; height: 10px; border-radius: 50%; background: #ff5f57; display: inline-block;"></span>
+      <span style="width: 10px; height: 10px; border-radius: 50%; background: #ffbd2e; display: inline-block;"></span>
+      <span style="width: 10px; height: 10px; border-radius: 50%; background: #28ca41; display: inline-block;"></span>
+    </div>
+    <!-- Filename -->
+    <span style="font-family: inherit; font-size: 0.75rem; color: var(--text-muted);">{filename}</span>
+  </div>
+
+  <!-- Card body -->
+  <div style="background: var(--bg-surface);">
+    <slot />
+  </div>
+</div>
