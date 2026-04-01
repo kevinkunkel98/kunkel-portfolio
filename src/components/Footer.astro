@@ -2,69 +2,53 @@
 const currentYear = new Date().getFullYear();
 ---
 
-<footer class="relative font-mono">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 relative z-10">
-    <!-- Terminal window -->
-    <div class="bg-gray-900 border border-gray-700 rounded-lg overflow-hidden">
-      <!-- Terminal header -->
-      <div class="bg-gray-800 px-4 py-2 flex items-center">
-        <div class="flex space-x-2">
-          <div class="w-3 h-3 bg-red-500 rounded-full"></div>
-          <div class="w-3 h-3 bg-yellow-500 rounded-full"></div>
-          <div class="w-3 h-3 bg-green-500 rounded-full"></div>
-        </div>
-        <div class="text-gray-400 text-sm ml-4">kevin@localhost:~</div>
+<footer style="background: var(--bg-surface); border-top: 1px solid var(--border); font-family: inherit;">
+  <div style="max-width: 80rem; margin: 0 auto; padding: 0 1.5rem;">
+
+    <!-- Main footer content -->
+    <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; padding: 2.5rem 0; border-bottom: 1px solid var(--border);">
+
+      <!-- System info -->
+      <div style="font-size: 0.8125rem; display: flex; flex-direction: column; gap: 6px;">
+        <div style="color: var(--accent-magenta); margin-bottom: 4px;">// system-info</div>
+        <div><span style="color: var(--accent-violet);">❯</span> <span style="color: var(--text-muted);">whoami:</span> <span style="color: var(--text-secondary);">Kevin Kunkel</span></div>
+        <div><span style="color: var(--accent-violet);">❯</span> <span style="color: var(--text-muted);">status:</span> <span style="color: #28ca41;">alive 🟢</span></div>
+        <div><span style="color: var(--accent-violet);">❯</span> <span style="color: var(--text-muted);">location:</span> <span style="color: var(--text-secondary);">Leipzig</span></div>
       </div>
 
-      <!-- Terminal content -->
-      <div class="p-6 text-sm text-gray-300 space-y-3">
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-          <!-- System info -->
-          <div class="space-y-2">
-            <div class="text-green-400"># System Info</div>
-            <div><span class="text-blue-400">></span> whoami: Kevin Kunkel</div>
-            <div><span class="text-blue-400">></span> status: Alive</div>
-            <div><span class="text-blue-400">></span> location: Leipzig</div>
-          </div>
-
-          <!-- Navigation -->
-          <div class="space-y-2">
-            <div class="text-green-400"># Quick Access</div>
-            <div><span class="text-blue-400">$</span> <a href="/projects" class="hover:text-white">ls ./projects</a></div>
-            <div><span class="text-blue-400">$</span> <a href="/blog" class="hover:text-white">python3 ml_models.py</a></div>
-            <div><span class="text-blue-400">$</span> <a href="/contact" class="hover:text-white">ping kevin</a></div>
-          </div>
-
-          <!-- Social links -->
-          <div class="space-y-2">
-            <div class="text-green-400"># External Links</div>
-            <div><span class="text-blue-400">$</span> <a href="https://github.com/kevinkunkel98" class="hover:text-white" target="_blank">git remote -v</a></div>
-            <div><span class="text-blue-400">$</span> <a href="https://linkedin.com/in/kevinkunkel" class="hover:text-white" target="_blank">curl instagram.com/kevin</a></div>
-            <div><span class="text-blue-400">$</span> <a href="mailto:kevinkunkeldev@gmail.com" class="hover:text-white">mail kevinkunkeldev@gmail.com</a></div>
-          </div>
-        </div>
-
-        <!-- Bottom line -->
-        <div class="border-t border-gray-700 pt-4 mt-6">
-          <div class="flex flex-col md:flex-row justify-between items-start md:items-center space-y-2 md:space-y-0">
-            <div class="text-gray-500">
-              <span class="text-blue-400">></span> Built with Astro.js, React & excessive neurodivergence
-            </div>
-            <div class="text-gray-500">
-              © {currentYear} Kevin Kunkel <span class="text-green-400">●</span> MIT License
-            </div>
-          </div>
-        </div>
-
-        <!-- Cursor -->
-        <div class="flex items-center">
-          <span class="text-green-400">kevin@localhost</span>
-          <span class="text-white">:</span>
-          <span class="text-blue-400">~</span>
-          <span class="text-white">$ </span>
-          <span class="bg-gray-300 w-2 h-4 ml-1 animate-pulse"></span>
-        </div>
+      <!-- Quick access -->
+      <div style="font-size: 0.8125rem; display: flex; flex-direction: column; gap: 6px;">
+        <div style="color: var(--accent-magenta); margin-bottom: 4px;">// quick-access</div>
+        <div><span style="color: var(--accent-violet);">$</span> <a href="/projects" style="color: var(--text-secondary); text-decoration: none;">ls ./projects</a></div>
+        <div><span style="color: var(--accent-violet);">$</span> <a href="/blog" style="color: var(--text-secondary); text-decoration: none;">python3 ml_models.py</a></div>
+        <div><span style="color: var(--accent-violet);">$</span> <a href="/contact" style="color: var(--text-secondary); text-decoration: none;">ping kevin</a></div>
       </div>
+
+      <!-- External links -->
+      <div style="font-size: 0.8125rem; display: flex; flex-direction: column; gap: 6px;">
+        <div style="color: var(--accent-magenta); margin-bottom: 4px;">// external-links</div>
+        <div><span style="color: var(--accent-violet);">$</span> <a href="https://github.com/kevinkunkel98" target="_blank" rel="noopener" style="color: var(--text-secondary); text-decoration: none;">git remote -v</a></div>
+        <div><span style="color: var(--accent-violet);">$</span> <a href="https://linkedin.com/in/kevinkunkel" target="_blank" rel="noopener" style="color: var(--text-secondary); text-decoration: none;">curl linkedin.com/in/kevin</a></div>
+        <div><span style="color: var(--accent-violet);">$</span> <a href="mailto:kevinkunkeldev@gmail.com" style="color: var(--text-secondary); text-decoration: none;">mail kevinkunkeldev@gmail.com</a></div>
+      </div>
+    </div>
+
+    <!-- Status bar -->
+    <div style="display: flex; justify-content: space-between; align-items: center; padding: 12px 0; font-size: 0.75rem; color: var(--text-muted); flex-wrap: wrap; gap: 8px;">
+      <div>
+        <span style="color: var(--accent-violet);">❯</span>
+        <span style="color: var(--accent-magenta);">kevin@portfolio</span><span>:~$</span>
+        <span style="margin-left: 8px;">Built with Astro.js, React & excessive neurodivergence</span>
+      </div>
+      <div>© {currentYear} Kevin Kunkel <span style="color: var(--accent-magenta);">●</span> MIT License</div>
     </div>
   </div>
 </footer>
+
+<style>
+  @media (max-width: 640px) {
+    footer > div > div:first-of-type {
+      grid-template-columns: 1fr !important;
+    }
+  }
+</style>
