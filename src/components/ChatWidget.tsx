@@ -178,7 +178,7 @@ export default function ChatWidget() {
                 padding: '8px 12px',
                 fontSize: '0.8125rem',
                 color: 'var(--accent-magenta)',
-              }}>
+              }} className="chat-cursor">
                 ▋
               </div>
             )}
@@ -235,6 +235,13 @@ export default function ChatWidget() {
           </div>
         </div>
       )}
+      <style>{`
+        @keyframes blink {
+          0%, 100% { opacity: 1; }
+          50% { opacity: 0; }
+        }
+        .chat-cursor { animation: blink 1s step-end infinite; }
+      `}</style>
     </>
   );
 }
