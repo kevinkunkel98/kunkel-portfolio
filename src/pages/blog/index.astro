@@ -6,42 +6,42 @@ const models = [
   {
     href: '/blog/linear-regression',
     filename: 'linear-regression.py',
-    emoji: '📈',
+    svg: '/assets/blog/linear-regression.svg',
     name: 'Linear Regression',
     description: 'Predicts continuous values by fitting a linear equation. Best for trends and forecasting.',
   },
   {
     href: '/blog/logistic-regression',
     filename: 'logistic-regression.py',
-    emoji: '🎯',
+    svg: '/assets/blog/logistic-regression.svg',
     name: 'Logistic Regression',
     description: 'Binary classification using sigmoid function. Outputs probability between 0 and 1.',
   },
   {
     href: '/blog/support-vector-machines',
     filename: 'support-vector-machines.py',
-    emoji: '⚡',
+    svg: '/assets/blog/support-vector-machines.svg',
     name: 'Support Vector Machines',
     description: 'Finds optimal hyperplane to separate classes. Powerful for high-dimensional spaces.',
   },
   {
     href: '/blog/decision-trees',
     filename: 'decision-trees.py',
-    emoji: '🌳',
+    svg: '/assets/blog/decision-trees.svg',
     name: 'Decision Trees',
     description: 'Tree-like decision model. Easy to interpret and visualize decision paths.',
   },
   {
     href: '/blog/random-forest',
     filename: 'random-forest.py',
-    emoji: '🌲',
+    svg: '/assets/blog/random-forest.svg',
     name: 'Random Forest',
     description: 'Ensemble of decision trees. Reduces overfitting through bagging and voting.',
   },
   {
     href: '/blog/k-nearest-neighbors',
     filename: 'k-nearest-neighbors.py',
-    emoji: '🎲',
+    svg: '/assets/blog/k-nearest-neighbors.svg',
     name: 'K-Nearest Neighbors',
     description: 'Classifies based on nearest neighbors. Simple yet effective for many tasks.',
   },
@@ -67,9 +67,13 @@ const models = [
         {models.map((model) => (
           <a href={model.href} class="card-link">
             <TerminalCard filename={model.filename}>
+              <img
+                src={model.svg}
+                alt={`${model.name} plot`}
+                class="card-plot"
+              />
               <div class="card-body">
                 <div class="card-heading">
-                  <span class="card-emoji">{model.emoji}</span>
                   <h3 class="card-name">{model.name}</h3>
                 </div>
                 <p class="card-description">{model.description}</p>
@@ -164,15 +168,17 @@ const models = [
     gap: 0.75rem;
   }
 
+  .card-plot {
+    width: 100%;
+    height: 160px;
+    object-fit: cover;
+    display: block;
+    border-bottom: 1px solid var(--border);
+  }
+
   .card-heading {
     display: flex;
     align-items: center;
-    gap: 0.625rem;
-  }
-
-  .card-emoji {
-    font-size: 1.5rem;
-    flex-shrink: 0;
   }
 
   .card-name {
