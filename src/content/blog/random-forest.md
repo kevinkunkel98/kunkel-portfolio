@@ -57,7 +57,7 @@ y_pred = model.predict(X_test)
 
 print(f"Accuracy: {accuracy_score(y_test, y_pred):.3f}")
 print("\nClassification Report:")
-print(classification_report(y_test, y_pred, 
+print(classification_report(y_test, y_pred,
                            target_names=iris.target_names))
 ```
 
@@ -94,7 +94,7 @@ from sklearn.metrics import mean_squared_error, r2_score
 import numpy as np
 
 # Generate data
-X, y = make_regression(n_samples=1000, n_features=10, 
+X, y = make_regression(n_samples=1000, n_features=10,
                        noise=10, random_state=42)
 
 # Split
@@ -229,7 +229,7 @@ single_tree = model.estimators_[0]
 
 # Plot it
 plt.figure(figsize=(20, 10))
-plot_tree(single_tree, 
+plot_tree(single_tree,
           feature_names=iris.feature_names,
           class_names=iris.target_names,
           filled=True,
@@ -246,8 +246,8 @@ from sklearn.model_selection import cross_val_score
 
 # 5-fold cross-validation
 cv_scores = cross_val_score(
-    model, X, y, 
-    cv=5, 
+    model, X, y,
+    cv=5,
     scoring='accuracy'
 )
 
@@ -361,7 +361,7 @@ for name, model in models.items():
     start = time.time()
     model.fit(X_train, y_train)
     train_time = time.time() - start
-    
+
     accuracy = model.score(X_test, y_test)
     print(f"{name}:")
     print(f"  Accuracy: {accuracy:.3f}")

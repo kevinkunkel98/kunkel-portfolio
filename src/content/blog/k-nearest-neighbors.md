@@ -54,7 +54,7 @@ y_pred = model.predict(X_test)
 
 print(f"Accuracy: {accuracy_score(y_test, y_pred):.3f}")
 print("\nClassification Report:")
-print(classification_report(y_test, y_pred, 
+print(classification_report(y_test, y_pred,
                            target_names=iris.target_names))
 ```
 
@@ -84,7 +84,7 @@ plt.xlabel('K Value')
 plt.ylabel('Cross-Validation Accuracy')
 plt.title('Finding Optimal K for K-NN')
 plt.grid(True)
-plt.axvline(x=optimal_k, color='r', linestyle='--', 
+plt.axvline(x=optimal_k, color='r', linestyle='--',
             label=f'Optimal K={optimal_k}')
 plt.legend()
 plt.show()
@@ -105,7 +105,7 @@ model_manhattan = KNeighborsClassifier(n_neighbors=5, metric='manhattan')
 model_minkowski = KNeighborsClassifier(n_neighbors=5, metric='minkowski', p=3)
 
 # Compare
-for name, model in [('Euclidean', model_euclidean), 
+for name, model in [('Euclidean', model_euclidean),
                     ('Manhattan', model_manhattan),
                     ('Minkowski', model_minkowski)]:
     model.fit(X_train, y_train)
@@ -245,7 +245,7 @@ import matplotlib.pyplot as plt
 from sklearn.datasets import make_classification
 
 # Generate 2D data for visualization
-X, y = make_classification(n_samples=100, n_features=2, 
+X, y = make_classification(n_samples=100, n_features=2,
                           n_redundant=0, n_informative=2,
                           random_state=42, n_clusters_per_class=1)
 
@@ -267,7 +267,7 @@ Z = Z.reshape(xx.shape)
 # Plot
 plt.figure(figsize=(10, 6))
 plt.contourf(xx, yy, Z, alpha=0.3, cmap='coolwarm')
-plt.scatter(X[:, 0], X[:, 1], c=y, cmap='coolwarm', 
+plt.scatter(X[:, 0], X[:, 1], c=y, cmap='coolwarm',
             edgecolors='black', s=50)
 plt.xlabel('Feature 1')
 plt.ylabel('Feature 2')

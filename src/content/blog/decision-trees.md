@@ -54,7 +54,7 @@ y_pred = model.predict(X_test)
 
 print(f"Accuracy: {accuracy_score(y_test, y_pred):.3f}")
 print("\nClassification Report:")
-print(classification_report(y_test, y_pred, 
+print(classification_report(y_test, y_pred,
                            target_names=iris.target_names))
 ```
 
@@ -65,7 +65,7 @@ from sklearn.tree import plot_tree
 import matplotlib.pyplot as plt
 
 plt.figure(figsize=(20, 10))
-plot_tree(model, 
+plot_tree(model,
           feature_names=iris.feature_names,
           class_names=iris.target_names,
           filled=True,

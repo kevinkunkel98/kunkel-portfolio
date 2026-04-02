@@ -33,7 +33,7 @@ from sklearn.model_selection import train_test_split
 import numpy as np
 
 # Generate sample data
-X, y = make_classification(n_samples=100, n_features=2, 
+X, y = make_classification(n_samples=100, n_features=2,
                           n_redundant=0, n_informative=2,
                           random_state=42, n_clusters_per_class=1)
 
@@ -68,22 +68,22 @@ def plot_svm_decision_boundary(model, X, y):
     y_min, y_max = X[:, 1].min() - 1, X[:, 1].max() + 1
     xx, yy = np.meshgrid(np.arange(x_min, x_max, h),
                          np.arange(y_min, y_max, h))
-    
+
     # Predict
     Z = model.predict(np.c_[xx.ravel(), yy.ravel()])
     Z = Z.reshape(xx.shape)
-    
+
     # Plot
     plt.contourf(xx, yy, Z, alpha=0.3, cmap='coolwarm')
-    plt.scatter(X[:, 0], X[:, 1], c=y, cmap='coolwarm', 
+    plt.scatter(X[:, 0], X[:, 1], c=y, cmap='coolwarm',
                 edgecolors='black', s=50)
-    
+
     # Plot support vectors
     plt.scatter(model.support_vectors_[:, 0],
                 model.support_vectors_[:, 1],
                 s=200, facecolors='none', edgecolors='green',
                 linewidths=2, label='Support Vectors')
-    
+
     plt.xlabel('Feature 1')
     plt.ylabel('Feature 2')
     plt.legend()
@@ -180,7 +180,7 @@ param_grid = {
 }
 
 # Grid search
-grid_search = GridSearchCV(SVC(), param_grid, cv=5, 
+grid_search = GridSearchCV(SVC(), param_grid, cv=5,
                           scoring='accuracy', n_jobs=-1)
 grid_search.fit(X_train, y_train)
 

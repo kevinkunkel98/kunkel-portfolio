@@ -107,14 +107,14 @@ y_pred = model.predict(X_test)
 
 # Create confusion matrix
 cm = confusion_matrix(y_test, y_pred)
-disp = ConfusionMatrixDisplay(confusion_matrix=cm, 
+disp = ConfusionMatrixDisplay(confusion_matrix=cm,
                                display_labels=['Not Spam', 'Spam'])
 disp.plot()
 plt.title('Confusion Matrix')
 plt.show()
 
 # Detailed classification report
-print(classification_report(y_test, y_pred, 
+print(classification_report(y_test, y_pred,
                            target_names=['Not Spam', 'Spam']))
 ```
 
@@ -126,7 +126,7 @@ feature_names = vectorizer.get_feature_names_out()
 coefficients = model.coef_[0]
 
 # Sort by importance
-feature_importance = sorted(zip(coefficients, feature_names), 
+feature_importance = sorted(zip(coefficients, feature_names),
                            reverse=True)
 
 print("Top spam indicators:")
@@ -189,7 +189,7 @@ param_grid = {
 }
 
 # Grid search
-grid_search = GridSearchCV(LogisticRegression(max_iter=1000), 
+grid_search = GridSearchCV(LogisticRegression(max_iter=1000),
                           param_grid, cv=5, scoring='accuracy')
 grid_search.fit(X_train, y_train)
 
