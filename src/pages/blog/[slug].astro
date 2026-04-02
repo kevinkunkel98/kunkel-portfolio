@@ -94,3 +94,59 @@ function getReadingTime(content: string) {
 
   </div>
 </BaseLayout>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const proseEl = document.querySelector('.prose');
+    if (!proseEl) return;
+
+    proseEl.querySelectorAll('pre').forEach((pre) => {
+      const codeEl = pre.querySelector('code');
+      const langClass = codeEl
+        ? Array.from(codeEl.classList).find(c => c.startsWith('language-'))
+        : null;
+      const lang = langClass ? langClass.replace('language-', '') : 'code';
+
+      const header = document.createElement('div');
+      header.className = 'code-terminal-header';
+      header.innerHTML = `
+        <span class="code-dot code-dot-red"></span>
+        <span class="code-dot code-dot-yellow"></span>
+        <span class="code-dot code-dot-green"></span>
+        <span class="code-filename">script.${lang}</span>
+        <button class="copy-btn" type="button">Copy</button>
+      `;
+
+      const wrapper = document.createElement('div');
+      wrapper.className = 'code-terminal-card';
+      pre.parentNode?.insertBefore(wrapper, pre);
+      wrapper.appendChild(header);
+      wrapper.appendChild(pre);
+
+      const copyBtn = header.querySelector('.copy-btn') as HTMLButtonElement | null;
+      copyBtn?.addEventListener('click', async () => {
+        const text = (pre as HTMLElement).innerText;
+        try {
+          await navigator.clipboard.writeText(text);
+        } catch {
+          const ta = document.createElement('textarea');
+          ta.value = text;
+          ta.style.position = 'fixed';
+          ta.style.opacity = '0';
+          document.body.appendChild(ta);
+          ta.select();
+          document.execCommand('copy');
+          document.body.removeChild(ta);
+        }
+        if (copyBtn) {
+          copyBtn.textContent = 'Copied!';
+          copyBtn.classList.add('copied');
+          setTimeout(() => {
+            copyBtn.textContent = 'Copy';
+            copyBtn.classList.remove('copied');
+          }, 2000);
+        }
+      });
+    });
+  });
+</script>
