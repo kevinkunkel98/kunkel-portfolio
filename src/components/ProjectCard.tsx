@@ -1,141 +1,272 @@
-import React from 'react';
+import { useRef } from 'react';
+import type { Project } from '../data/projects';
 
-interface Project {
-  title: string;
-  description: string;
-  technologies: string[];
-  category: 'ML' | 'WebDev';
-  githubUrl?: string;
-  liveUrl?: string;
-  imageUrl?: string;
+// Slugs that exist on skillicons.dev — everything else is skipped silently
+const SKILL_ICON_SLUGS = new Set([
+  'python', 'pytorch', 'fastapi', 'react', 'docker',
+  'nodejs', 'express', 'mongodb', 'flask', 'astro',
+  'tailwind', 'opencv', 'sklearn',
+]);
+
+// Normalize project tech strings to skillicons slugs
+function toSkillSlug(tech: string): string | null {
+  const normalized = tech.toLowerCase().replace(/[^a-z0-9]/g, '');
+  if (normalized === 'scikitlearn' || normalized === 'sklearn') return 'sklearn';
+  if (normalized === 'nodejs' || normalized === 'node') return 'nodejs';
+  if (SKILL_ICON_SLUGS.has(normalized)) return normalized;
+  return null;
 }
 
-interface ProjectCardProps {
+interface Props {
   project: Project;
+  onExpand: (project: Project, el: HTMLElement) => void;
 }
 
-const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
-  const filename = project.category === 'ML'
-    ? project.title.toLowerCase().replace(/\s+/g, '-') + '.py'
-    : project.title.toLowerCase().replace(/\s+/g, '-') + '.tsx';
+export default function ProjectCard({ project, onExpand }: Props) {
+  const cardRef = useRef<HTMLDivElement>(null);
+
+  const icons = project.technologies
+    .map(toSkillSlug)
+    .filter((s): s is string => s !== null)
+    .slice(0, 4);
+
+  const isML = project.category === 'ML';
+  const badgeColor = isML ? 'var(--accent-violet)' : 'var(--accent-magenta)';
+  const badgeBg = isML ? 'rgba(124,58,237,0.15)' : 'rgba(192,38,211,0.15)';
+  const badgeBorder = isML ? 'rgba(124,58,237,0.4)' : 'rgba(192,38,211,0.4)';
+
+  // First sentence of description for the hover excerpt
+  const excerpt = project.description.split(/[.!?]/)[0] + '.';
 
   return (
     <div
-      style={{
-        border: '1px solid var(--border)',
-        borderRadius: '6px',
-        overflow: 'hidden',
-        background: 'var(--bg-surface)',
-        display: 'flex',
-        flexDirection: 'column',
-        height: '100%',
-        transition: 'border-color 0.2s',
-        fontFamily: 'inherit',
-      }}
-      onMouseEnter={e => (e.currentTarget.style.borderColor = 'var(--accent-violet)')}
-      onMouseLeave={e => (e.currentTarget.style.borderColor = 'var(--border)')}
+      ref={cardRef}
+      className="proj-card"
+      role="button"
+      aria-label={`Expand ${project.title}`}
+      tabIndex={0}
+      onClick={() => onExpand(project, cardRef.current!)}
+      onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); onExpand(project, cardRef.current!); } }}
     >
-      {/* Terminal header */}
-      <div style={{
-        background: 'var(--bg-elevated)',
-        padding: '6px 12px',
-        display: 'flex',
-        alignItems: 'center',
-        gap: '8px',
-        borderBottom: '1px solid var(--border)',
-        flexShrink: 0,
-      }}>
-        <div style={{ display: 'flex', gap: '5px' }}>
-          <span style={{ width: 10, height: 10, borderRadius: '50%', background: '#ff5f57', display: 'inline-block' }} />
-          <span style={{ width: 10, height: 10, borderRadius: '50%', background: '#ffbd2e', display: 'inline-block' }} />
-          <span style={{ width: 10, height: 10, borderRadius: '50%', background: '#28ca41', display: 'inline-block' }} />
-        </div>
-        <span style={{ fontSize: '0.75rem', color: 'var(--text-muted)' }}>{filename}</span>
-      </div>
+      {/* Image / gradient area */}
+      <div className="proj-card-image">
+        {project.imageUrl ? (
+          <img src={project.imageUrl} alt="" className="proj-card-img" />
+        ) : (
+          <div className="proj-card-gradient">
+            <span className="proj-card-glyph">{'{ }'}</span>
+          </div>
+        )}
 
-      {/* Project image */}
-      {project.imageUrl && (
-        <div style={{ position: 'relative', height: '160px', overflow: 'hidden', flexShrink: 0 }}>
-          <img
-            src={project.imageUrl}
-            alt={project.title}
-            style={{ width: '100%', height: '100%', objectFit: 'cover' }}
-          />
-          <div style={{
-            position: 'absolute', top: 8, right: 8,
-            background: 'var(--accent-violet)',
-            color: '#fff',
-            fontSize: '0.7rem',
-            fontWeight: 'bold',
-            padding: '2px 8px',
-            borderRadius: '3px',
-          }}>
-            {project.category}
+        {/* Category badge */}
+        <span
+          className="proj-card-badge"
+          style={{ color: badgeColor, background: badgeBg, border: `1px solid ${badgeBorder}` }}
+        >
+          {project.category}
+        </span>
+
+        {/* Hover overlay */}
+        <div className="proj-card-overlay">
+          <p className="proj-card-excerpt">{excerpt}</p>
+          <div className="proj-card-overlay-links">
+            {project.githubUrl && (
+              <a
+                href={project.githubUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={(e) => e.stopPropagation()}
+                className="proj-card-link"
+              >
+                GitHub
+              </a>
+            )}
+            <button className="proj-card-link" onClick={(e) => { e.stopPropagation(); onExpand(project, cardRef.current!); }}>
+              Expand ↗
+            </button>
           </div>
         </div>
-      )}
 
-      {/* Content */}
-      <div style={{ padding: '16px', display: 'flex', flexDirection: 'column', flexGrow: 1 }}>
-        <h3 style={{ fontSize: '1rem', fontWeight: 'bold', color: 'var(--text-primary)', marginBottom: '8px' }}>
-          {project.title}
-        </h3>
-        <p style={{ fontSize: '0.8125rem', color: 'var(--text-secondary)', lineHeight: 1.6, marginBottom: '12px', flexGrow: 1 }}>
-          {project.description}
-        </p>
+        <span className="proj-card-expand-hint">click to expand</span>
+      </div>
 
-        {/* Tech tags */}
-        <div style={{ display: 'flex', flexWrap: 'wrap', gap: '6px', marginBottom: '14px' }}>
-          {project.technologies.map((tech, i) => (
-            <span key={i} style={{
-              fontSize: '0.7rem',
-              padding: '2px 8px',
-              background: 'var(--bg-elevated)',
-              border: '1px solid var(--border)',
-              color: 'var(--accent-magenta)',
-              borderRadius: '3px',
-            }}>
-              {tech}
-            </span>
+      {/* Footer */}
+      <div className="proj-card-footer">
+        <span className="proj-card-title">{project.title}</span>
+        <div className="proj-card-icons">
+          {icons.map((slug) => (
+            <img
+              key={slug}
+              src={`https://skillicons.dev/icons?i=${slug}`}
+              alt={slug}
+              width={16}
+              height={16}
+              className="proj-card-icon"
+            />
           ))}
         </div>
-
-        {/* Links */}
-        <div style={{ display: 'flex', gap: '16px', marginTop: 'auto' }}>
-          {project.githubUrl && (
-            <a
-              href={project.githubUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              style={{ fontSize: '0.8125rem', color: 'var(--text-muted)', textDecoration: 'none', display: 'flex', alignItems: 'center', gap: '6px' }}
-              onMouseEnter={e => ((e.currentTarget as HTMLAnchorElement).style.color = 'var(--accent-magenta)')}
-              onMouseLeave={e => ((e.currentTarget as HTMLAnchorElement).style.color = 'var(--text-muted)')}
-            >
-              <svg width="14" height="14" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
-              </svg>
-              Code
-            </a>
-          )}
-          {project.liveUrl && (
-            <a
-              href={project.liveUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              style={{ fontSize: '0.8125rem', color: 'var(--text-muted)', textDecoration: 'none', display: 'flex', alignItems: 'center', gap: '6px' }}
-              onMouseEnter={e => ((e.currentTarget as HTMLAnchorElement).style.color = 'var(--accent-magenta)')}
-              onMouseLeave={e => ((e.currentTarget as HTMLAnchorElement).style.color = 'var(--text-muted)')}
-            >
-              <svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-              </svg>
-              Live
-            </a>
-          )}
-        </div>
       </div>
+
+      <style>{`
+        .proj-card {
+          background: var(--bg-surface);
+          border: 1px solid var(--border);
+          border-radius: 10px;
+          overflow: hidden;
+          cursor: pointer;
+          position: relative;
+          transition: border-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+          font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Monaco, Consolas, monospace;
+          display: flex;
+          flex-direction: column;
+        }
+        .proj-card:hover,
+        .proj-card:focus-visible {
+          border-color: var(--accent-violet);
+          transform: translateY(-3px);
+          box-shadow: 0 8px 32px rgba(124,58,237,0.25);
+          outline: none;
+        }
+        .proj-card:focus-visible {
+          outline: 2px solid var(--accent-violet);
+          outline-offset: 2px;
+        }
+
+        /* Image area */
+        .proj-card-image {
+          position: relative;
+          height: 160px;
+          overflow: hidden;
+          background: #0a0a12;
+          flex-shrink: 0;
+        }
+        .proj-card-img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          opacity: 0.7;
+          transition: opacity 0.3s ease, transform 0.3s ease;
+          display: block;
+        }
+        .proj-card:hover .proj-card-img {
+          opacity: 0.3;
+          transform: scale(1.04);
+        }
+        .proj-card-gradient {
+          width: 100%;
+          height: 100%;
+          background: linear-gradient(135deg, #1a0a2e 0%, #0d0d1f 60%, #1a0a15 100%);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+        .proj-card-glyph {
+          font-size: 2rem;
+          color: var(--text-primary);
+          opacity: 0.12;
+        }
+
+        /* Badge */
+        .proj-card-badge {
+          position: absolute;
+          top: 10px;
+          left: 10px;
+          font-size: 9px;
+          letter-spacing: 2px;
+          text-transform: uppercase;
+          border-radius: 3px;
+          padding: 2px 7px;
+          font-family: inherit;
+        }
+
+        /* Hover overlay */
+        .proj-card-overlay {
+          position: absolute;
+          inset: 0;
+          background: rgba(10,10,18,0.92);
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          padding: 16px;
+          opacity: 0;
+          transition: opacity 0.25s ease;
+        }
+        .proj-card:hover .proj-card-overlay {
+          opacity: 1;
+        }
+        .proj-card-excerpt {
+          font-size: 11px;
+          color: #ccc;
+          line-height: 1.6;
+          margin: 0 0 12px 0;
+        }
+        .proj-card-overlay-links {
+          display: flex;
+          gap: 8px;
+          flex-wrap: wrap;
+        }
+        .proj-card-link {
+          font-size: 10px;
+          padding: 4px 10px;
+          border-radius: 4px;
+          border: 1px solid var(--accent-violet);
+          color: var(--accent-violet);
+          text-decoration: none;
+          background: transparent;
+          cursor: pointer;
+          font-family: inherit;
+          transition: background 0.15s;
+        }
+        .proj-card-link:hover {
+          background: rgba(124,58,237,0.2);
+        }
+
+        /* Expand hint */
+        .proj-card-expand-hint {
+          position: absolute;
+          bottom: 8px;
+          right: 10px;
+          font-size: 9px;
+          color: var(--accent-violet);
+          opacity: 0;
+          transition: opacity 0.25s ease;
+          letter-spacing: 1px;
+          text-transform: uppercase;
+          pointer-events: none;
+        }
+        .proj-card:hover .proj-card-expand-hint {
+          opacity: 1;
+        }
+
+        /* Footer */
+        .proj-card-footer {
+          padding: 10px 14px;
+          border-top: 1px solid var(--border);
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          gap: 8px;
+          flex-shrink: 0;
+        }
+        .proj-card-title {
+          font-size: 12px;
+          color: var(--text-primary);
+          font-weight: 600;
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          min-width: 0;
+        }
+        .proj-card-icons {
+          display: flex;
+          gap: 4px;
+          flex-shrink: 0;
+        }
+        .proj-card-icon {
+          border-radius: 2px;
+          display: block;
+        }
+      `}</style>
     </div>
   );
-};
-
-export default ProjectCard;
+}
