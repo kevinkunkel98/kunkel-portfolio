@@ -148,7 +148,7 @@ export default function LossLandscape() {
         const tailT = Math.max(0, headT - 0.18);
 
         // Trail — interpolated samples from tail to head
-        for (let s = 0; s <= TRAIL; s++) {
+        for (let s = 0; s < TRAIL; s++) {
           const t0 = tailT + (headT - tailT) * (s / TRAIL);
           const t1 = tailT + (headT - tailT) * (Math.min(s + 1, TRAIL) / TRAIL);
           const pa = isoProject(samplePath(path, t0), cx, cy, sx, sy);
