@@ -17,11 +17,19 @@ import { allProjects } from '../data/projects';
   url="/"
 >
 
+  <!-- Hidden static form for Netlify Forms crawler -->
+  <form name="contact" data-netlify="true" netlify-honeypot="bot-field" hidden>
+    <input type="text" name="name" />
+    <input type="email" name="email" />
+    <textarea name="message"></textarea>
+    <input name="bot-field" />
+  </form>
+
   <!-- ═══════════════════════════════════════ HERO ═══════════════════════════════════════ -->
   <section id="hero" style="position: relative; min-height: 100vh; display: flex; align-items: center; justify-content: center; overflow: hidden;">
     <LossLandscape client:load />
     <div style="position: relative; z-index: 1; text-align: center; padding: 2rem 1rem; max-width: 56rem; width: 100%;">
-      <div style="font-size: 0.75rem; letter-spacing: 0.2em; color: var(--text-muted); text-transform: uppercase; margin-bottom: 1rem;">
+      <div style="font-size: 1.1rem; letter-spacing: 0.2em; color: var(--text-muted); text-transform: uppercase; margin-bottom: 1rem;">
         Kevin Kunkel
       </div>
       <h1 style="font-size: clamp(2.5rem, 6vw, 4.5rem); font-weight: 700; color: var(--text-primary); line-height: 1.1; margin: 0 0 1rem 0;">
@@ -270,7 +278,7 @@ import { allProjects } from '../data/projects';
 
 <style>
   .section-heading {
-    font-size: clamp(1rem, 3vw, 1.5rem);
+    font-size: clamp(1.5rem, 4vw, 2.5rem);
     color: var(--accent-magenta);
     font-weight: 600;
     text-align: center;

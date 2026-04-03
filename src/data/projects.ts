@@ -71,7 +71,7 @@ export const allProjects: Project[] = [
     technologies: ["python", "opencv", "scikit-learn", "random-forest", "yolov8"],
     category: "ML",
     githubUrl: "https://github.com/thehappyson/ca-friend-foe-analysis",
-    imageUrl: "/assets/terminal2.jpg"
+    imageUrl: "/assets/friendfoe.png"
   },
   {
     title: "Linux Dev Blog and Portfolio Website",

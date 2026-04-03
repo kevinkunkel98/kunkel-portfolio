@@ -163,24 +163,28 @@ export default function SkillGraph() {
 
       // 3. Center gravity
       for (let i = 0; i < nodes.length; i++) {
-        fx[i] += K_GRAVITY * 0.12 * (cx - nodes[i].x);
-        fy[i] += K_GRAVITY * 3.0 * (cy - nodes[i].y);
+        fx[i] += K_GRAVITY * 0.4 * (cx - nodes[i].x);
+        fy[i] += K_GRAVITY * 1.8 * (cy - nodes[i].y);
       }
 
       // 4. Soft boundary walls
       for (let i = 0; i < nodes.length; i++) {
-        if (nodes[i].x < WALL_MARGIN) fx[i] += (WALL_MARGIN - nodes[i].x) * 0.5;
-        if (nodes[i].x > w - WALL_MARGIN) fx[i] -= (nodes[i].x - (w - WALL_MARGIN)) * 0.5;
-        if (nodes[i].y < WALL_MARGIN) fy[i] += (WALL_MARGIN - nodes[i].y) * 0.5;
-        if (nodes[i].y > h - WALL_MARGIN) fy[i] -= (nodes[i].y - (h - WALL_MARGIN)) * 0.5;
+        if (nodes[i].x < WALL_MARGIN) fx[i] += (WALL_MARGIN - nodes[i].x) * 1.5;
+        if (nodes[i].x > w - WALL_MARGIN) fx[i] -= (nodes[i].x - (w - WALL_MARGIN)) * 1.5;
+        if (nodes[i].y < WALL_MARGIN) fy[i] += (WALL_MARGIN - nodes[i].y) * 1.5;
+        if (nodes[i].y > h - WALL_MARGIN) fy[i] -= (nodes[i].y - (h - WALL_MARGIN)) * 1.5;
       }
 
       // Integrate + damp
+      const half = 32; // half of max icon size (64px)
       for (let i = 0; i < nodes.length; i++) {
         nodes[i].vx = (nodes[i].vx + fx[i]) * DAMPING;
         nodes[i].vy = (nodes[i].vy + fy[i]) * DAMPING;
         nodes[i].x += nodes[i].vx;
         nodes[i].y += nodes[i].vy;
+        // Hard clamp — nodes can never leave the visible area
+        nodes[i].x = Math.max(half, Math.min(w - half, nodes[i].x));
+        nodes[i].y = Math.max(half, Math.min(h - half, nodes[i].y));
       }
     }
 
