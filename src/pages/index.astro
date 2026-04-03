@@ -114,169 +114,9 @@ const featuredProjects = allProjects.slice(0, 3);
     </div>
   </section>
 
-  <!-- CV Section -->
-  <section style="padding: 3rem 1rem;">
-    <div style="max-width: 72rem; margin: 0 auto;">
-      <TerminalCard filename="resume.json">
-        <div style="padding: 1rem 1.5rem; font-family: inherit;">
-
-          <!-- Toggle command bar -->
-          <div
-            id="cv-toggle-command"
-            style="background: color-mix(in srgb, var(--bg-elevated) 60%, transparent); border-radius: 4px; padding: 0.75rem 1rem; cursor: pointer; margin-bottom: 0.5rem; display: flex; align-items: center; justify-content: space-between; transition: background 0.2s ease;"
-          >
-            <div style="display: flex; align-items: center; gap: 0.5rem; font-size: 0.9rem;">
-              <span style="color: var(--accent-violet);">$</span>
-              <span style="color: #28ca41;"> cat ./resume.json | jq '.'</span>
-              <span id="cv-toggle-hint" style="color: var(--text-muted); font-size: 0.75rem; opacity: 0.6;"># Toggle CV</span>
-            </div>
-            <span style="width: 2px; height: 1rem; background: #28ca41; display: inline-block; animation: pulse 1s infinite;"></span>
-          </div>
-
-          <!-- CV Content (hidden by default) -->
-          <div id="cv-content" class="hidden" style="opacity: 0; max-height: 0; overflow: hidden; transition: opacity 0.4s ease, max-height 0.5s ease;">
-            <div style="color: var(--text-secondary); font-size: 0.85rem; padding-top: 1rem; overflow-x: auto;">
-
-              <div style="margin-bottom: 0.75rem;">
-                <span style="color: var(--accent-violet);">"name":</span> <span style="color: #28ca41;">"Kevin Kunkel"</span>,
-              </div>
-
-              <div style="margin-bottom: 0.75rem;">
-                <span style="color: var(--accent-violet);">"role":</span> <span style="color: #28ca41;">"AI Engineer &amp; Full-Stack Developer"</span>,
-              </div>
-
-              <div style="margin-bottom: 1rem;">
-                <span style="color: var(--accent-violet);">"experience":</span> [
-                <div style="margin-left: 1.5rem; margin-top: 0.5rem;">
-
-                  <div style="margin-bottom: 0.75rem;">
-                    &#123;
-                    <div style="margin-left: 1.5rem;">
-                      <span style="color: var(--accent-violet);">"position":</span> <span style="color: #28ca41;">"AI Engineer"</span>,<br/>
-                      <span style="color: var(--accent-violet);">"company":</span> <span style="color: #28ca41;">"Exxeta AG"</span>,<br/>
-                      <span style="color: var(--accent-violet);">"location":</span> <span style="color: #28ca41;">"Leipzig"</span>,<br/>
-                      <span style="color: var(--accent-violet);">"period":</span> <span style="color: #28ca41;">"2025-present"</span>,<br/>
-                      <span style="color: var(--accent-violet);">"stack":</span> [<span style="color: var(--accent-magenta);">"FastAPI", "Openwebui", "LiteLLM", "Keycloak", "Kubernetes"</span>]
-                    </div>
-                    &#125;,
-                  </div>
-
-                  <div style="margin-bottom: 0.75rem;">
-                    &#123;
-                    <div style="margin-left: 1.5rem;">
-                      <span style="color: var(--accent-violet);">"position":</span> <span style="color: #28ca41;">"Fullstack Developer"</span>,<br/>
-                      <span style="color: var(--accent-violet);">"company":</span> <span style="color: #28ca41;">"Exxeta AG"</span>,<br/>
-                      <span style="color: var(--accent-violet);">"location":</span> <span style="color: #28ca41;">"Leipzig"</span>,<br/>
-                      <span style="color: var(--accent-violet);">"period":</span> <span style="color: #28ca41;">"2024-2025"</span>,<br/>
-                      <span style="color: var(--accent-violet);">"stack":</span> [<span style="color: var(--accent-magenta);">"Spring Boot", "FastAPI", "React", "Docker", "AWS"</span>]
-                    </div>
-                    &#125;,
-                  </div>
-
-                  <div style="margin-bottom: 0.75rem;">
-                    &#123;
-                    <div style="margin-left: 1.5rem;">
-                      <span style="color: var(--accent-violet);">"position":</span> <span style="color: #28ca41;">"Junior Consultant"</span>,<br/>
-                      <span style="color: var(--accent-violet);">"company":</span> <span style="color: #28ca41;">"M&amp;L AG"</span>,<br/>
-                      <span style="color: var(--accent-violet);">"location":</span> <span style="color: #28ca41;">"Frankfurt"</span>,<br/>
-                      <span style="color: var(--accent-violet);">"period":</span> <span style="color: #28ca41;">"2020-2021"</span>,<br/>
-                      <span style="color: var(--accent-violet);">"stack":</span> [<span style="color: var(--accent-magenta);">"Python", "GIS"</span>]
-                    </div>
-                    &#125;,
-                  </div>
-
-                  <div style="margin-bottom: 0.75rem;">
-                    &#123;
-                    <div style="margin-left: 1.5rem;">
-                      <span style="color: var(--accent-violet);">"position":</span> <span style="color: #28ca41;">"Fullstack Developer"</span>,<br/>
-                      <span style="color: var(--accent-violet);">"company":</span> <span style="color: #28ca41;">"M&amp;L AG"</span>,<br/>
-                      <span style="color: var(--accent-violet);">"location":</span> <span style="color: #28ca41;">"Frankfurt"</span>,<br/>
-                      <span style="color: var(--accent-violet);">"period":</span> <span style="color: #28ca41;">"2017-2019"</span>,<br/>
-                      <span style="color: var(--accent-violet);">"stack":</span> [<span style="color: var(--accent-magenta);">"Spring Boot", "Bootstrap", "Docker", "MySQL"</span>]
-                    </div>
-                    &#125;
-                  </div>
-
-                </div>
-                ],
-              </div>
-
-              <div style="margin-bottom: 1rem;">
-                <span style="color: var(--accent-violet);">"skills":</span> &#123;
-                <div style="margin-left: 1.5rem;">
-                  <span style="color: var(--accent-violet);">"languages":</span> [<span style="color: var(--accent-magenta);">"Python", "JavaScript", "TypeScript", "Java"</span>],<br/>
-                  <span style="color: var(--accent-violet);">"ml_frameworks":</span> [<span style="color: var(--accent-magenta);">"PyTorch", "TensorFlow", "Scikit-learn", "Transformers"</span>],<br/>
-                  <span style="color: var(--accent-violet);">"web_tech":</span> [<span style="color: var(--accent-magenta);">"React", "Next.js", "Node.js", "Express"</span>],<br/>
-                  <span style="color: var(--accent-violet);">"databases":</span> [<span style="color: var(--accent-magenta);">"PostgreSQL", "MongoDB", "PGVector", "InfluxDB"</span>],<br/>
-                  <span style="color: var(--accent-violet);">"devops":</span> [<span style="color: var(--accent-magenta);">"Docker", "Kubernetes", "AWS", "GitHub Actions"</span>]
-                </div>
-                &#125;,
-              </div>
-
-              <div style="margin-bottom: 1rem;">
-                <span style="color: var(--accent-violet);">"education":</span> [
-                <div style="margin-left: 1.5rem;">
-
-                  <div style="margin-bottom: 0.75rem;">
-                    &#123;
-                    <div style="margin-left: 1.5rem;">
-                      <span style="color: var(--accent-violet);">"degree":</span> <span style="color: #28ca41;">"M.Sc. Computer Science"</span>,<br/>
-                      <span style="color: var(--accent-violet);">"university":</span> <span style="color: #28ca41;">"University of Leipzig"</span>,<br/>
-                      <span style="color: var(--accent-violet);">"years":</span> <span style="color: #28ca41;">"2021 - today"</span>
-                    </div>
-                    &#125;,
-                  </div>
-
-                  <div style="margin-bottom: 0.5rem;">
-                    &#123;
-                    <div style="margin-left: 1.5rem;">
-                      <span style="color: var(--accent-violet);">"degree":</span> <span style="color: #28ca41;">"B.Sc. Business Informatics"</span>,<br/>
-                      <span style="color: var(--accent-violet);">"university":</span> <span style="color: #28ca41;">"Berufsakademie Rhein-Main"</span>,<br/>
-                      <span style="color: var(--accent-violet);">"years":</span> <span style="color: #28ca41;">"2017-2020"</span>
-                    </div>
-                    &#125;
-                  </div>
-
-                </div>
-                ]
-              </div>
-
-              <!-- Quick command links -->
-              <div style="border-top: 1px solid var(--border); padding-top: 1rem; margin-top: 1rem;">
-                <div style="color: var(--text-muted); font-size: 0.75rem; margin-bottom: 0.5rem;">Quick commands:</div>
-                <div style="display: flex; flex-wrap: wrap; gap: 1rem; font-size: 0.85rem;">
-                  <a href="/projects" style="color: #28ca41; text-decoration: none;">
-                    <span style="color: var(--accent-violet);">$</span> ./view-projects
-                  </a>
-                  <a href="/contact" style="color: #28ca41; text-decoration: none;">
-                    <span style="color: var(--accent-violet);">$</span> ./contact-kevin
-                  </a>
-                  <a href="/blog" style="color: #28ca41; text-decoration: none;">
-                    <span style="color: var(--accent-violet);">$</span> ./read-thoughts
-                  </a>
-                </div>
-              </div>
-
-            </div>
-          </div>
-
-        </div>
-      </TerminalCard>
-    </div>
-  </section>
-
   <!-- Skills Section -->
   <section style="padding: 3rem 1rem;">
     <div style="max-width: 80rem; margin: 0 auto;">
-
-      <div style="text-align: center; margin-bottom: 2.5rem;">
-        <div style="font-family: inherit; font-size: clamp(1.25rem, 3vw, 2rem); color: #28ca41; margin-bottom: 0.5rem;">
-          // cat /dev/skills
-        </div>
-        <div style="color: var(--text-muted); font-size: 0.8rem;">
-          # Tools I actually use (and don't just put on my resume)
-        </div>
-      </div>
 
       <div class="skills-grid">
 
@@ -322,86 +162,34 @@ const featuredProjects = allProjects.slice(0, 3);
     </div>
   </section>
 
-  <!-- FAQ Section -->
+  <!-- Blog Teaser -->
   <section style="padding: 3rem 1rem;">
-    <div style="max-width: 56rem; margin: 0 auto;">
-
-      <div style="text-align: center; margin-bottom: 2.5rem;">
-        <div style="font-family: inherit; font-size: clamp(1.25rem, 3vw, 2rem); color: #28ca41; margin-bottom: 0.5rem;">
-          // cat ./faq.md
-        </div>
-        <div style="color: var(--text-muted); font-size: 0.8rem;">
-          # Frequently asked questions
-        </div>
-      </div>
-
-      <TerminalCard filename="faq.md">
-        <div style="padding: 1.5rem 2rem; font-family: inherit;">
-          <div style="display: flex; flex-direction: column; gap: 2rem;">
-
-            <div style="border-left: 2px solid var(--accent-violet); padding-left: 1rem;">
-              <div style="color: var(--accent-violet); font-size: 1rem; margin-bottom: 0.5rem; font-weight: 600;">
-                ## What got you into Computer Science?
-              </div>
-              <p style="color: var(--text-secondary); line-height: 1.7; margin: 0;">
-                Most of my closest friends went into media and art. They wondered why someone with creative cravings like me went into tech. But honestly? I feel like CS gives you the ultimate ability to express yourself philosophically and artistically while also solving a multitude of interesting problems!
-              </p>
-            </div>
-
-            <div style="border-left: 2px solid var(--accent-violet); padding-left: 1rem;">
-              <div style="color: var(--accent-violet); font-size: 1rem; margin-bottom: 0.5rem; font-weight: 600;">
-                ## What kind of projects do you work on?
-              </div>
-              <p style="color: var(--text-secondary); line-height: 1.7; margin: 0;">
-                Both ML projects (computer vision, NLP, data analysis) and web development (fullstack applications, APIs, frontend interfaces). Particularly interested in projects that combine both domains. I also try to use ML wherever possible to lift the heavy weight from LLMs.
-              </p>
-            </div>
-
-            <div style="border-left: 2px solid var(--accent-violet); padding-left: 1rem;">
-              <div style="color: var(--accent-violet); font-size: 1rem; margin-bottom: 0.5rem; font-weight: 600;">
-                ## Do we even need traditional ML in 2025?
-              </div>
-              <p style="color: var(--text-secondary); line-height: 1.7; margin: 0;">
-                Absolutely! While AI, especially LLMs, have taken the spotlight, classical ML techniques remain invaluable for structured data, time-series analysis, and scenarios where interpretability is crucial. A balanced approach often yields the best results. For a lot of tasks it's a matter of "sledgehammer vs scalpel".
-              </p>
-            </div>
-
+    <div style="max-width: 80rem; margin: 0 auto;">
+      <TerminalCard filename="latest_posts.md">
+        <div style="padding: 1.5rem;">
+          <div style="display: flex; flex-direction: column;">
+            {posts.map((post, i) => (
+              <a
+                href={`/blog/${post.slug}`}
+                style={`display: flex; align-items: center; justify-content: space-between; padding: 0.875rem 0; text-decoration: none; ${i < posts.length - 1 ? 'border-bottom: 1px solid var(--border);' : ''}`}
+              >
+                <div>
+                  <div style="font-size: 0.9rem; color: var(--accent-violet); margin-bottom: 0.2rem;">{post.data.title}</div>
+                  <div style="font-size: 0.75rem; color: var(--text-muted);">{post.data.description}</div>
+                </div>
+                <span style="color: var(--text-muted); font-size: 0.85rem; flex-shrink: 0; margin-left: 1rem;">→</span>
+              </a>
+            ))}
+          </div>
+          <div style="margin-top: 1.25rem; text-align: right;">
+            <a href="/blog" style="font-size: 0.85rem; color: var(--text-muted); text-decoration: none;">
+              <span style="color: var(--accent-violet);">$</span> view all posts →
+            </a>
           </div>
         </div>
       </TerminalCard>
-
     </div>
   </section>
-
-  <!-- CV toggle script -->
-  <script>
-    const toggleBtn = document.getElementById('cv-toggle-command');
-    const cvContent = document.getElementById('cv-content');
-
-    toggleBtn?.addEventListener('click', () => {
-      if (!cvContent) return;
-
-      if (cvContent.classList.contains('hidden')) {
-        cvContent.classList.remove('hidden');
-        requestAnimationFrame(() => {
-          if (cvContent) {
-            cvContent.style.opacity = '1';
-            cvContent.style.maxHeight = '6000px';
-          }
-        });
-
-        const feedback = document.createElement('span');
-        feedback.style.cssText = 'color: #28ca41; font-size: 0.75rem; margin-left: 0.75rem;';
-        feedback.textContent = '✓ Executing...';
-        toggleBtn.querySelector('div')?.appendChild(feedback);
-        setTimeout(() => feedback.remove(), 1500);
-      } else {
-        cvContent.style.opacity = '0';
-        cvContent.style.maxHeight = '0';
-        setTimeout(() => cvContent?.classList.add('hidden'), 500);
-      }
-    });
-  </script>
 
   <style>
     .skills-grid {
