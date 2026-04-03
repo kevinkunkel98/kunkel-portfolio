@@ -4,10 +4,9 @@ import TerminalCard from '../components/TerminalCard.astro';
 import LossLandscape from '../components/LossLandscape';
 import ExperienceTimeline from '../components/ExperienceTimeline.astro';
 import SkillGraph from '../components/SkillGraph';
-import ProjectCard from '../components/ProjectCard';
 import ContactForm from '../components/ContactForm';
 import ChatWidget from '../components/ChatWidget';
-import { allProjects } from '../data/projects';
+import ProjectsSection from '../components/ProjectsSection';
 ---
 
 <BaseLayout
@@ -228,31 +227,7 @@ import { allProjects } from '../data/projects';
   <section id="projects" style="padding: 5rem 1rem;">
     <div style="max-width: 80rem; margin: 0 auto;">
       <div class="section-heading">// projects</div>
-
-      <!-- Filter buttons -->
-      <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 0.75rem; margin-bottom: 2.5rem; font-family: inherit;" id="project-filters">
-        <button class="filter-btn" data-filter="all"
-          style="border: 1px solid var(--accent-emerald); color: var(--accent-emerald); background: transparent; font-family: inherit; font-size: 0.8125rem; padding: 0.4rem 1rem; border-radius: 3px; cursor: pointer;">
-          <span style="color: var(--text-muted);">./</span>all
-        </button>
-        <button class="filter-btn" data-filter="ML"
-          style="border: 1px solid var(--border); color: var(--text-muted); background: transparent; font-family: inherit; font-size: 0.8125rem; padding: 0.4rem 1rem; border-radius: 3px; cursor: pointer;">
-          <span style="color: var(--text-muted);">./</span>machine_learning
-        </button>
-        <button class="filter-btn" data-filter="WebDev"
-          style="border: 1px solid var(--border); color: var(--text-muted); background: transparent; font-family: inherit; font-size: 0.8125rem; padding: 0.4rem 1rem; border-radius: 3px; cursor: pointer;">
-          <span style="color: var(--text-muted);">./</span>web_development
-        </button>
-      </div>
-
-      <!-- Projects grid -->
-      <div class="projects-grid" id="projects-grid">
-        {allProjects.map((project) => (
-          <div class="project-item" data-category={project.category}>
-            <ProjectCard project={project} client:load />
-          </div>
-        ))}
-      </div>
+      <ProjectsSection client:load />
     </div>
   </section>
 
@@ -306,44 +281,4 @@ import { allProjects } from '../data/projects';
     }
   }
 
-  .projects-grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 1.5rem;
-  }
-  @media (min-width: 768px) {
-    .projects-grid { grid-template-columns: repeat(2, 1fr); }
-  }
-  @media (min-width: 1024px) {
-    .projects-grid { grid-template-columns: repeat(3, 1fr); }
-  }
 </style>
-
-<script>
-  // ── Project filter ──────────────────────────────────────────────────────────
-  document.addEventListener('DOMContentLoaded', () => {
-    const filterBtns = document.querySelectorAll<HTMLElement>('.filter-btn');
-    const projectItems = document.querySelectorAll<HTMLElement>('.project-item');
-
-    filterBtns.forEach(btn => {
-      btn.addEventListener('click', () => {
-        const filter = btn.getAttribute('data-filter');
-
-        filterBtns.forEach(b => {
-          b.style.borderColor = 'var(--border)';
-          b.style.color = 'var(--text-muted)';
-        });
-        btn.style.borderColor = 'var(--accent-emerald)';
-        btn.style.color = 'var(--accent-emerald)';
-
-        projectItems.forEach(item => {
-          if (filter === 'all' || item.getAttribute('data-category') === filter) {
-            item.style.display = 'block';
-          } else {
-            item.style.display = 'none';
-          }
-        });
-      });
-    });
-  });
-</script>
