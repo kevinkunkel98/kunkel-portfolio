@@ -79,7 +79,7 @@ const featuredProjects = allProjects.slice(0, 3);
     <div style="max-width: 80rem; margin: 0 auto;">
       <TerminalCard filename="featured_projects.ts">
         <div style="padding: 1.5rem;">
-          <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem;" class="projects-grid">
+          <div style="display: grid; gap: 1rem;" class="projects-grid">
             {featuredProjects.map((project) => (
               <div style="background: var(--bg-elevated); border: 1px solid var(--border); border-radius: 4px; padding: 1.25rem; display: flex; flex-direction: column; gap: 0.75rem;">
                 <div style="font-size: 0.9rem; font-weight: 600; color: var(--text-primary);">{project.title}</div>
