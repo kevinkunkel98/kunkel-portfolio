@@ -72,7 +72,7 @@ import { allProjects } from '../data/projects';
       <!-- Experience Timeline -->
       <ExperienceTimeline />
 
-      <!-- Education + Skills -->
+      <!-- Education -->
       <div style="margin-bottom: 2rem;">
         <TerminalCard filename="cv.md">
           <div style="padding: 1.5rem;">
@@ -98,37 +98,21 @@ import { allProjects } from '../data/projects';
                 </div>
               </div>
             </div>
-
-            <div>
-              <div style="font-size: 0.75rem; color: var(--accent-violet); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 1rem; padding-bottom: 0.5rem; border-bottom: 1px solid var(--border);">
-                Skills
-              </div>
-              <div style="display: flex; flex-direction: column; gap: 0.6rem;">
-                {[
-                  { label: 'Languages', items: ['Python', 'TypeScript', 'JavaScript', 'Java'] },
-                  { label: 'ML / AI',   items: ['PyTorch', 'TensorFlow', 'scikit-learn', 'Transformers', 'LangChain', 'Ollama'] },
-                  { label: 'Web',       items: ['React', 'Next.js', 'Astro', 'FastAPI', 'Spring Boot', 'Node.js', 'Express'] },
-                  { label: 'Data',      items: ['PostgreSQL', 'MongoDB', 'pgvector', 'InfluxDB'] },
-                  { label: 'DevOps',    items: ['Docker', 'Kubernetes', 'AWS', 'GitHub Actions', 'MLflow'] },
-                ].map(({ label, items }) => (
-                  <div style="display: flex; align-items: flex-start; gap: 0.75rem;">
-                    <span style="font-size: 0.75rem; color: var(--text-muted); min-width: 5.5rem; padding-top: 0.15rem;">{label}</span>
-                    <div style="display: flex; flex-wrap: wrap; gap: 0.3rem;">
-                      {items.map(t => (
-                        <span style="font-size: 0.7rem; color: var(--text-secondary); background: var(--bg-surface); border: 1px solid var(--border); border-radius: 3px; padding: 0.1rem 0.45rem;">{t}</span>
-                      ))}
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-
           </div>
         </TerminalCard>
       </div>
 
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════ SKILLS ═════════════════════════════════════ -->
+  <section id="skills" style="padding: 5rem 1rem;">
+    <div style="max-width: 80rem; margin: 0 auto;">
+      <div class="section-heading">// skills</div>
+      <SkillGraph client:load />
+
       <!-- Code stack cards -->
-      <div class="skills-grid" style="margin-bottom: 2rem;">
+      <div class="skills-grid" style="margin-top: 2.5rem; margin-bottom: 2rem;">
 
         <!-- ML Stack -->
         <TerminalCard filename="ml_stack.py">
@@ -229,15 +213,6 @@ import { allProjects } from '../data/projects';
           </div>
         </TerminalCard>
       </div>
-
-    </div>
-  </section>
-
-  <!-- ═══════════════════════════════════════ SKILLS ═════════════════════════════════════ -->
-  <section id="skills" style="padding: 5rem 1rem;">
-    <div style="max-width: 80rem; margin: 0 auto;">
-      <div class="section-heading">// skills</div>
-      <SkillGraph client:load />
     </div>
   </section>
 

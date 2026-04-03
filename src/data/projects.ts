@@ -58,6 +58,22 @@ export const allProjects: Project[] = [
     imageUrl: "/assets/studybrain.png"
   },
   {
+    title: "Moodsic — ML Music Mood Recommender",
+    description: "Describe a vibe, get back five tracks that match it. Natural-language mood query is expanded to genre terms, 50 Spotify candidates are enriched with audio features and Genius lyric snippets, then ranked by cosine similarity via a sentence-transformer (all-mpnet-base-v2). Cinematic Spotify Wrapped-style reveal with Three.js.",
+    technologies: ["fastapi", "sentence-transformers", "react", "three.js", "docker", "spotify-api"],
+    category: "ML",
+    githubUrl: "https://github.com/kevinkunkel98/Moodsic-ML-Music-Recommender",
+    imageUrl: "/assets/CyberRE.png"
+  },
+  {
+    title: "Nazi Propaganda Visual Analysis",
+    description: "Cultural analytics research project quantifying how Nazi-era films visually constructed ingroup ('Us') vs. outgroup ('Them'). 22 visual features extracted per frame (lighting, composition, face detection, depth-of-field) fed into a Random Forest classifier with Leave-One-Movie-Out cross-validation across 3 films.",
+    technologies: ["python", "opencv", "scikit-learn", "random-forest", "yolov8"],
+    category: "ML",
+    githubUrl: "https://github.com/thehappyson/ca-friend-foe-analysis",
+    imageUrl: "/assets/terminal2.jpg"
+  },
+  {
     title: "Linux Dev Blog and Portfolio Website",
     description: "My first real portfolio website that I used to document my journey into web development and Arch Linux customizations.",
     technologies: ["astro", "react", "express", "tailwind"],

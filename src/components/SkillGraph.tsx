@@ -19,8 +19,11 @@ const SKILLS: SkillNode[] = [
   { slug: 'ts',         label: 'TypeScript' },
   { slug: 'js',         label: 'JavaScript' },
   { slug: 'react',      label: 'React' },
+  { slug: 'bash',       label: 'Bash' },
+  { slug: 'latex',     label: 'LaTeX' },
   { slug: 'astro',      label: 'Astro' },
   { slug: 'obsidian',   label: 'Obsidian' },
+  { slug: 'flask',      label: 'Flask' },
   { slug: 'arch',       label: 'Arch Linux' },
   { slug: 'fastapi',    label: 'FastAPI' },
   { slug: 'spring',     label: 'Spring' },
@@ -31,8 +34,11 @@ const SKILLS: SkillNode[] = [
   { slug: 'pytorch',    label: 'PyTorch' },
   { slug: 'sklearn',    label: 'scikit-learn' },
   { slug: 'git',        label: 'Git' },
+  { slug: 'matlab',     label: 'Matlab' },
+  { slug: 'lua',        label: 'Lua' },
   { siIcon: siMlflow,   label: 'MLflow' },
   { slug: 'linux',      label: 'Linux' },
+  { slug: 'apple',      label: 'Apple' },
   { slug: 'vim',        label: 'Vim' },
   { slug: 'tailwind',   label: 'Tailwind CSS' },
   { slug: 'java',       label: 'Java' },
@@ -43,7 +49,7 @@ const K_REPEL = 4000;
 const K_SPRING = 0.012;
 const K_GRAVITY = 0.008;
 const DAMPING = 0.88;
-const REST_LENGTH = 120;
+const REST_LENGTH = 180;
 const NEIGHBOURS = 5;
 const MAX_REPEL_DIST = 200;
 const WALL_MARGIN = 40;
@@ -157,8 +163,8 @@ export default function SkillGraph() {
 
       // 3. Center gravity
       for (let i = 0; i < nodes.length; i++) {
-        fx[i] += K_GRAVITY * (cx - nodes[i].x);
-        fy[i] += K_GRAVITY * (cy - nodes[i].y);
+        fx[i] += K_GRAVITY * 0.12 * (cx - nodes[i].x);
+        fy[i] += K_GRAVITY * 3.0 * (cy - nodes[i].y);
       }
 
       // 4. Soft boundary walls
@@ -200,8 +206,8 @@ export default function SkillGraph() {
           ctx.beginPath();
           ctx.moveTo(nodes[i].x, nodes[i].y);
           ctx.lineTo(nodes[j].x, nodes[j].y);
-          ctx.strokeStyle = isHovered ? 'rgba(124,58,237,0.75)' : 'rgba(124,58,237,0.40)';
-          ctx.lineWidth = isHovered ? 2.0 : 1.4;
+          ctx.strokeStyle = isHovered ? 'rgba(124,58,237,0.90)' : 'rgba(124,58,237,0.55)';
+          ctx.lineWidth = isHovered ? 2.2 : 1.6;
           ctx.stroke();
         }
       }
