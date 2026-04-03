@@ -5,7 +5,7 @@ export interface Project {
   category: 'ML' | 'WebDev';
   githubUrl?: string;
   liveUrl?: string;
-  imageUrl: string;
+  imageUrl?: string;
 }
 
 export const allProjects: Project[] = [
