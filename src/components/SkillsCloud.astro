@@ -12,6 +12,20 @@ interface IconEntry {
   tx3: number; ty3: number;
 }
 
+// Returns relative luminance (0–1) of a hex color string (without #)
+function luminance(hex: string): number {
+  const r = parseInt(hex.slice(0, 2), 16) / 255;
+  const g = parseInt(hex.slice(2, 4), 16) / 255;
+  const b = parseInt(hex.slice(4, 6), 16) / 255;
+  const toLinear = (c: number) => c <= 0.03928 ? c / 12.92 : ((c + 0.055) / 1.055) ** 2.4;
+  return 0.2126 * toLinear(r) + 0.7152 * toLinear(g) + 0.0722 * toLinear(b);
+}
+
+// Light bg → dark icon (#1a1a2e); dark bg → white icon (#ffffff)
+function iconColor(hex: string): string {
+  return luminance(hex) > 0.35 ? '#1a1a2e' : '#ffffff';
+}
+
 const icons: IconEntry[] = [
   { icon: siPython,        left:  8, top: 12, dur: 18, delay:  0, tx1: 12, ty1:  8, tx2: -8, ty2: 14, tx3:  6, ty3: -10 },
   { icon: siTypescript,    left: 22, top:  5, dur: 15, delay: -3, tx1: -6, ty1: 10, tx2: 10, ty2: -8, tx3: -4, ty3:  12 },
@@ -49,7 +63,7 @@ const icons: IconEntry[] = [
       <div
         class={`skill-badge badge-${i}`}
         title={entry.icon.title}
-        style={`left:${entry.left}%;top:${entry.top}%;--icon-color:#${entry.icon.hex};animation-duration:${entry.dur}s;animation-delay:${entry.delay}s;--tx1:${entry.tx1}px;--ty1:${entry.ty1}px;--tx2:${entry.tx2}px;--ty2:${entry.ty2}px;--tx3:${entry.tx3}px;--ty3:${entry.ty3}px;`}
+        style={`left:${entry.left}%;top:${entry.top}%;--bg-color:#${entry.icon.hex};--icon-fill:${iconColor(entry.icon.hex)};animation-duration:${entry.dur}s;animation-delay:${entry.delay}s;--tx1:${entry.tx1}px;--ty1:${entry.ty1}px;--tx2:${entry.tx2}px;--ty2:${entry.ty2}px;--tx3:${entry.tx3}px;--ty3:${entry.ty3}px;`}
       >
         <span class="badge-icon" set:html={entry.icon.svg} />
       </div>
@@ -76,12 +90,12 @@ const icons: IconEntry[] = [
     display: flex;
     align-items: center;
     justify-content: center;
-    background: #242938;
+    background: var(--bg-color);
     animation-name: float-drift;
     animation-timing-function: ease-in-out;
     animation-iteration-count: infinite;
     animation-direction: alternate;
-    opacity: 0.9;
+    opacity: 0.92;
     transition: opacity 0.2s, transform 0.2s;
     cursor: default;
   }
@@ -93,20 +107,17 @@ const icons: IconEntry[] = [
   }
 
   .badge-icon {
-    position: relative;
-    z-index: 1;
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 46px;
-    height: 46px;
+    width: 52px;
+    height: 52px;
   }
 
-  /* Always use the brand color on white background */
   .badge-icon :global(svg) {
-    fill: var(--icon-color) !important;
-    width: 46px;
-    height: 46px;
+    fill: var(--icon-fill) !important;
+    width: 52px;
+    height: 52px;
   }
 
   @keyframes float-drift {
@@ -128,8 +139,8 @@ const icons: IconEntry[] = [
 
     .badge-icon,
     .badge-icon :global(svg) {
-      width: 32px;
-      height: 32px;
+      width: 36px;
+      height: 36px;
     }
   }
 </style>
