@@ -2,9 +2,12 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import TerminalCard from '../components/TerminalCard.astro';
 import LossLandscape from '../components/LossLandscape';
+import ExperienceTimeline from '../components/ExperienceTimeline.astro';
+import SkillsCloud from '../components/SkillsCloud.astro';
+import ProjectCard from '../components/ProjectCard';
+import ContactForm from '../components/ContactForm';
+import ChatWidget from '../components/ChatWidget';
 import { allProjects } from '../data/projects';
-
-const featuredProjects = allProjects.slice(0, 3);
 ---
 
 <BaseLayout
@@ -14,15 +17,11 @@ const featuredProjects = allProjects.slice(0, 3);
   url="/"
 >
 
-  <!-- Hero Section -->
-  <section style="position: relative; min-height: 100vh; display: flex; align-items: center; justify-content: center; overflow: hidden;">
-
-    <!-- Animated loss landscape background -->
+  <!-- ═══════════════════════════════════════ HERO ═══════════════════════════════════════ -->
+  <section id="hero" style="position: relative; min-height: 100vh; display: flex; align-items: center; justify-content: center; overflow: hidden;">
     <LossLandscape client:load />
-
-    <!-- Hero copy — centered over canvas -->
     <div style="position: relative; z-index: 1; text-align: center; padding: 2rem 1rem; max-width: 56rem; width: 100%;">
-      <div style="font-family: inherit; font-size: 0.75rem; letter-spacing: 0.2em; color: var(--text-muted); text-transform: uppercase; margin-bottom: 1rem;">
+      <div style="font-size: 0.75rem; letter-spacing: 0.2em; color: var(--text-muted); text-transform: uppercase; margin-bottom: 1rem;">
         Kevin Kunkel
       </div>
       <h1 style="font-size: clamp(2.5rem, 6vw, 4.5rem); font-weight: 700; color: var(--text-primary); line-height: 1.1; margin: 0 0 1rem 0;">
@@ -32,166 +31,281 @@ const featuredProjects = allProjects.slice(0, 3);
         Leipzig, DE — building things that learn
       </p>
       <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
-        <a href="/projects" style="background: var(--accent-violet); color: #fff; font-family: inherit; font-size: 0.9rem; padding: 0.75rem 1.5rem; border-radius: 4px; text-decoration: none; transition: opacity 0.2s;">
+        <a href="#projects" style="background: var(--accent-violet); color: #fff; font-family: inherit; font-size: 0.9rem; padding: 0.75rem 1.5rem; border-radius: 4px; text-decoration: none; transition: opacity 0.2s;">
           $ view projects →
+        </a>
+        <a href="#about" style="border: 1px solid var(--border); color: var(--text-secondary); font-family: inherit; font-size: 0.9rem; padding: 0.75rem 1.5rem; border-radius: 4px; text-decoration: none; transition: opacity 0.2s;">
+          $ about me →
         </a>
       </div>
     </div>
-
   </section>
 
-  <!-- Stats Strip -->
-  <section style="padding: 1.5rem 1rem;">
-    <div style="max-width: 80rem; margin: 0 auto;">
-      <TerminalCard filename="stats.ts">
-        <div style="padding: 1rem 1.5rem; display: grid; gap: 0;" class="stats-grid">
-          <div style="text-align: center; padding: 0.5rem 1rem; border-right: 1px solid var(--border);">
-            <div style="font-size: 2rem; font-weight: 700; color: var(--accent-magenta); line-height: 1;">7</div>
-            <div style="font-size: 0.75rem; color: var(--text-muted); margin-top: 0.25rem;">projects</div>
-          </div>
-          <div style="text-align: center; padding: 0.5rem 1rem; border-right: 1px solid var(--border);">
-            <div style="font-size: 2rem; font-weight: 700; color: var(--accent-magenta); line-height: 1;">∞</div>
-            <div style="font-size: 0.75rem; color: var(--text-muted); margin-top: 0.25rem;">coffee</div>
-          </div>
-          <div style="text-align: center; padding: 0.5rem 1rem; border-right: 1px solid var(--border);">
-            <div style="font-size: 2rem; font-weight: 700; color: var(--accent-magenta); line-height: 1;">3+</div>
-            <div style="font-size: 0.75rem; color: var(--text-muted); margin-top: 0.25rem;">yrs ML</div>
-          </div>
-          <div style="text-align: center; padding: 0.5rem 1rem;">
-            <div style="font-size: 2rem; font-weight: 700; color: var(--accent-magenta); line-height: 1;">∞</div>
-            <div style="font-size: 0.75rem; color: var(--text-muted); margin-top: 0.25rem;">curiosity</div>
-          </div>
-        </div>
-      </TerminalCard>
-    </div>
-  </section>
+  <!-- ═══════════════════════════════════════ ABOUT ══════════════════════════════════════ -->
+  <section id="about" style="padding: 5rem 1rem;">
+    <div style="max-width: 56rem; margin: 0 auto;">
 
-  <!-- Featured Projects -->
-  <section style="padding: 3rem 1rem;">
-    <div style="max-width: 80rem; margin: 0 auto;">
-      <TerminalCard filename="featured_projects.ts">
-        <div style="padding: 1.5rem;">
-          <div style="display: grid; gap: 1rem;" class="projects-grid">
-            {featuredProjects.map((project) => (
-              <div style="background: var(--bg-elevated); border: 1px solid var(--border); border-radius: 4px; padding: 1.25rem; display: flex; flex-direction: column; gap: 0.75rem;">
-                <div style="font-size: 0.9rem; font-weight: 600; color: var(--text-primary);">{project.title}</div>
-                <div style="font-size: 0.8rem; color: var(--text-secondary); line-height: 1.5; flex: 1;">{project.description}</div>
-                <div style="display: flex; flex-wrap: wrap; gap: 0.35rem;">
-                  {project.technologies.map((tech) => (
-                    <span style="font-size: 0.7rem; color: var(--accent-magenta); background: color-mix(in srgb, var(--accent-magenta) 10%, transparent); border: 1px solid color-mix(in srgb, var(--accent-magenta) 25%, transparent); border-radius: 3px; padding: 0.15rem 0.5rem;">{tech}</span>
-                  ))}
+      <div class="section-heading">// about</div>
+
+      <!-- Bio card -->
+      <div style="margin-bottom: 1.5rem;">
+        <TerminalCard filename="kevin.md">
+          <div style="padding: 1.5rem;">
+            <h2 style="font-size: 1.25rem; font-weight: 700; color: var(--text-primary); margin: 0 0 1rem;">
+              Kevin Kunkel
+            </h2>
+            <p style="font-size: 0.9375rem; color: var(--text-secondary); line-height: 1.7; margin: 0 0 0.75rem;">
+              ML engineer and web developer based in Leipzig, Germany.
+              I build things that actually work — RAG chatbots, classifiers, web apps — and document the journey along the way.
+            </p>
+            <p style="font-size: 0.9375rem; color: var(--text-secondary); line-height: 1.7; margin: 0;">
+              Currently studying computer science and spending too much time on my Neovim config.
+            </p>
+            <div style="margin-top: 1.25rem; display: flex; gap: 0.75rem; flex-wrap: wrap;">
+              <a href="#projects" style="font-size: 0.8125rem; color: var(--accent-magenta); text-decoration: none;">$ ls ./projects →</a>
+              <a href="#contact" style="font-size: 0.8125rem; color: var(--accent-magenta); text-decoration: none;">$ ./contact.sh →</a>
+            </div>
+          </div>
+        </TerminalCard>
+      </div>
+
+      <!-- Experience Timeline -->
+      <ExperienceTimeline />
+
+      <!-- Education + Skills -->
+      <div style="margin-bottom: 2rem;">
+        <TerminalCard filename="cv.md">
+          <div style="padding: 1.5rem;">
+
+            <div style="margin-bottom: 1.75rem;">
+              <div style="font-size: 0.75rem; color: var(--accent-violet); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 1rem; padding-bottom: 0.5rem; border-bottom: 1px solid var(--border);">
+                Education
+              </div>
+              <div style="display: flex; flex-direction: column; gap: 1.25rem;">
+                <div>
+                  <div style="display: flex; align-items: baseline; justify-content: space-between; gap: 1rem; flex-wrap: wrap; margin-bottom: 0.25rem;">
+                    <div style="font-size: 0.9rem; font-weight: 600; color: var(--text-primary);">M.Sc. Computer Science</div>
+                    <div style="font-size: 0.75rem; color: var(--accent-magenta); flex-shrink: 0;">2021 — present</div>
+                  </div>
+                  <div style="font-size: 0.8125rem; color: var(--accent-violet);">University of Leipzig · Leipzig, DE</div>
                 </div>
-                <div style="display: flex; gap: 1rem; font-size: 0.8rem;">
-                  {project.githubUrl && (
-                    <a href={project.githubUrl} target="_blank" rel="noopener" style="color: var(--accent-violet); text-decoration: none;">
-                      GitHub →
-                    </a>
-                  )}
-                  {project.liveUrl && (
-                    <a href={project.liveUrl} target="_blank" rel="noopener" style="color: var(--accent-violet); text-decoration: none;">
-                      Live →
-                    </a>
-                  )}
+                <div style="padding-top: 1.25rem; border-top: 1px solid var(--border);">
+                  <div style="display: flex; align-items: baseline; justify-content: space-between; gap: 1rem; flex-wrap: wrap; margin-bottom: 0.25rem;">
+                    <div style="font-size: 0.9rem; font-weight: 600; color: var(--text-primary);">B.Sc. Business Informatics</div>
+                    <div style="font-size: 0.75rem; color: var(--accent-magenta); flex-shrink: 0;">2017 — 2020</div>
+                  </div>
+                  <div style="font-size: 0.8125rem; color: var(--accent-violet);">Berufsakademie Rhein-Main · Frankfurt, DE</div>
                 </div>
               </div>
-            ))}
+            </div>
+
+            <div>
+              <div style="font-size: 0.75rem; color: var(--accent-violet); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 1rem; padding-bottom: 0.5rem; border-bottom: 1px solid var(--border);">
+                Skills
+              </div>
+              <div style="display: flex; flex-direction: column; gap: 0.6rem;">
+                {[
+                  { label: 'Languages', items: ['Python', 'TypeScript', 'JavaScript', 'Java'] },
+                  { label: 'ML / AI',   items: ['PyTorch', 'TensorFlow', 'scikit-learn', 'Transformers', 'LangChain', 'Ollama'] },
+                  { label: 'Web',       items: ['React', 'Next.js', 'Astro', 'FastAPI', 'Spring Boot', 'Node.js', 'Express'] },
+                  { label: 'Data',      items: ['PostgreSQL', 'MongoDB', 'pgvector', 'InfluxDB'] },
+                  { label: 'DevOps',    items: ['Docker', 'Kubernetes', 'AWS', 'GitHub Actions', 'MLflow'] },
+                ].map(({ label, items }) => (
+                  <div style="display: flex; align-items: flex-start; gap: 0.75rem;">
+                    <span style="font-size: 0.75rem; color: var(--text-muted); min-width: 5.5rem; padding-top: 0.15rem;">{label}</span>
+                    <div style="display: flex; flex-wrap: wrap; gap: 0.3rem;">
+                      {items.map(t => (
+                        <span style="font-size: 0.7rem; color: var(--text-secondary); background: var(--bg-surface); border: 1px solid var(--border); border-radius: 3px; padding: 0.1rem 0.45rem;">{t}</span>
+                      ))}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
           </div>
-          <div style="margin-top: 1.25rem; text-align: right;">
-            <a href="/projects" style="font-size: 0.85rem; color: var(--text-muted); text-decoration: none;">
-              <span style="color: var(--accent-violet);">$</span> view all projects →
-            </a>
+        </TerminalCard>
+      </div>
+
+      <!-- Hardware / Software / Tech-stack -->
+      <div style="display: grid; grid-template-columns: 1fr; gap: 1rem; margin-bottom: 2rem;" class="stack-grid">
+        <TerminalCard filename="hardware.py">
+          <div style="padding: 1.25rem;">
+            <div style="font-size: 0.75rem; color: var(--accent-violet); margin-bottom: 0.875rem; letter-spacing: 0.05em;"># HARDWARE</div>
+            <ul style="margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 0.5rem;">
+              {[
+                'Machine: MacBook Pro M3 14-inch',
+                'Monitor: LG 27UK850 4K',
+                'Keyboard: Keychron Q1',
+                'Mouse: Logitech MX Master 3',
+              ].map(item => (
+                <li style="font-size: 0.8125rem; color: var(--text-secondary); display: flex; gap: 0.5rem;">
+                  <span style="color: var(--accent-magenta);">▸</span>
+                  <span>{item}</span>
+                </li>
+              ))}
+            </ul>
           </div>
-        </div>
-      </TerminalCard>
+        </TerminalCard>
+
+        <TerminalCard filename="software.sh">
+          <div style="padding: 1.25rem;">
+            <div style="font-size: 0.75rem; color: var(--accent-violet); margin-bottom: 0.875rem; letter-spacing: 0.05em;"># SOFTWARE</div>
+            <ul style="margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 0.5rem;">
+              {[
+                'OS: Arch Linux / macOS',
+                'Editor: Neovim + lazy.nvim',
+                'Terminal: Alacritty + tmux',
+                'Shell: zsh + starship',
+              ].map(item => (
+                <li style="font-size: 0.8125rem; color: var(--text-secondary); display: flex; gap: 0.5rem;">
+                  <span style="color: var(--accent-magenta);">▸</span>
+                  <span>{item}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </TerminalCard>
+
+        <TerminalCard filename="tech-stack.ts">
+          <div style="padding: 1.25rem;">
+            <div style="font-size: 0.75rem; color: var(--accent-violet); margin-bottom: 0.875rem; letter-spacing: 0.05em;"># TECH STACK</div>
+            <ul style="margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 0.5rem;">
+              {[
+                'Languages: Python, TypeScript, Java',
+                'ML: scikit-learn, PyTorch, LangChain',
+                'Web: Astro, React, FastAPI',
+                'Infra: Docker, Netlify, PostgreSQL',
+              ].map(item => (
+                <li style="font-size: 0.8125rem; color: var(--text-secondary); display: flex; gap: 0.5rem;">
+                  <span style="color: var(--accent-magenta);">▸</span>
+                  <span>{item}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </TerminalCard>
+      </div>
+
     </div>
   </section>
 
-  <!-- Skills Section -->
-  <section style="padding: 3rem 1rem;">
+  <!-- ═══════════════════════════════════════ SKILLS ═════════════════════════════════════ -->
+  <section id="skills" style="padding: 5rem 1rem;">
     <div style="max-width: 80rem; margin: 0 auto;">
+      <div class="section-heading">// skills</div>
+      <SkillsCloud />
+    </div>
+  </section>
 
-      <div class="skills-grid">
+  <!-- ═══════════════════════════════════════ PROJECTS ══════════════════════════════════ -->
+  <section id="projects" style="padding: 5rem 1rem;">
+    <div style="max-width: 80rem; margin: 0 auto;">
+      <div class="section-heading">// projects</div>
 
-        <!-- ML Stack -->
-        <TerminalCard filename="ml_stack.py">
-          <div style="padding: 1.25rem 1.5rem; font-size: 0.8rem; color: var(--text-secondary); line-height: 1.8; overflow-x: auto;">
-            <div style="color: #28ca41;"># Daily drivers</div>
-            <div><span style="color: var(--accent-violet);">import</span> torch, tensorflow <span style="color: var(--text-muted);"># The usual suspects</span></div>
-            <div><span style="color: var(--accent-violet);">from</span> transformers <span style="color: var(--accent-violet);">import</span> * <span style="color: var(--text-muted);"># HuggingFace magic</span></div>
-            <div><span style="color: var(--accent-violet);">import</span> numpy, pandas <span style="color: var(--text-muted);"># Data wrangling</span></div>
-            <div style="color: #28ca41; padding-top: 0.5rem;"># When things get visual</div>
-            <div><span style="color: var(--accent-violet);">import</span> cv2, matplotlib</div>
-            <div style="color: #28ca41; padding-top: 0.5rem;"># Deployment &amp; MLOps</div>
-            <div><span style="color: var(--accent-violet);">import</span> mlflow, docker</div>
-            <div style="color: #28ca41; padding-top: 0.5rem;"># Classical NLP &amp; Linear models</div>
-            <div><span style="color: var(--accent-violet);">from</span> sklearn.feature_extraction.text <span style="color: var(--accent-violet);">import</span> TfidfVectorizer</div>
-            <div><span style="color: var(--accent-violet);">from</span> sklearn.svm <span style="color: var(--accent-violet);">import</span> LinearSVC <span style="color: var(--text-muted);">// Fast linear classifier</span></div>
-            <div><span style="color: var(--accent-violet);">from</span> sklearn.pipeline <span style="color: var(--accent-violet);">import</span> make_pipeline</div>
-            <div style="word-break: break-all;"><span style="color: var(--accent-violet);">model</span> = make_pipeline(TfidfVectorizer(max_features=10_000), LinearSVC()) <span style="color: var(--text-muted);">// Text → features → classification</span></div>
+      <!-- Filter buttons -->
+      <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 0.75rem; margin-bottom: 2.5rem; font-family: inherit;" id="project-filters">
+        <button class="filter-btn" data-filter="all"
+          style="border: 1px solid var(--accent-emerald); color: var(--accent-emerald); background: transparent; font-family: inherit; font-size: 0.8125rem; padding: 0.4rem 1rem; border-radius: 3px; cursor: pointer;">
+          <span style="color: var(--text-muted);">./</span>all
+        </button>
+        <button class="filter-btn" data-filter="ML"
+          style="border: 1px solid var(--border); color: var(--text-muted); background: transparent; font-family: inherit; font-size: 0.8125rem; padding: 0.4rem 1rem; border-radius: 3px; cursor: pointer;">
+          <span style="color: var(--text-muted);">./</span>machine_learning
+        </button>
+        <button class="filter-btn" data-filter="WebDev"
+          style="border: 1px solid var(--border); color: var(--text-muted); background: transparent; font-family: inherit; font-size: 0.8125rem; padding: 0.4rem 1rem; border-radius: 3px; cursor: pointer;">
+          <span style="color: var(--text-muted);">./</span>web_development
+        </button>
+      </div>
+
+      <!-- Projects grid -->
+      <div class="projects-grid" id="projects-grid">
+        {allProjects.map((project) => (
+          <div class="project-item" data-category={project.category}>
+            <ProjectCard project={project} client:load />
           </div>
-        </TerminalCard>
-
-        <!-- Web Stack -->
-        <TerminalCard filename="package.json">
-          <div style="padding: 1.25rem 1.5rem; font-size: 0.8rem; color: var(--text-secondary); line-height: 1.8; overflow-x: auto;">
-            <div style="color: var(--accent-magenta);">{"{"}</div>
-            <div style="margin-left: 1.5rem;"><span style="color: #28ca41;">"dependencies"</span>: {"{"}</div>
-            <div style="margin-left: 3rem;"><span style="color: #28ca41;">"react"</span>: <span style="color: var(--accent-magenta);">"^18.x"</span>, <span style="color: var(--text-muted);">// Still the GOAT</span></div>
-            <div style="margin-left: 3rem;"><span style="color: #28ca41;">"typescript"</span>: <span style="color: var(--accent-magenta);">"latest"</span>, <span style="color: var(--text-muted);">// Life saver</span></div>
-            <div style="margin-left: 3rem;"><span style="color: #28ca41;">"next.js"</span>: <span style="color: var(--accent-magenta);">"^14.x"</span>, <span style="color: var(--text-muted);">// Full-stack magic</span></div>
-            <div style="margin-left: 3rem;"><span style="color: #28ca41;">"node.js"</span>: <span style="color: var(--accent-magenta);">"LTS"</span>, <span style="color: var(--text-muted);">// Backend buddy</span></div>
-            <div style="margin-left: 3rem;"><span style="color: #28ca41;">"postgresql"</span>: <span style="color: var(--accent-magenta);">"^15"</span>, <span style="color: var(--text-muted);">// Reliable data</span></div>
-            <div style="margin-left: 3rem;"><span style="color: #28ca41;">"shadcn/ui"</span>: <span style="color: var(--accent-magenta);">"latest"</span>, <span style="color: var(--text-muted);">// Beautiful components</span></div>
-            <div style="margin-left: 3rem;"><span style="color: #28ca41;">"vite"</span>: <span style="color: var(--accent-magenta);">"latest"</span>, <span style="color: var(--text-muted);">// Lightning fast builds</span></div>
-            <div style="margin-left: 3rem;"><span style="color: #28ca41;">"tailwindcss"</span>: <span style="color: var(--accent-magenta);">"latest"</span>, <span style="color: var(--text-muted);">// Utility-first styling</span></div>
-            <div style="margin-left: 3rem;"><span style="color: #28ca41;">"docker"</span>: <span style="color: var(--accent-magenta);">"latest"</span> <span style="color: var(--text-muted);">// It works on my machine™</span></div>
-            <div style="margin-left: 1.5rem;">{"}"}</div>
-            <div style="color: var(--accent-magenta);">{"}"}</div>
-          </div>
-        </TerminalCard>
-
+        ))}
       </div>
     </div>
   </section>
 
-  <style>
-    .skills-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 2rem;
-    }
+  <!-- ═══════════════════════════════════════ CONTACT ═══════════════════════════════════ -->
+  <section id="contact" style="padding: 5rem 1rem;">
+    <div style="max-width: 40rem; margin: 0 auto;">
+      <div class="section-heading">// contact</div>
+      <p style="font-size: 0.875rem; color: var(--text-muted); margin-bottom: 1.5rem; text-align: center;">
+        # Get in touch for opportunities, collaborations, or just to say hello
+      </p>
+      <TerminalCard filename="contact.sh">
+        <div style="padding: 1.5rem;">
+          <ContactForm client:load />
+        </div>
+      </TerminalCard>
+    </div>
+  </section>
 
-    @media (max-width: 768px) {
-      .skills-grid {
-        grid-template-columns: 1fr;
-      }
-    }
-
-    .projects-grid {
-      grid-template-columns: 1fr;
-    }
-
-    @media (min-width: 769px) {
-      .projects-grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
-    }
-
-    @media (min-width: 1025px) {
-      .projects-grid {
-        grid-template-columns: repeat(3, 1fr);
-      }
-    }
-
-    .stats-grid {
-      grid-template-columns: repeat(2, 1fr);
-    }
-
-    @media (min-width: 640px) {
-      .stats-grid {
-        grid-template-columns: repeat(4, 1fr);
-      }
-    }
-  </style>
+  <!-- Floating AI chat widget -->
+  <ChatWidget client:load />
 
 </BaseLayout>
+
+<style>
+  .section-heading {
+    font-size: clamp(1rem, 3vw, 1.5rem);
+    color: var(--accent-magenta);
+    font-weight: 600;
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+
+  .stack-grid {
+    grid-template-columns: 1fr;
+  }
+  @media (min-width: 640px) {
+    .stack-grid {
+      grid-template-columns: repeat(3, 1fr) !important;
+    }
+  }
+
+  .projects-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  @media (min-width: 768px) {
+    .projects-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (min-width: 1024px) {
+    .projects-grid { grid-template-columns: repeat(3, 1fr); }
+  }
+</style>
+
+<script>
+  // ── Project filter ──────────────────────────────────────────────────────────
+  document.addEventListener('DOMContentLoaded', () => {
+    const filterBtns = document.querySelectorAll<HTMLElement>('.filter-btn');
+    const projectItems = document.querySelectorAll<HTMLElement>('.project-item');
+
+    filterBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const filter = btn.getAttribute('data-filter');
+
+        filterBtns.forEach(b => {
+          b.style.borderColor = 'var(--border)';
+          b.style.color = 'var(--text-muted)';
+        });
+        btn.style.borderColor = 'var(--accent-emerald)';
+        btn.style.color = 'var(--accent-emerald)';
+
+        projectItems.forEach(item => {
+          if (filter === 'all' || item.getAttribute('data-category') === filter) {
+            item.style.display = 'block';
+          } else {
+            item.style.display = 'none';
+          }
+        });
+      });
+    });
+  });
+</script>
