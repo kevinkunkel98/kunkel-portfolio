@@ -70,7 +70,7 @@ k_spring   = 0.012
 k_gravity  = 0.008
 damping    = 0.88
 restLength = 120
-neighbours = 5
+neighbours = 5        // nearest neighbours per node (dense)
 ```
 
 **Initial positions:** randomly scattered within the inner 80% of the canvas bounds at mount time.
@@ -87,8 +87,8 @@ neighbours = 5
 
 ### Icons (DOM)
 - Each icon element: `position: absolute`, `width: 64px`, `height: 64px` on desktop, `48px` on mobile
-- Position updated each frame: `element.style.left = (node.x - halfSize) + 'px'`, same for top
-- Use `transform: translate` instead of left/top for performance — `element.style.transform = \`translate(${node.x - half}px, ${node.y - half}px)\``
+- Position updated each frame via `transform` (not `left/top`) for GPU-composited performance: `element.style.transform = \`translate(${node.x - half}px, ${node.y - half}px)\``
+- Initial `left: 0; top: 0` set once in CSS; all movement via `transform` only
 - skillicons.dev icons: `<img>` with `border-radius: 22%`, `loading="lazy"`
 - simple-icons fallback: `<span>` with brand background, centered SVG, same border-radius
 
