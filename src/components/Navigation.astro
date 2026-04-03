@@ -2,18 +2,12 @@
 import ThemeToggle from './ThemeToggle';
 
 const navItems = [
-  { path: '/home',     href: '/' },
-  { path: '/about',    href: '/about' },
-  { path: '/projects', href: '/projects' },
-  { path: '/contact',  href: '/contact' },
+  { label: '/home',     href: '/#hero' },
+  { label: '/about',    href: '/#about' },
+  { label: '/skills',   href: '/#skills' },
+  { label: '/projects', href: '/#projects' },
+  { label: '/contact',  href: '/#contact' },
 ];
-
-const currentPath = Astro.url.pathname;
-
-function isActive(href: string) {
-  if (href === '/') return currentPath === '/';
-  return currentPath.startsWith(href);
-}
 ---
 
 <nav style="position: sticky; top: 0; z-index: 50; background: var(--bg-surface); border-bottom: 1px solid var(--border);">
@@ -30,11 +24,11 @@ function isActive(href: string) {
       {navItems.map((item) => (
         <a
           href={item.href}
-          style={`font-size: 0.8125rem; text-decoration: none; color: ${isActive(item.href) ? 'var(--accent-magenta)' : 'var(--text-muted)'}; transition: color 0.2s;`}
-          onmouseover="this.style.color='var(--accent-magenta)'"
-          onmouseout={`this.style.color='${isActive(item.href) ? 'var(--accent-magenta)' : 'var(--text-muted)'}'`}
+          data-nav-href={item.href}
+          class="nav-link"
+          style="font-size: 0.8125rem; text-decoration: none; color: var(--text-muted); transition: color 0.2s;"
         >
-          {item.path}
+          {item.label}
         </a>
       ))}
       <ThemeToggle client:load />
@@ -64,9 +58,11 @@ function isActive(href: string) {
     {navItems.map((item) => (
       <a
         href={item.href}
-        style={`display: block; padding: 8px 0; font-size: 0.875rem; text-decoration: none; color: ${isActive(item.href) ? 'var(--accent-magenta)' : 'var(--text-muted)'}; border-bottom: 1px solid var(--border);`}
+        data-nav-href={item.href}
+        class="nav-link mobile-nav-link"
+        style="display: block; padding: 8px 0; font-size: 0.875rem; text-decoration: none; color: var(--text-muted); border-bottom: 1px solid var(--border);"
       >
-        <span style="color: var(--accent-violet);">$</span> cd {item.path}
+        <span style="color: var(--accent-violet);">$</span> cd {item.label}
       </a>
     ))}
     <div style="margin-top: 12px;">
@@ -83,8 +79,10 @@ function isActive(href: string) {
 </style>
 
 <script>
+  // ── Mobile menu toggle ──────────────────────────────────────────────────────
   const button = document.getElementById('mobile-menu-button');
   const menu = document.getElementById('mobile-menu');
+
   if (button && menu) {
     button.addEventListener('click', () => {
       const isOpen = menu.style.display === 'block';
@@ -92,4 +90,42 @@ function isActive(href: string) {
       button.setAttribute('aria-expanded', String(!isOpen));
     });
   }
+
+  // Close mobile menu when an anchor link is clicked
+  document.querySelectorAll('.mobile-nav-link').forEach(link => {
+    link.addEventListener('click', () => {
+      if (menu) menu.style.display = 'none';
+      if (button) button.setAttribute('aria-expanded', 'false');
+    });
+  });
+
+  // ── Scroll-spy via IntersectionObserver ────────────────────────────────────
+  const sectionIds = ['hero', 'about', 'skills', 'projects', 'contact'];
+
+  function setActive(sectionId: string) {
+    const href = `/#${sectionId}`;
+    document.querySelectorAll<HTMLElement>('.nav-link').forEach(link => {
+      const isActive = link.getAttribute('data-nav-href') === href;
+      link.style.color = isActive ? 'var(--accent-magenta)' : 'var(--text-muted)';
+    });
+  }
+
+  // Set hero active on load
+  setActive('hero');
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          setActive(entry.target.id);
+        }
+      });
+    },
+    { rootMargin: '-40% 0px -55% 0px', threshold: 0 }
+  );
+
+  sectionIds.forEach(id => {
+    const el = document.getElementById(id);
+    if (el) observer.observe(el);
+  });
 </script>
