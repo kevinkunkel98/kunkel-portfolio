@@ -1,0 +1,145 @@
+---
+import { siPython, siTypescript, siJavascript, siReact, siNextdotjs, siAstro, siNodedotjs, siFastapi, siSpring, siDocker, siKubernetes, siPostgresql, siMongodb, siPytorch, siTensorflow, siScikitlearn, siLangchain, siHuggingface, siGithub, siGithubactions, siMlflow, siLinux, siNeovim, siTailwindcss, siVite, siOllama, siNetlify } from 'simple-icons';
+
+interface IconEntry {
+  icon: { svg: string; hex: string; title: string };
+  left: number;
+  top: number;
+  dur: number;
+  delay: number;
+  tx1: number; ty1: number;
+  tx2: number; ty2: number;
+  tx3: number; ty3: number;
+}
+
+const icons: IconEntry[] = [
+  { icon: siPython,        left:  8, top: 12, dur: 18, delay:  0, tx1: 12, ty1:  8, tx2: -8, ty2: 14, tx3:  6, ty3: -10 },
+  { icon: siTypescript,    left: 22, top:  5, dur: 15, delay: -3, tx1: -6, ty1: 10, tx2: 10, ty2: -8, tx3: -4, ty3:  12 },
+  { icon: siJavascript,    left: 38, top: 10, dur: 20, delay: -7, tx1:  8, ty1: -6, tx2: -10,ty2: 10, tx3:  4, ty3: -14 },
+  { icon: siReact,         left: 55, top:  6, dur: 16, delay: -2, tx1: -8, ty1: 12, tx2:  6, ty2: -10,tx3: 10, ty3:   8 },
+  { icon: siNextdotjs,     left: 70, top: 14, dur: 22, delay: -9, tx1: 10, ty1:  6, tx2: -6, ty2: -12,tx3:  8, ty3:  10 },
+  { icon: siAstro,         left: 84, top:  8, dur: 17, delay: -5, tx1: -4, ty1: -8, tx2:  8, ty2: 10, tx3: -10,ty3:  6 },
+  { icon: siNodedotjs,     left:  5, top: 35, dur: 19, delay: -1, tx1:  6, ty1: 10, tx2: -8, ty2: -6, tx3: 12, ty3:  4 },
+  { icon: siFastapi,       left: 18, top: 48, dur: 14, delay: -6, tx1: -10,ty1:  8, tx2:  4, ty2: -12,tx3:  8, ty3:  6 },
+  { icon: siSpring,        left: 32, top: 38, dur: 21, delay: -4, tx1:  8, ty1: -4, tx2: -6, ty2:  8, tx3: -12,ty3: -6 },
+  { icon: siDocker,        left: 46, top: 42, dur: 16, delay: -8, tx1: -6, ty1: -10,tx2: 10, ty2:  6, tx3: -8, ty3: 12 },
+  { icon: siKubernetes,    left: 62, top: 35, dur: 18, delay: -3, tx1:  4, ty1: 12, tx2: -8, ty2: -8, tx3: 10, ty3:  4 },
+  { icon: siPostgresql,    left: 76, top: 44, dur: 23, delay: -7, tx1: -8, ty1:  6, tx2:  6, ty2: -10,tx3: -4, ty3:  8 },
+  { icon: siMongodb,       left: 90, top: 38, dur: 15, delay: -2, tx1: 10, ty1: -8, tx2: -4, ty2: 10, tx3:  6, ty3: -6 },
+  { icon: siPytorch,       left:  3, top: 62, dur: 20, delay: -5, tx1: -6, ty1:  8, tx2: 10, ty2: -6, tx3: -8, ty3: 10 },
+  { icon: siTensorflow,    left: 16, top: 72, dur: 17, delay: -9, tx1:  8, ty1: -10,tx2: -6, ty2:  6, tx3: 10, ty3: -8 },
+  { icon: siScikitlearn,   left: 30, top: 65, dur: 22, delay: -1, tx1: -4, ty1: -6, tx2:  8, ty2: 10, tx3: -6, ty3: -4 },
+  { icon: siLangchain,     left: 45, top: 70, dur: 14, delay: -6, tx1:  6, ty1:  8, tx2: -10,ty2: -4, tx3:  8, ty3:  6 },
+  { icon: siHuggingface,   left: 60, top: 62, dur: 19, delay: -3, tx1: -8, ty1:  6, tx2:  4, ty2: -10,tx3: -6, ty3:  8 },
+  { icon: siGithub,        left: 74, top: 72, dur: 16, delay: -8, tx1: 10, ty1: -6, tx2: -6, ty2:  8, tx3:  4, ty3: -10 },
+  { icon: siGithubactions, left: 88, top: 65, dur: 21, delay: -4, tx1: -6, ty1: 10, tx2:  8, ty2: -6, tx3: -10,ty3:  4 },
+  { icon: siMlflow,        left: 10, top: 85, dur: 18, delay: -7, tx1:  6, ty1: -8, tx2: -8, ty2:  6, tx3: 10, ty3: -4 },
+  { icon: siLinux,         left: 25, top: 88, dur: 15, delay: -2, tx1: -4, ty1: 10, tx2:  8, ty2: -8, tx3: -6, ty3:  6 },
+  { icon: siNeovim,        left: 42, top: 84, dur: 20, delay: -5, tx1:  8, ty1:  6, tx2: -6, ty2: -10,tx3:  4, ty3:  8 },
+  { icon: siTailwindcss,   left: 57, top: 88, dur: 23, delay: -9, tx1: -8, ty1: -6, tx2:  6, ty2:  8, tx3: -4, ty3: -8 },
+  { icon: siVite,          left: 71, top: 82, dur: 17, delay: -1, tx1:  4, ty1:  8, tx2: -8, ty2: -4, tx3:  8, ty3:  6 },
+  { icon: siOllama,        left: 83, top: 87, dur: 14, delay: -6, tx1: -6, ty1:  6, tx2: 10, ty2: -8, tx3: -8, ty3:  4 },
+  { icon: siNetlify,       left: 94, top: 80, dur: 19, delay: -3, tx1:  8, ty1: -4, tx2: -4, ty2:  8, tx3:  6, ty3: -10 },
+];
+---
+
+<div class="skills-cloud-wrap">
+  <div class="skills-cloud">
+    {icons.map((entry, i) => (
+      <div
+        class={`skill-badge badge-${i}`}
+        title={entry.icon.title}
+        style={`left:${entry.left}%;top:${entry.top}%;background:#${entry.icon.hex};animation-duration:${entry.dur}s;animation-delay:${entry.delay}s;--tx1:${entry.tx1}px;--ty1:${entry.ty1}px;--tx2:${entry.tx2}px;--ty2:${entry.ty2}px;--tx3:${entry.tx3}px;--ty3:${entry.ty3}px;`}
+      >
+        <span class="badge-icon" set:html={entry.icon.svg} />
+      </div>
+    ))}
+  </div>
+</div>
+
+<style>
+  .skills-cloud-wrap {
+    padding: 1rem 0 2rem;
+  }
+
+  .skills-cloud {
+    position: relative;
+    width: 100%;
+    min-height: 420px;
+  }
+
+  .skill-badge {
+    position: absolute;
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation-name: float-drift;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+    opacity: 0.85;
+    transition: opacity 0.2s, transform 0.2s;
+    cursor: default;
+  }
+
+  .skill-badge:hover {
+    opacity: 1;
+    z-index: 10;
+  }
+
+  .badge-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 26px;
+    height: 26px;
+  }
+
+  /* Force white SVG fill in dark mode, dark fill in light mode */
+  :global(.dark) .badge-icon :global(svg) {
+    fill: #ffffff !important;
+    width: 26px;
+    height: 26px;
+  }
+
+  :global(:not(.dark)) .badge-icon :global(svg) {
+    fill: #000000 !important;
+    width: 26px;
+    height: 26px;
+    opacity: 0.75;
+  }
+
+  /* Light mode: soften backgrounds */
+  :global(:not(.dark)) .skill-badge {
+    background: var(--bg-elevated) !important;
+    border: 1px solid var(--border);
+  }
+
+  @keyframes float-drift {
+    0%   { transform: translate(0, 0); }
+    33%  { transform: translate(var(--tx1), var(--ty1)); }
+    66%  { transform: translate(var(--tx2), var(--ty2)); }
+    100% { transform: translate(var(--tx3), var(--ty3)); }
+  }
+
+  @media (max-width: 639px) {
+    .skills-cloud {
+      min-height: 520px;
+    }
+
+    .skill-badge {
+      width: 42px;
+      height: 42px;
+    }
+
+    .badge-icon,
+    :global(.dark) .badge-icon :global(svg),
+    :global(:not(.dark)) .badge-icon :global(svg) {
+      width: 20px;
+      height: 20px;
+    }
+  }
+</style>
