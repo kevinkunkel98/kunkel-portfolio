@@ -33,9 +33,9 @@ const skills: SkillEntry[] = [
   { slug: 'ts',            label: 'TypeScript',     left: 22, top:  5, dur: 15, delay: -3, tx1: -6, ty1: 10, tx2: 10, ty2: -8, tx3: -4, ty3:  12 },
   { slug: 'js',            label: 'JavaScript',     left: 38, top: 10, dur: 20, delay: -7, tx1:  8, ty1: -6, tx2: -10,ty2: 10, tx3:  4, ty3: -14 },
   { slug: 'react',         label: 'React',          left: 55, top:  6, dur: 16, delay: -2, tx1: -8, ty1: 12, tx2:  6, ty2: -10,tx3: 10, ty3:   8 },
-  { slug: 'nextjs',        label: 'Next.js',        left: 70, top: 14, dur: 22, delay: -9, tx1: 10, ty1:  6, tx2: -6, ty2: -12,tx3:  8, ty3:  10 },
+  { slug: 'obsidian',      label: 'Obsidian',        left: 70, top: 14, dur: 22, delay: -9, tx1: 10, ty1:  6, tx2: -6, ty2: -12,tx3:  8, ty3:  10 },
   { slug: 'astro',         label: 'Astro',          left: 84, top:  8, dur: 17, delay: -5, tx1: -4, ty1: -8, tx2:  8, ty2: 10, tx3: -10,ty3:  6 },
-  { slug: 'nodejs',        label: 'Node.js',        left:  5, top: 35, dur: 19, delay: -1, tx1:  6, ty1: 10, tx2: -8, ty2: -6, tx3: 12, ty3:  4 },
+  { slug: 'arch',          label: 'Arch',        left:  5, top: 35, dur: 19, delay: -1, tx1:  6, ty1: 10, tx2: -8, ty2: -6, tx3: 12, ty3:  4 },
   { slug: 'fastapi',       label: 'FastAPI',        left: 18, top: 48, dur: 14, delay: -6, tx1: -10,ty1:  8, tx2:  4, ty2: -12,tx3:  8, ty3:  6 },
   { slug: 'spring',        label: 'Spring',         left: 32, top: 38, dur: 21, delay: -4, tx1:  8, ty1: -4, tx2: -6, ty2:  8, tx3: -12,ty3: -6 },
   { slug: 'docker',        label: 'Docker',         left: 46, top: 42, dur: 16, delay: -8, tx1: -6, ty1: -10,tx2: 10, ty2:  6, tx3: -8, ty3: 12 },
@@ -43,19 +43,13 @@ const skills: SkillEntry[] = [
   { slug: 'postgres',      label: 'PostgreSQL',     left: 76, top: 44, dur: 23, delay: -7, tx1: -8, ty1:  6, tx2:  6, ty2: -10,tx3: -4, ty3:  8 },
   { slug: 'mongodb',       label: 'MongoDB',        left: 90, top: 38, dur: 15, delay: -2, tx1: 10, ty1: -8, tx2: -4, ty2: 10, tx3:  6, ty3: -6 },
   { slug: 'pytorch',       label: 'PyTorch',        left:  3, top: 62, dur: 20, delay: -5, tx1: -6, ty1:  8, tx2: 10, ty2: -6, tx3: -8, ty3: 10 },
-  { slug: 'tensorflow',    label: 'TensorFlow',     left: 16, top: 72, dur: 17, delay: -9, tx1:  8, ty1: -10,tx2: -6, ty2:  6, tx3: 10, ty3: -8 },
   { slug: 'sklearn',       label: 'scikit-learn',   left: 30, top: 65, dur: 22, delay: -1, tx1: -4, ty1: -6, tx2:  8, ty2: 10, tx3: -6, ty3: -4 },
-  { siIcon: siLangchain,   label: 'LangChain',      left: 45, top: 70, dur: 14, delay: -6, tx1:  6, ty1:  8, tx2: -10,ty2: -4, tx3:  8, ty3:  6 },
-  { siIcon: siHuggingface, label: 'Hugging Face',   left: 60, top: 62, dur: 19, delay: -3, tx1: -8, ty1:  6, tx2:  4, ty2: -10,tx3: -6, ty3:  8 },
-  { slug: 'github',        label: 'GitHub',         left: 74, top: 72, dur: 16, delay: -8, tx1: 10, ty1: -6, tx2: -6, ty2:  8, tx3:  4, ty3: -10 },
-  { slug: 'githubactions', label: 'GitHub Actions', left: 88, top: 65, dur: 21, delay: -4, tx1: -6, ty1: 10, tx2:  8, ty2: -6, tx3: -10,ty3:  4 },
+  { slug: 'git',           label: 'Git',            left: 74, top: 72, dur: 16, delay: -8, tx1: 10, ty1: -6, tx2: -6, ty2:  8, tx3:  4, ty3: -10 },
   { siIcon: siMlflow,      label: 'MLflow',         left: 10, top: 85, dur: 18, delay: -7, tx1:  6, ty1: -8, tx2: -8, ty2:  6, tx3: 10, ty3: -4 },
   { slug: 'linux',         label: 'Linux',          left: 25, top: 88, dur: 15, delay: -2, tx1: -4, ty1: 10, tx2:  8, ty2: -8, tx3: -6, ty3:  6 },
-  { slug: 'neovim',        label: 'Neovim',         left: 42, top: 84, dur: 20, delay: -5, tx1:  8, ty1:  6, tx2: -6, ty2: -10,tx3:  4, ty3:  8 },
+  { slug: 'vim',           label: 'Vim',         left: 42, top: 84, dur: 20, delay: -5, tx1:  8, ty1:  6, tx2: -6, ty2: -10,tx3:  4, ty3:  8 },
   { slug: 'tailwind',      label: 'Tailwind CSS',   left: 57, top: 88, dur: 23, delay: -9, tx1: -8, ty1: -6, tx2:  6, ty2:  8, tx3: -4, ty3: -8 },
-  { slug: 'vite',          label: 'Vite',           left: 71, top: 82, dur: 17, delay: -1, tx1:  4, ty1:  8, tx2: -8, ty2: -4, tx3:  8, ty3:  6 },
-  { siIcon: siOllama,      label: 'Ollama',         left: 83, top: 87, dur: 14, delay: -6, tx1: -6, ty1:  6, tx2: 10, ty2: -8, tx3: -8, ty3:  4 },
-  { slug: 'netlify',       label: 'Netlify',        left: 94, top: 80, dur: 19, delay: -3, tx1:  8, ty1: -4, tx2: -4, ty2:  8, tx3:  6, ty3: -10 },
+  { slug: 'java',          label: 'Java',         left: 83, top: 87, dur: 14, delay: -6, tx1: -6, ty1:  6, tx2: 10, ty2: -8, tx3: -8, ty3:  4 },
 ];
 ---
 
@@ -92,14 +86,14 @@ const skills: SkillEntry[] = [
   .skills-cloud {
     position: relative;
     width: 100%;
-    min-height: 560px;
+    min-height: 380px;
   }
 
   /* Base badge — skillicons.dev img tiles are self-contained (no background needed) */
   .skill-badge {
     position: absolute;
-    width: 92px;
-    height: 92px;
+    width: 64px;
+    height: 64px;
     border-radius: 22%;
     display: flex;
     align-items: center;
@@ -117,8 +111,8 @@ const skills: SkillEntry[] = [
 
   /* skillicons.dev img fills the badge exactly */
   .skill-badge img {
-    width: 92px;
-    height: 92px;
+    width: 64px;
+    height: 64px;
     display: block;
     border-radius: 22%;
   }
@@ -139,14 +133,14 @@ const skills: SkillEntry[] = [
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 52px;
-    height: 52px;
+    width: 36px;
+    height: 36px;
   }
 
   .badge-icon :global(svg) {
     fill: var(--icon-fill) !important;
-    width: 52px;
-    height: 52px;
+    width: 36px;
+    height: 36px;
   }
 
   @keyframes float-drift {
@@ -158,23 +152,23 @@ const skills: SkillEntry[] = [
 
   @media (max-width: 639px) {
     .skills-cloud {
-      min-height: 660px;
+      min-height: 480px;
     }
 
     .skill-badge {
-      width: 64px;
-      height: 64px;
+      width: 48px;
+      height: 48px;
     }
 
     .skill-badge img {
-      width: 64px;
-      height: 64px;
+      width: 48px;
+      height: 48px;
     }
 
     .badge-icon,
     .badge-icon :global(svg) {
-      width: 36px;
-      height: 36px;
+      width: 28px;
+      height: 28px;
     }
   }
 </style>
