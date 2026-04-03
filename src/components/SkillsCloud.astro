@@ -49,7 +49,7 @@ const icons: IconEntry[] = [
       <div
         class={`skill-badge badge-${i}`}
         title={entry.icon.title}
-        style={`left:${entry.left}%;top:${entry.top}%;background:#${entry.icon.hex};animation-duration:${entry.dur}s;animation-delay:${entry.delay}s;--tx1:${entry.tx1}px;--ty1:${entry.ty1}px;--tx2:${entry.tx2}px;--ty2:${entry.ty2}px;--tx3:${entry.tx3}px;--ty3:${entry.ty3}px;`}
+        style={`left:${entry.left}%;top:${entry.top}%;--icon-color:#${entry.icon.hex};animation-duration:${entry.dur}s;animation-delay:${entry.delay}s;--tx1:${entry.tx1}px;--ty1:${entry.ty1}px;--tx2:${entry.tx2}px;--ty2:${entry.ty2}px;--tx3:${entry.tx3}px;--ty3:${entry.ty3}px;`}
       >
         <span class="badge-icon" set:html={entry.icon.svg} />
       </div>
@@ -65,57 +65,72 @@ const icons: IconEntry[] = [
   .skills-cloud {
     position: relative;
     width: 100%;
-    min-height: 420px;
+    min-height: 520px;
   }
 
   .skill-badge {
     position: absolute;
-    width: 52px;
-    height: 52px;
+    width: 72px;
+    height: 72px;
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
+    background: #ffffff;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    box-shadow:
+      inset -4px -4px 8px rgba(0, 0, 0, 0.18),
+      inset 4px 4px 8px rgba(255, 255, 255, 0.55),
+      0 6px 18px rgba(0, 0, 0, 0.22);
     animation-name: float-drift;
     animation-timing-function: ease-in-out;
     animation-iteration-count: infinite;
     animation-direction: alternate;
-    opacity: 0.85;
-    transition: opacity 0.2s, transform 0.2s;
+    opacity: 0.9;
+    transition: opacity 0.2s, transform 0.2s, box-shadow 0.2s;
     cursor: default;
+    overflow: hidden;
+  }
+
+  /* Top-left sheen — the sphere highlight */
+  .skill-badge::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    background: radial-gradient(
+      circle at 35% 30%,
+      rgba(255, 255, 255, 0.65) 0%,
+      rgba(255, 255, 255, 0.0) 60%
+    );
+    pointer-events: none;
+    z-index: 2;
   }
 
   .skill-badge:hover {
     opacity: 1;
     z-index: 10;
+    box-shadow:
+      inset -4px -4px 8px rgba(0, 0, 0, 0.18),
+      inset 4px 4px 8px rgba(255, 255, 255, 0.55),
+      0 10px 28px rgba(0, 0, 0, 0.32);
   }
 
   .badge-icon {
+    position: relative;
+    z-index: 1;
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 26px;
-    height: 26px;
+    width: 36px;
+    height: 36px;
   }
 
-  /* Force white SVG fill in dark mode, dark fill in light mode */
-  :global(.dark) .badge-icon :global(svg) {
-    fill: #ffffff !important;
-    width: 26px;
-    height: 26px;
-  }
-
-  :global(:not(.dark)) .badge-icon :global(svg) {
-    fill: #000000 !important;
-    width: 26px;
-    height: 26px;
-    opacity: 0.75;
-  }
-
-  /* Light mode: soften backgrounds */
-  :global(:not(.dark)) .skill-badge {
-    background: var(--bg-elevated) !important;
-    border: 1px solid var(--border);
+  /* Always use the brand color on white background */
+  .badge-icon :global(svg) {
+    fill: var(--icon-color) !important;
+    width: 36px;
+    height: 36px;
   }
 
   @keyframes float-drift {
@@ -127,19 +142,18 @@ const icons: IconEntry[] = [
 
   @media (max-width: 639px) {
     .skills-cloud {
-      min-height: 520px;
+      min-height: 620px;
     }
 
     .skill-badge {
-      width: 42px;
-      height: 42px;
+      width: 52px;
+      height: 52px;
     }
 
     .badge-icon,
-    :global(.dark) .badge-icon :global(svg),
-    :global(:not(.dark)) .badge-icon :global(svg) {
-      width: 20px;
-      height: 20px;
+    .badge-icon :global(svg) {
+      width: 26px;
+      height: 26px;
     }
   }
 </style>
