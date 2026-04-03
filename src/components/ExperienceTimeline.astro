@@ -2,7 +2,8 @@
 interface ExperienceEntry {
   role: string;
   company: string;
-  initials: string;
+  logoUrl: string;
+  logoAlt: string;
   period: string;
   description: string;
   tags: string[];
@@ -12,7 +13,8 @@ const entries: ExperienceEntry[] = [
   {
     role: 'AI Engineer',
     company: 'Exxeta AG · Leipzig, DE',
-    initials: 'EX',
+    logoUrl: 'https://exxeta.com/images/favicons/dark/favicon-96x96.png',
+    logoAlt: 'Exxeta',
     period: '2025 — present',
     description: 'Building and deploying internal AI tooling — LLM gateways, OpenWebUI integrations, and infrastructure for multi-model access across teams.',
     tags: ['FastAPI', 'OpenWebUI', 'LiteLLM', 'Keycloak', 'Kubernetes'],
@@ -20,7 +22,8 @@ const entries: ExperienceEntry[] = [
   {
     role: 'Fullstack Developer',
     company: 'Exxeta AG · Leipzig, DE',
-    initials: 'EX',
+    logoUrl: 'https://exxeta.com/images/favicons/dark/favicon-96x96.png',
+    logoAlt: 'Exxeta',
     period: '2024 — 2025',
     description: 'Full-stack development on client-facing applications. Backend APIs in Spring Boot and FastAPI, React frontends, containerised deployments on AWS.',
     tags: ['Spring Boot', 'FastAPI', 'React', 'Docker', 'AWS'],
@@ -28,7 +31,8 @@ const entries: ExperienceEntry[] = [
   {
     role: 'Junior Consultant',
     company: 'M&L AG · Frankfurt, DE',
-    initials: 'ML',
+    logoUrl: 'https://www.mundl.group/typo3temp/assets/_processed_/7/4/csm_logo_965701db4f.png',
+    logoAlt: 'M&L',
     period: '2020 — 2021',
     description: 'Geospatial data analysis and Python automation for logistics clients. Built tooling to process and visualise GIS datasets.',
     tags: ['Python', 'GIS'],
@@ -36,7 +40,8 @@ const entries: ExperienceEntry[] = [
   {
     role: 'Fullstack Developer',
     company: 'M&L AG · Frankfurt, DE',
-    initials: 'ML',
+    logoUrl: 'https://www.mundl.group/typo3temp/assets/_processed_/7/4/csm_logo_965701db4f.png',
+    logoAlt: 'M&L',
     period: '2017 — 2019',
     description: 'Dual-study position alongside B.Sc. Built internal web tools with Spring Boot backends, Bootstrap frontends, and MySQL databases in Docker.',
     tags: ['Spring Boot', 'Bootstrap', 'Docker', 'MySQL'],
@@ -69,7 +74,9 @@ const entries: ExperienceEntry[] = [
           <!-- Center spine -->
           <div class="spine">
             <div class="spine-line" />
-            <div class="spine-circle">{entry.initials}</div>
+            <div class="spine-circle">
+                <img src={entry.logoUrl} alt={entry.logoAlt} width="24" height="24" loading="lazy" decoding="async" class="spine-logo" />
+              </div>
             <div class="spine-line" />
             {isEven
               ? <div class="spine-date spine-date-right">{entry.period}</div>
@@ -220,20 +227,26 @@ const entries: ExperienceEntry[] = [
   }
 
   .spine-circle {
-    width: 36px;
-    height: 36px;
+    width: 44px;
+    height: 44px;
     border-radius: 50%;
     background: var(--bg-elevated);
     border: 2px solid var(--accent-violet);
-    color: var(--accent-violet);
-    font-size: 0.6875rem;
-    font-weight: 700;
-    font-family: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Monaco, Consolas, monospace;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-shrink: 0;
     z-index: 1;
+    overflow: hidden;
+    padding: 4px;
+  }
+
+  .spine-logo {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    border-radius: 50%;
+    display: block;
   }
 
   .spine-date {
