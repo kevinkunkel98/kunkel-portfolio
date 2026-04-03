@@ -3,7 +3,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import TerminalCard from '../components/TerminalCard.astro';
 import LossLandscape from '../components/LossLandscape';
 import ExperienceTimeline from '../components/ExperienceTimeline.astro';
-import SkillsCloud from '../components/SkillsCloud.astro';
+import SkillGraph from '../components/SkillGraph';
 import ProjectCard from '../components/ProjectCard';
 import ContactForm from '../components/ContactForm';
 import ChatWidget from '../components/ChatWidget';
@@ -237,7 +237,7 @@ import { allProjects } from '../data/projects';
   <section id="skills" style="padding: 5rem 1rem;">
     <div style="max-width: 80rem; margin: 0 auto;">
       <div class="section-heading">// skills</div>
-      <SkillsCloud />
+      <SkillGraph client:load />
     </div>
   </section>
 
