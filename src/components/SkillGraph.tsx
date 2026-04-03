@@ -200,8 +200,8 @@ export default function SkillGraph() {
           ctx.beginPath();
           ctx.moveTo(nodes[i].x, nodes[i].y);
           ctx.lineTo(nodes[j].x, nodes[j].y);
-          ctx.strokeStyle = isHovered ? 'rgba(124,58,237,0.45)' : 'rgba(124,58,237,0.15)';
-          ctx.lineWidth = isHovered ? 1.2 : 0.8;
+          ctx.strokeStyle = isHovered ? 'rgba(124,58,237,0.75)' : 'rgba(124,58,237,0.40)';
+          ctx.lineWidth = isHovered ? 2.0 : 1.4;
           ctx.stroke();
         }
       }
