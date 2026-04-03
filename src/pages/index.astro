@@ -48,6 +48,72 @@ const featuredProjects = allProjects.slice(0, 3);
 
   </section>
 
+  <!-- Stats Strip -->
+  <section style="padding: 1.5rem 1rem;">
+    <div style="max-width: 80rem; margin: 0 auto;">
+      <TerminalCard filename="stats.ts">
+        <div style="padding: 1rem 1.5rem; display: grid; grid-template-columns: repeat(4, 1fr); gap: 0;">
+          <div style="text-align: center; padding: 0.5rem 1rem; border-right: 1px solid var(--border);">
+            <div style="font-size: 2rem; font-weight: 700; color: var(--accent-magenta); line-height: 1;">7</div>
+            <div style="font-size: 0.75rem; color: var(--text-muted); margin-top: 0.25rem;">projects</div>
+          </div>
+          <div style="text-align: center; padding: 0.5rem 1rem; border-right: 1px solid var(--border);">
+            <div style="font-size: 2rem; font-weight: 700; color: var(--accent-magenta); line-height: 1;">6</div>
+            <div style="font-size: 0.75rem; color: var(--text-muted); margin-top: 0.25rem;">blog posts</div>
+          </div>
+          <div style="text-align: center; padding: 0.5rem 1rem; border-right: 1px solid var(--border);">
+            <div style="font-size: 2rem; font-weight: 700; color: var(--accent-magenta); line-height: 1;">3+</div>
+            <div style="font-size: 0.75rem; color: var(--text-muted); margin-top: 0.25rem;">yrs ML</div>
+          </div>
+          <div style="text-align: center; padding: 0.5rem 1rem;">
+            <div style="font-size: 2rem; font-weight: 700; color: var(--accent-magenta); line-height: 1;">∞</div>
+            <div style="font-size: 0.75rem; color: var(--text-muted); margin-top: 0.25rem;">curiosity</div>
+          </div>
+        </div>
+      </TerminalCard>
+    </div>
+  </section>
+
+  <!-- Featured Projects -->
+  <section style="padding: 3rem 1rem;">
+    <div style="max-width: 80rem; margin: 0 auto;">
+      <TerminalCard filename="featured_projects.ts">
+        <div style="padding: 1.5rem;">
+          <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem;" class="projects-grid">
+            {featuredProjects.map((project) => (
+              <div style="background: var(--bg-elevated); border: 1px solid var(--border); border-radius: 4px; padding: 1.25rem; display: flex; flex-direction: column; gap: 0.75rem;">
+                <div style="font-size: 0.9rem; font-weight: 600; color: var(--text-primary);">{project.title}</div>
+                <div style="font-size: 0.8rem; color: var(--text-secondary); line-height: 1.5; flex: 1;">{project.description}</div>
+                <div style="display: flex; flex-wrap: wrap; gap: 0.35rem;">
+                  {project.technologies.map((tech) => (
+                    <span style="font-size: 0.7rem; color: var(--accent-magenta); background: color-mix(in srgb, var(--accent-magenta) 10%, transparent); border: 1px solid color-mix(in srgb, var(--accent-magenta) 25%, transparent); border-radius: 3px; padding: 0.15rem 0.5rem;">{tech}</span>
+                  ))}
+                </div>
+                <div style="display: flex; gap: 1rem; font-size: 0.8rem;">
+                  {project.githubUrl && (
+                    <a href={project.githubUrl} target="_blank" rel="noopener" style="color: var(--accent-violet); text-decoration: none;">
+                      GitHub →
+                    </a>
+                  )}
+                  {project.liveUrl && (
+                    <a href={project.liveUrl} target="_blank" rel="noopener" style="color: var(--accent-violet); text-decoration: none;">
+                      Live →
+                    </a>
+                  )}
+                </div>
+              </div>
+            ))}
+          </div>
+          <div style="margin-top: 1.25rem; text-align: right;">
+            <a href="/projects" style="font-size: 0.85rem; color: var(--text-muted); text-decoration: none;">
+              <span style="color: var(--accent-violet);">$</span> view all projects →
+            </a>
+          </div>
+        </div>
+      </TerminalCard>
+    </div>
+  </section>
+
   <!-- CV Section -->
   <section style="padding: 3rem 1rem;">
     <div style="max-width: 72rem; margin: 0 auto;">
@@ -347,6 +413,22 @@ const featuredProjects = allProjects.slice(0, 3);
     @media (max-width: 768px) {
       .skills-grid {
         grid-template-columns: 1fr;
+      }
+    }
+
+    .projects-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    @media (max-width: 768px) {
+      .projects-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (min-width: 769px) and (max-width: 1024px) {
+      .projects-grid {
+        grid-template-columns: repeat(2, 1fr);
       }
     }
   </style>
