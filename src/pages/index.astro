@@ -194,7 +194,48 @@ import { allProjects } from '../data/projects';
   <section id="skills" style="padding: 5rem 1rem;">
     <div style="max-width: 80rem; margin: 0 auto;">
       <div class="section-heading">// skills</div>
-      <SkillsCloud />
+
+      <div class="skills-grid">
+
+        <!-- ML Stack -->
+        <TerminalCard filename="ml_stack.py">
+          <div style="padding: 1.25rem 1.5rem; font-size: 0.8rem; color: var(--text-secondary); line-height: 1.8; overflow-x: auto;">
+            <div style="color: #28ca41;"># Daily drivers</div>
+            <div><span style="color: var(--accent-violet);">import</span> torch, tensorflow <span style="color: var(--text-muted);"># The usual suspects</span></div>
+            <div><span style="color: var(--accent-violet);">from</span> transformers <span style="color: var(--accent-violet);">import</span> * <span style="color: var(--text-muted);"># HuggingFace magic</span></div>
+            <div><span style="color: var(--accent-violet);">import</span> numpy, pandas <span style="color: var(--text-muted);"># Data wrangling</span></div>
+            <div style="color: #28ca41; padding-top: 0.5rem;"># When things get visual</div>
+            <div><span style="color: var(--accent-violet);">import</span> cv2, matplotlib</div>
+            <div style="color: #28ca41; padding-top: 0.5rem;"># Deployment &amp; MLOps</div>
+            <div><span style="color: var(--accent-violet);">import</span> mlflow, docker</div>
+            <div style="color: #28ca41; padding-top: 0.5rem;"># Classical NLP &amp; Linear models</div>
+            <div><span style="color: var(--accent-violet);">from</span> sklearn.feature_extraction.text <span style="color: var(--accent-violet);">import</span> TfidfVectorizer</div>
+            <div><span style="color: var(--accent-violet);">from</span> sklearn.svm <span style="color: var(--accent-violet);">import</span> LinearSVC <span style="color: var(--text-muted);"># Fast linear classifier</span></div>
+            <div><span style="color: var(--accent-violet);">from</span> sklearn.pipeline <span style="color: var(--accent-violet);">import</span> make_pipeline</div>
+            <div style="word-break: break-all;"><span style="color: var(--accent-violet);">model</span> = make_pipeline(TfidfVectorizer(max_features=10_000), LinearSVC()) <span style="color: var(--text-muted);"># Text → features → classification</span></div>
+          </div>
+        </TerminalCard>
+
+        <!-- Web Stack -->
+        <TerminalCard filename="package.json">
+          <div style="padding: 1.25rem 1.5rem; font-size: 0.8rem; color: var(--text-secondary); line-height: 1.8; overflow-x: auto;">
+            <div style="color: var(--accent-magenta);">{"{"}</div>
+            <div style="margin-left: 1.5rem;"><span style="color: #28ca41;">"dependencies"</span>: {"{"}</div>
+            <div style="margin-left: 3rem;"><span style="color: #28ca41;">"react"</span>: <span style="color: var(--accent-magenta);">"^19.x"</span>, <span style="color: var(--text-muted);">// Still the GOAT</span></div>
+            <div style="margin-left: 3rem;"><span style="color: #28ca41;">"typescript"</span>: <span style="color: var(--accent-magenta);">"latest"</span>, <span style="color: var(--text-muted);">// Life saver</span></div>
+            <div style="margin-left: 3rem;"><span style="color: #28ca41;">"astro"</span>: <span style="color: var(--accent-magenta);">"^5.x"</span>, <span style="color: var(--text-muted);">// Static site magic</span></div>
+            <div style="margin-left: 3rem;"><span style="color: #28ca41;">"next.js"</span>: <span style="color: var(--accent-magenta);">"^15.x"</span>, <span style="color: var(--text-muted);">// Full-stack magic</span></div>
+            <div style="margin-left: 3rem;"><span style="color: #28ca41;">"node.js"</span>: <span style="color: var(--accent-magenta);">"LTS"</span>, <span style="color: var(--text-muted);">// Backend buddy</span></div>
+            <div style="margin-left: 3rem;"><span style="color: #28ca41;">"postgresql"</span>: <span style="color: var(--accent-magenta);">"^15"</span>, <span style="color: var(--text-muted);">// Reliable data</span></div>
+            <div style="margin-left: 3rem;"><span style="color: #28ca41;">"vite"</span>: <span style="color: var(--accent-magenta);">"latest"</span>, <span style="color: var(--text-muted);">// Lightning fast builds</span></div>
+            <div style="margin-left: 3rem;"><span style="color: #28ca41;">"tailwindcss"</span>: <span style="color: var(--accent-magenta);">"latest"</span>, <span style="color: var(--text-muted);">// Utility-first styling</span></div>
+            <div style="margin-left: 3rem;"><span style="color: #28ca41;">"docker"</span>: <span style="color: var(--accent-magenta);">"latest"</span> <span style="color: var(--text-muted);">// It works on my machine™</span></div>
+            <div style="margin-left: 1.5rem;">{"}"}</div>
+            <div style="color: var(--accent-magenta);">{"}"}</div>
+          </div>
+        </TerminalCard>
+
+      </div>
     </div>
   </section>
 
@@ -257,6 +298,18 @@ import { allProjects } from '../data/projects';
     font-weight: 600;
     text-align: center;
     margin-bottom: 2rem;
+  }
+
+  .skills-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+  }
+
+  @media (max-width: 639px) {
+    .skills-grid {
+      grid-template-columns: 1fr;
+    }
   }
 
   .stack-grid {
