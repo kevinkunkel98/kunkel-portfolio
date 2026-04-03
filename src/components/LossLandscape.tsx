@@ -94,8 +94,8 @@ export default function LossLandscape() {
       const cw = canvas.offsetWidth;
       const ch = canvas.offsetHeight;
       ctx.clearRect(0, 0, cw, ch);
-      t += 0.0004;
-      if (t >= 1) t = 0;
+      t += 0.00012;
+      if (t >= 0.5) t = 0;
 
       const N = 24;
       const cx = cw * 0.5;
