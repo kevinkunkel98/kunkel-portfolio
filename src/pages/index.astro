@@ -52,7 +52,7 @@ const featuredProjects = allProjects.slice(0, 3);
   <section style="padding: 1.5rem 1rem;">
     <div style="max-width: 80rem; margin: 0 auto;">
       <TerminalCard filename="stats.ts">
-        <div style="padding: 1rem 1.5rem; display: grid; grid-template-columns: repeat(4, 1fr); gap: 0;">
+        <div style="padding: 1rem 1.5rem; display: grid; gap: 0;" class="stats-grid">
           <div style="text-align: center; padding: 0.5rem 1rem; border-right: 1px solid var(--border);">
             <div style="font-size: 2rem; font-weight: 700; color: var(--accent-magenta); line-height: 1;">7</div>
             <div style="font-size: 0.75rem; color: var(--text-muted); margin-top: 0.25rem;">projects</div>
@@ -417,18 +417,28 @@ const featuredProjects = allProjects.slice(0, 3);
     }
 
     .projects-grid {
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: 1fr;
     }
 
-    @media (max-width: 768px) {
+    @media (min-width: 769px) {
       .projects-grid {
-        grid-template-columns: 1fr;
+        grid-template-columns: repeat(2, 1fr);
       }
     }
 
-    @media (min-width: 769px) and (max-width: 1024px) {
+    @media (min-width: 1025px) {
       .projects-grid {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    .stats-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @media (min-width: 640px) {
+      .stats-grid {
+        grid-template-columns: repeat(4, 1fr);
       }
     }
   </style>
