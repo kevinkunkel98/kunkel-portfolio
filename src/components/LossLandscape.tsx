@@ -36,7 +36,8 @@ function buildPath(
 
 function samplePath(path: [number, number][], t01: number): [number, number, number] {
   const last = path.length - 1;
-  const ft = t01 * last;
+  const wrapped = t01 % 1;
+  const ft = wrapped * last;
   const i = Math.min(Math.floor(ft), last - 1);
   const f = ft - i;
   const [ax, ay] = path[i];
@@ -95,7 +96,6 @@ export default function LossLandscape() {
       const ch = canvas.offsetHeight;
       ctx.clearRect(0, 0, cw, ch);
       t += 0.00012;
-      if (t >= 0.5) t = 0;
 
       const N = 24;
       const cx = cw * 0.5;
