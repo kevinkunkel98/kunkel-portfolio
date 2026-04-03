@@ -23,7 +23,7 @@ const featuredProjects = allProjects.slice(0, 3);
   <section style="position: relative; min-height: 100vh; display: flex; align-items: center; justify-content: center; overflow: hidden;">
 
     <!-- Animated loss landscape background -->
-    <LossLandscape client:load />
+    <LossLandscape client:load style="z-index: 0;" />
 
     <!-- Hero copy — centered over canvas -->
     <div style="position: relative; z-index: 1; text-align: center; padding: 2rem 1rem; max-width: 56rem; width: 100%;">
@@ -337,7 +337,6 @@ const featuredProjects = allProjects.slice(0, 3);
     });
   </script>
 
-  <!-- Hover effects for photo -->
   <style>
     .skills-grid {
       display: grid;
@@ -349,20 +348,6 @@ const featuredProjects = allProjects.slice(0, 3);
       .skills-grid {
         grid-template-columns: 1fr;
       }
-    }
-
-    .photo-hover:hover {
-      transform: scale(1.03);
-    }
-
-    .photo-hover:hover + div + .photo-overlay,
-    .photo-hover:hover ~ .photo-overlay {
-      opacity: 1 !important;
-    }
-
-    /* Wrap photo container to enable hover on overlay */
-    .photo-container:hover .photo-overlay {
-      opacity: 1 !important;
     }
   </style>
 
