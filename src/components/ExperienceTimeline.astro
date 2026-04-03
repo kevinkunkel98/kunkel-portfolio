@@ -1,0 +1,302 @@
+---
+interface ExperienceEntry {
+  role: string;
+  company: string;
+  initials: string;
+  period: string;
+  description: string;
+  tags: string[];
+}
+
+const entries: ExperienceEntry[] = [
+  {
+    role: 'AI Engineer',
+    company: 'Exxeta AG · Leipzig, DE',
+    initials: 'EX',
+    period: '2025 — present',
+    description: 'Building and deploying internal AI tooling — LLM gateways, OpenWebUI integrations, and infrastructure for multi-model access across teams.',
+    tags: ['FastAPI', 'OpenWebUI', 'LiteLLM', 'Keycloak', 'Kubernetes'],
+  },
+  {
+    role: 'Fullstack Developer',
+    company: 'Exxeta AG · Leipzig, DE',
+    initials: 'EX',
+    period: '2024 — 2025',
+    description: 'Full-stack development on client-facing applications. Backend APIs in Spring Boot and FastAPI, React frontends, containerised deployments on AWS.',
+    tags: ['Spring Boot', 'FastAPI', 'React', 'Docker', 'AWS'],
+  },
+  {
+    role: 'Junior Consultant',
+    company: 'M&L AG · Frankfurt, DE',
+    initials: 'ML',
+    period: '2020 — 2021',
+    description: 'Geospatial data analysis and Python automation for logistics clients. Built tooling to process and visualise GIS datasets.',
+    tags: ['Python', 'GIS'],
+  },
+  {
+    role: 'Fullstack Developer',
+    company: 'M&L AG · Frankfurt, DE',
+    initials: 'ML',
+    period: '2017 — 2019',
+    description: 'Dual-study position alongside B.Sc. Built internal web tools with Spring Boot backends, Bootstrap frontends, and MySQL databases in Docker.',
+    tags: ['Spring Boot', 'Bootstrap', 'Docker', 'MySQL'],
+  },
+];
+---
+
+<section class="experience-timeline">
+  <div class="timeline-heading">// experience</div>
+
+  <div class="timeline-list">
+    {entries.map((entry, i) => {
+      const isEven = i % 2 === 0;
+      return (
+        <div class={`timeline-row ${isEven ? 'row-left' : 'row-right'}`}>
+          <!-- Left slot: card (even) or empty (odd) -->
+          <div class="slot slot-left">
+            {isEven && (
+              <div class="card card-left" data-period={entry.period}>
+                <div class="card-role">{entry.role}</div>
+                <div class="card-company">{entry.company}</div>
+                <div class="card-desc">{entry.description}</div>
+                <div class="card-tags">
+                  {entry.tags.map(t => <span class="tag">{t}</span>)}
+                </div>
+              </div>
+            )}
+          </div>
+
+          <!-- Center spine -->
+          <div class="spine">
+            <div class="spine-line" />
+            <div class="spine-circle">{entry.initials}</div>
+            <div class="spine-line" />
+            {isEven
+              ? <div class="spine-date spine-date-right">{entry.period}</div>
+              : <div class="spine-date spine-date-left">{entry.period}</div>
+            }
+          </div>
+
+          <!-- Right slot: empty (even) or card (odd) -->
+          <div class="slot slot-right">
+            {!isEven && (
+              <div class="card card-right" data-period={entry.period}>
+                <div class="card-role">{entry.role}</div>
+                <div class="card-company">{entry.company}</div>
+                <div class="card-desc">{entry.description}</div>
+                <div class="card-tags">
+                  {entry.tags.map(t => <span class="tag">{t}</span>)}
+                </div>
+              </div>
+            )}
+          </div>
+        </div>
+      );
+    })}
+  </div>
+</section>
+
+<style>
+  .experience-timeline {
+    margin-bottom: 2rem;
+  }
+
+  .timeline-heading {
+    font-size: clamp(1rem, 3vw, 1.5rem);
+    color: var(--accent-magenta);
+    font-family: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Monaco, Consolas, monospace;
+    font-weight: 600;
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+
+  .timeline-list {
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* ─── Row ─── */
+  .timeline-row {
+    display: grid;
+    grid-template-columns: 1fr 80px 1fr;
+    align-items: stretch;
+    min-height: 140px;
+  }
+
+  /* ─── Slots ─── */
+  .slot {
+    padding: 1rem 0;
+    display: flex;
+    align-items: center;
+  }
+  .slot-left  { justify-content: flex-end;   padding-right: 1.25rem; }
+  .slot-right { justify-content: flex-start; padding-left:  1.25rem; }
+
+  /* ─── Card ─── */
+  .card {
+    background: var(--bg-surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 1.25rem 1.5rem;
+    max-width: 380px;
+    position: relative;
+  }
+
+  /* Notch pointing right (left card → spine) */
+  .card-left::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    right: -7px;
+    transform: translateY(-50%) rotate(45deg);
+    width: 12px;
+    height: 12px;
+    background: var(--bg-surface);
+    border-top: 1px solid var(--border);
+    border-right: 1px solid var(--border);
+  }
+
+  /* Notch pointing left (right card → spine) */
+  .card-right::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: -7px;
+    transform: translateY(-50%) rotate(45deg);
+    width: 12px;
+    height: 12px;
+    background: var(--bg-surface);
+    border-bottom: 1px solid var(--border);
+    border-left: 1px solid var(--border);
+  }
+
+  .card-role {
+    font-size: 0.9375rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 0.2rem;
+  }
+
+  .card-company {
+    font-size: 0.8125rem;
+    color: var(--accent-violet);
+    margin-bottom: 0.6rem;
+  }
+
+  .card-desc {
+    font-size: 0.8125rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
+    margin-bottom: 0.6rem;
+  }
+
+  .card-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.3rem;
+  }
+
+  .tag {
+    font-size: 0.7rem;
+    color: var(--accent-magenta);
+    background: color-mix(in srgb, var(--accent-magenta) 10%, transparent);
+    border: 1px solid color-mix(in srgb, var(--accent-magenta) 25%, transparent);
+    border-radius: 3px;
+    padding: 0.1rem 0.45rem;
+  }
+
+  /* ─── Spine ─── */
+  .spine {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+  }
+
+  .spine-line {
+    width: 2px;
+    background: var(--border);
+    flex: 1;
+  }
+
+  .spine-circle {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: var(--bg-elevated);
+    border: 2px solid var(--accent-violet);
+    color: var(--accent-violet);
+    font-size: 0.6875rem;
+    font-weight: 700;
+    font-family: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Monaco, Consolas, monospace;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    z-index: 1;
+  }
+
+  .spine-date {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    font-family: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Monaco, Consolas, monospace;
+    white-space: nowrap;
+  }
+
+  .spine-date-right { left: calc(100% + 0.5rem); }
+  .spine-date-left  { right: calc(100% + 0.5rem); text-align: right; }
+
+  /* ─── Mobile ─── */
+  @media (max-width: 639px) {
+    .timeline-row {
+      grid-template-columns: 48px 1fr;
+      min-height: unset;
+    }
+
+    /* Spine in column 1 */
+    .spine {
+      grid-column: 1;
+      grid-row: 1;
+    }
+
+    /* Both slots collapse into column 2 */
+    .slot-left,
+    .slot-right {
+      grid-column: 2;
+      grid-row: 1;
+      padding-left: 1rem;
+      padding-right: 0;
+      justify-content: stretch;
+      display: flex;
+    }
+
+    .card {
+      max-width: 100%;
+      width: 100%;
+    }
+
+    /* Remove notches on mobile */
+    .card-left::after,
+    .card-right::after {
+      display: none;
+    }
+
+    /* Hide spine date labels — shown inside card via ::before instead */
+    .spine-date {
+      display: none;
+    }
+
+    /* Inline date at top of each card */
+    .card::before {
+      content: attr(data-period);
+      display: block;
+      font-size: 0.7rem;
+      color: var(--text-muted);
+      font-family: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Monaco, Consolas, monospace;
+      margin-bottom: 0.4rem;
+    }
+  }
+</style>
