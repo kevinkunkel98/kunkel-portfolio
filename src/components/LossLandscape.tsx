@@ -58,11 +58,11 @@ function isoProject(
 
 // Pre-computed at module load — not re-run per frame
 const BALLS: { path: [number, number][]; color: [number, number, number]; offset: number }[] = [
-  { path: buildPath(-0.82, -0.80, 500, 0.062, 0.78), color: [0,   212, 255], offset: 0.00 },
-  { path: buildPath( 0.85, -0.75, 500, 0.055, 0.82), color: [245, 158,  11], offset: 0.20 },
-  { path: buildPath(-0.78,  0.80, 500, 0.070, 0.75), color: [74,  222, 128], offset: 0.40 },
-  { path: buildPath( 0.78,  0.72, 500, 0.048, 0.85), color: [251, 113, 133], offset: 0.60 },
-  { path: buildPath(-0.10, -0.90, 500, 0.065, 0.80), color: [250, 204,  21], offset: 0.80 },
+  { path: buildPath(-0.82, -0.80, 500, 0.062, 0.78), color: [0,   212, 255], offset: 0 },
+  { path: buildPath( 0.85, -0.75, 500, 0.055, 0.82), color: [245, 158,  11], offset: 0 },
+  { path: buildPath(-0.78,  0.80, 500, 0.070, 0.75), color: [74,  222, 128], offset: 0 },
+  { path: buildPath( 0.78,  0.72, 500, 0.048, 0.85), color: [251, 113, 133], offset: 0 },
+  { path: buildPath(-0.10, -0.90, 500, 0.065, 0.80), color: [250, 204,  21], offset: 0 },
 ];
 
 const TRAIL = 120;
@@ -94,7 +94,8 @@ export default function LossLandscape() {
       const cw = canvas.offsetWidth;
       const ch = canvas.offsetHeight;
       ctx.clearRect(0, 0, cw, ch);
-      t += 0.0018;
+      t += 0.0004;
+      if (t >= 1) t = 0;
 
       const N = 24;
       const cx = cw * 0.5;
@@ -143,8 +144,8 @@ export default function LossLandscape() {
       }
 
       // Draw balls + trails
-      BALLS.forEach(({ path, color: [cr, cg, cb], offset }) => {
-        const headT = ((t * 0.042 + offset) % 1);
+      BALLS.forEach(({ path, color: [cr, cg, cb] }) => {
+        const headT = t;
         const tailT = Math.max(0, headT - 0.18);
 
         // Trail — interpolated samples from tail to head
