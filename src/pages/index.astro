@@ -28,7 +28,7 @@ import ProjectsSection from '../components/ProjectsSection';
   <section id="hero" style="position: relative; min-height: 100vh; display: flex; align-items: center; justify-content: center; overflow: hidden;">
     <LossLandscape client:load />
     <div style="position: relative; z-index: 1; text-align: center; padding: 2rem 1rem; max-width: 56rem; width: 100%;">
-      <div style="font-size: 1.1rem; letter-spacing: 0.2em; color: var(--text-muted); text-transform: uppercase; margin-bottom: 1rem;">
+      <div style="font-size: 1.4rem; letter-spacing: 0.2em; color: var(--text-muted); text-transform: uppercase; margin-bottom: 1rem;">
         Kevin Kunkel
       </div>
       <h1 style="font-size: clamp(2.5rem, 6vw, 4.5rem); font-weight: 700; color: var(--text-primary); line-height: 1.1; margin: 0 0 1rem 0;">
@@ -41,7 +41,7 @@ import ProjectsSection from '../components/ProjectsSection';
         <a href="#projects" style="background: var(--accent-violet); color: #fff; font-family: inherit; font-size: 0.9rem; padding: 0.75rem 1.5rem; border-radius: 4px; text-decoration: none; transition: opacity 0.2s;">
           $ view projects →
         </a>
-        <a href="#about" style="border: 1px solid var(--border); color: var(--text-secondary); font-family: inherit; font-size: 0.9rem; padding: 0.75rem 1.5rem; border-radius: 4px; text-decoration: none; transition: opacity 0.2s;">
+        <a href="#about" style="border: 4px solid var(--border); color: var(--text-secondary); font-family: inherit; font-size: 0.9rem; padding: 0.75rem 1.5rem; border-radius: 4px; text-decoration: none; transition: opacity 0.2s;">
           $ about me →
         </a>
       </div>
@@ -63,7 +63,8 @@ import ProjectsSection from '../components/ProjectsSection';
             </h2>
             <p style="font-size: 0.9375rem; color: var(--text-secondary); line-height: 1.7; margin: 0 0 0.75rem;">
               ML engineer and web developer based in Leipzig, Germany.
-              I build things that actually work — RAG chatbots, classifiers, web apps — and document the journey along the way.
+              I started my journey in tech as a fullstack developer, but quickly found myself drawn to the world of machine learning and AI. I love building things that actually work and that people actually use, whether it's a sleek web app or a complex ML model.
+              My personal motto is "scalps not sledgdehammers".
             </p>
             <p style="font-size: 0.9375rem; color: var(--text-secondary); line-height: 1.7; margin: 0;">
               Currently studying computer science and spending too much time on my Neovim config.
@@ -159,66 +160,6 @@ import ProjectsSection from '../components/ProjectsSection';
           </div>
         </TerminalCard>
 
-      </div>
-
-      <!-- Hardware / Software / Tech-stack -->
-      <div style="display: grid; grid-template-columns: 1fr; gap: 1rem; margin-bottom: 2rem;" class="stack-grid">
-        <TerminalCard filename="hardware.py">
-          <div style="padding: 1.25rem;">
-            <div style="font-size: 0.75rem; color: var(--accent-violet); margin-bottom: 0.875rem; letter-spacing: 0.05em;"># HARDWARE</div>
-            <ul style="margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 0.5rem;">
-              {[
-                'Machine: MacBook Pro M3 14-inch',
-                'Monitor: LG 27UK850 4K',
-                'Keyboard: Keychron Q1',
-                'Mouse: Logitech MX Master 3',
-              ].map(item => (
-                <li style="font-size: 0.8125rem; color: var(--text-secondary); display: flex; gap: 0.5rem;">
-                  <span style="color: var(--accent-magenta);">▸</span>
-                  <span>{item}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
-        </TerminalCard>
-
-        <TerminalCard filename="software.sh">
-          <div style="padding: 1.25rem;">
-            <div style="font-size: 0.75rem; color: var(--accent-violet); margin-bottom: 0.875rem; letter-spacing: 0.05em;"># SOFTWARE</div>
-            <ul style="margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 0.5rem;">
-              {[
-                'OS: Arch Linux / macOS',
-                'Editor: Neovim + lazy.nvim',
-                'Terminal: Alacritty + tmux',
-                'Shell: zsh + starship',
-              ].map(item => (
-                <li style="font-size: 0.8125rem; color: var(--text-secondary); display: flex; gap: 0.5rem;">
-                  <span style="color: var(--accent-magenta);">▸</span>
-                  <span>{item}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
-        </TerminalCard>
-
-        <TerminalCard filename="tech-stack.ts">
-          <div style="padding: 1.25rem;">
-            <div style="font-size: 0.75rem; color: var(--accent-violet); margin-bottom: 0.875rem; letter-spacing: 0.05em;"># TECH STACK</div>
-            <ul style="margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 0.5rem;">
-              {[
-                'Languages: Python, TypeScript, Java',
-                'ML: scikit-learn, PyTorch, LangChain',
-                'Web: Astro, React, FastAPI',
-                'Infra: Docker, Netlify, PostgreSQL',
-              ].map(item => (
-                <li style="font-size: 0.8125rem; color: var(--text-secondary); display: flex; gap: 0.5rem;">
-                  <span style="color: var(--accent-magenta);">▸</span>
-                  <span>{item}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
-        </TerminalCard>
       </div>
     </div>
   </section>
