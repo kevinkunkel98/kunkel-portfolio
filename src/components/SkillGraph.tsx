@@ -87,6 +87,8 @@ export default function SkillGraph() {
   const nodesRef = useRef<SimNode[]>([]);
   const hoveredRef = useRef<number>(-1);
   const rafRef = useRef<number>(0);
+  // Stable edge list: computed once on scatter, never recomputed
+  const edgesRef = useRef<[number, number][]>([]);
 
   useEffect(() => {
     const container = containerRef.current;
@@ -104,6 +106,20 @@ export default function SkillGraph() {
         vx: 0,
         vy: 0,
       }));
+      // Compute edges once — fixed for the lifetime of this scatter
+      const nodes = nodesRef.current;
+      const pairs: [number, number][] = [];
+      const seen = new Set<string>();
+      for (let i = 0; i < nodes.length; i++) {
+        const neighbours = getNearestNeighbours(nodes, i, NEIGHBOURS);
+        for (const j of neighbours) {
+          const key = i < j ? `${i}-${j}` : `${j}-${i}`;
+          if (seen.has(key)) continue;
+          seen.add(key);
+          pairs.push([i, j]);
+        }
+      }
+      edgesRef.current = pairs;
     }
 
     function resize() {
@@ -198,22 +214,15 @@ export default function SkillGraph() {
 
       ctx.clearRect(0, 0, w, h);
 
-      // Draw edges (deduplicated)
-      const drawnPairs = new Set<string>();
-      for (let i = 0; i < nodes.length; i++) {
-        const neighbours = getNearestNeighbours(nodes, i, NEIGHBOURS);
-        for (const j of neighbours) {
-          const key = i < j ? `${i}-${j}` : `${j}-${i}`;
-          if (drawnPairs.has(key)) continue;
-          drawnPairs.add(key);
-          const isHovered = i === hovered || j === hovered;
-          ctx.beginPath();
-          ctx.moveTo(nodes[i].x, nodes[i].y);
-          ctx.lineTo(nodes[j].x, nodes[j].y);
-          ctx.strokeStyle = isHovered ? 'rgba(124,58,237,0.90)' : 'rgba(124,58,237,0.55)';
-          ctx.lineWidth = isHovered ? 2.2 : 1.6;
-          ctx.stroke();
-        }
+      // Draw edges from stable cached topology
+      for (const [i, j] of edgesRef.current) {
+        const isHovered = i === hovered || j === hovered;
+        ctx.beginPath();
+        ctx.moveTo(nodes[i].x, nodes[i].y);
+        ctx.lineTo(nodes[j].x, nodes[j].y);
+        ctx.strokeStyle = isHovered ? 'rgba(124,58,237,0.90)' : 'rgba(124,58,237,0.55)';
+        ctx.lineWidth = isHovered ? 2.2 : 1.6;
+        ctx.stroke();
       }
 
       // Sync icon positions via transform
