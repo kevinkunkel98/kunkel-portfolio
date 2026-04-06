@@ -25,7 +25,7 @@ import ProjectsSection from '../components/ProjectsSection';
   </form>
 
   <!-- ═══════════════════════════════════════ HERO ═══════════════════════════════════════ -->
-  <section id="hero" style="position: relative; min-height: 100vh; display: flex; align-items: center; justify-content: center; overflow: hidden;">
+  <section id="hero" style="position: relative; min-height: 100vh; display: flex; align-items: center; justify-content: center; overflow: hidden; background: var(--bg-base);">
     <LossLandscape client:load />
     <div style="position: relative; z-index: 1; text-align: center; padding: 2rem 1rem; max-width: 56rem; width: 100%;">
       <div style="font-size: 1.4rem; letter-spacing: 0.2em; color: var(--text-muted); text-transform: uppercase; margin-bottom: 1rem;">
@@ -45,7 +45,7 @@ import ProjectsSection from '../components/ProjectsSection';
   </section>
 
   <!-- ═══════════════════════════════════════ ABOUT ══════════════════════════════════════ -->
-  <section id="about" style="padding: 5rem 1rem;">
+  <section id="about" style="padding: 5rem 1rem; background: var(--bg-base);">
     <div style="max-width: 56rem; margin: 0 auto;">
 
       <div class="section-heading">// about</div>
@@ -53,22 +53,44 @@ import ProjectsSection from '../components/ProjectsSection';
       <!-- Bio card -->
       <div style="margin-bottom: 1.5rem;">
         <TerminalCard filename="kevin.md">
-          <div style="padding: 1.5rem;">
-            <h2 style="font-size: 1.25rem; font-weight: 700; color: var(--text-primary); margin: 0 0 1rem;">
-              Kevin Kunkel
-            </h2>
-            <p style="font-size: 0.9375rem; color: var(--text-secondary); line-height: 1.7; margin: 0 0 0.75rem;">
-              ML engineer and web developer based in Leipzig, Germany.
-              I started my journey in tech as a fullstack developer, but quickly found myself drawn to the world of machine learning and AI. I love building things that actually work and that people actually use, whether it's a sleek web app or a complex ML model.
-              My personal motto is "scalps not sledgdehammers".
-            </p>
-            <p style="font-size: 0.9375rem; color: var(--text-secondary); line-height: 1.7; margin: 0;">
-              Currently studying computer science and spending too much time on my Neovim config.
-            </p>
-            <div style="margin-top: 1.25rem; display: flex; gap: 0.75rem; flex-wrap: wrap;">
-              <a href="#projects" style="font-size: 0.8125rem; color: var(--accent-magenta); text-decoration: none;">$ ls ./projects →</a>
-              <a href="#contact" style="font-size: 0.8125rem; color: var(--accent-magenta); text-decoration: none;">$ ./contact.sh →</a>
+          <div class="about-grid">
+
+            <!-- Profile image -->
+            <div class="about-image-col">
+              <div class="about-image-wrap">
+                <!-- DROP YOUR PHOTO HERE — replace the src below -->
+                <img
+                  src="/kevin-hero.jpg"
+                  alt="Kevin Kunkel"
+                  class="about-img"
+                  onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"
+                />
+                <!-- Placeholder shown when image is missing -->
+                <div class="about-img-placeholder">
+                  <span style="font-size:2rem; color: var(--accent-violet);">~/kevin</span>
+                </div>
+              </div>
             </div>
+
+            <!-- Bio text -->
+            <div class="about-text-col">
+              <h2 style="font-size: 1.25rem; font-weight: 700; color: var(--text-primary); margin: 0 0 1rem;">
+                Kevin Kunkel
+              </h2>
+              <p style="font-size: 0.9375rem; color: var(--text-secondary); line-height: 1.7; margin: 0 0 0.75rem;">
+                ML engineer and web developer based in Leipzig, Germany.
+                I started my journey in tech as a fullstack developer, but quickly found myself drawn to the world of machine learning and AI. I love building things that actually work and that people actually use, whether it's a sleek web app or a complex ML model.
+                My personal motto is "scalps not sledgehammers".
+              </p>
+              <p style="font-size: 0.9375rem; color: var(--text-secondary); line-height: 1.7; margin: 0;">
+                Currently studying computer science and spending too much time on my Neovim config.
+              </p>
+              <div style="margin-top: 1.25rem; display: flex; gap: 0.75rem; flex-wrap: wrap;">
+                <a href="#projects" style="font-size: 0.8125rem; color: var(--accent-magenta); text-decoration: none;">$ ls ./projects →</a>
+                <a href="#contact" style="font-size: 0.8125rem; color: var(--accent-magenta); text-decoration: none;">$ ./contact.sh →</a>
+              </div>
+            </div>
+
           </div>
         </TerminalCard>
       </div>
@@ -110,7 +132,7 @@ import ProjectsSection from '../components/ProjectsSection';
   </section>
 
   <!-- ═══════════════════════════════════════ SKILLS ═════════════════════════════════════ -->
-  <section id="skills" style="padding: 5rem 1rem;">
+  <section id="skills" style="padding: 5rem 1rem; background: var(--bg-base);">
     <div style="max-width: 80rem; margin: 0 auto;">
       <div class="section-heading">// skills</div>
       <SkillGraph client:load />
@@ -161,7 +183,7 @@ import ProjectsSection from '../components/ProjectsSection';
   </section>
 
   <!-- ═══════════════════════════════════════ PROJECTS ══════════════════════════════════ -->
-  <section id="projects" style="padding: 5rem 1rem;">
+  <section id="projects" style="padding: 5rem 1rem; background: var(--bg-base);">
     <div style="max-width: 80rem; margin: 0 auto;">
       <div class="section-heading">// projects</div>
       <ProjectsSection client:load />
@@ -169,7 +191,7 @@ import ProjectsSection from '../components/ProjectsSection';
   </section>
 
   <!-- ═══════════════════════════════════════ CONTACT ═══════════════════════════════════ -->
-  <section id="contact" style="padding: 5rem 1rem;">
+  <section id="contact" style="padding: 5rem 1rem; background: var(--bg-base);">
     <div style="max-width: 40rem; margin: 0 auto;">
       <div class="section-heading">// contact</div>
       <p style="font-size: 0.875rem; color: var(--text-muted); margin-bottom: 1.5rem; text-align: center;">
@@ -219,6 +241,62 @@ import ProjectsSection from '../components/ProjectsSection';
     border-color: var(--accent-violet);
     color: var(--accent-violet);
     box-shadow: 0 4px 16px color-mix(in srgb, var(--accent-violet) 25%, transparent);
+  }
+
+  /* ── About two-column layout ── */
+  .about-grid {
+    display: grid;
+    grid-template-columns: 220px 1fr;
+    gap: 2rem;
+    padding: 1.5rem;
+    align-items: start;
+  }
+
+  .about-image-col {
+    display: flex;
+    justify-content: center;
+  }
+
+  .about-image-wrap {
+    position: relative;
+    width: 180px;
+    height: 220px;
+    border-radius: 6px;
+    overflow: hidden;
+    border: 2px solid var(--border);
+    flex-shrink: 0;
+  }
+
+  .about-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+    display: block;
+  }
+
+  .about-img-placeholder {
+    display: none;
+    width: 100%;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+    background: var(--bg-elevated);
+    font-family: inherit;
+  }
+
+  .about-text-col {
+    padding-top: 0.25rem;
+  }
+
+  @media (max-width: 640px) {
+    .about-grid {
+      grid-template-columns: 1fr;
+    }
+    .about-image-wrap {
+      width: 140px;
+      height: 170px;
+    }
   }
 
   .section-heading {

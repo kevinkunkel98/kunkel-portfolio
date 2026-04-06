@@ -16,20 +16,24 @@
   --text-primary:  #282828;
   --text-secondary:#3c3836;
   --text-muted:    #7c6f64;
+  --scanline:      rgba(215, 153, 33, 0.07);
+  --vignette:      rgba(0, 0, 0, 0.15);
 }
 
 /* Dark mode (deep space purple) */
 .dark {
-  --bg-base:       #0d0d1a;
-  --bg-surface:    #110d26;
-  --bg-elevated:   #1a1033;
-  --border:        #2d1a5e;
+  --bg-base:       #0e0b1c;
+  --bg-surface:    #160f29;
+  --bg-elevated:   #201538;
+  --border:        #301c54;
   --accent-violet: #7c3aed;
   --accent-magenta:#e879f9;
   --accent-emerald:#10b981;
   --text-primary:  #f0abfc;
   --text-secondary:#c4b5fd;
   --text-muted:    #a78bfa;
+  --scanline:      rgba(124, 58, 237, 0.07);
+  --vignette:      rgba(0, 0, 0, 0.28);
 }
 
 /* ─── Base styles ─── */
@@ -47,10 +51,24 @@ body {
       0deg,
       transparent,
       transparent 2px,
-      rgba(215, 153, 33, 0.04) 2px,
-      rgba(215, 153, 33, 0.04) 4px
+      var(--scanline) 2px,
+      var(--scanline) 4px
     );
   min-height: 100vh;
+}
+
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 9999;
+  background: linear-gradient(to right,
+    var(--vignette) 0%,
+    transparent 12%,
+    transparent 88%,
+    var(--vignette) 100%
+  );
 }
 
 /* ─── Scrollbar ─── */

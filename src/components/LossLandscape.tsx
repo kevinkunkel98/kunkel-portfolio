@@ -101,7 +101,7 @@ export default function LossLandscape() {
       const cx = cw * 0.5;
       const cy = ch * 0.76;
       const sx = cw * 0.23;
-      const sy = ch * 0.10;
+      const sy = Math.min(cw, ch) * 0.10;
 
       // Build grid with subtle breathing
       const grid: [number, number, number][][] = [];
