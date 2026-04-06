@@ -65,10 +65,12 @@ export default function ChatWidget() {
     position: 'fixed',
     bottom: '1.5rem',
     right: '1.5rem',
-    width: '48px',
-    height: '48px',
+    width: '52px',
+    height: '52px',
     borderRadius: '50%',
-    background: 'var(--accent-violet)',
+    background: isOpen
+      ? 'color-mix(in srgb, var(--accent-violet) 80%, #000)'
+      : 'var(--accent-violet)',
     border: 'none',
     cursor: 'pointer',
     display: 'flex',
@@ -77,25 +79,27 @@ export default function ChatWidget() {
     fontSize: '1.25rem',
     boxShadow: '0 4px 20px color-mix(in srgb, var(--accent-violet) 40%, transparent)',
     zIndex: 100,
-    transition: 'transform 0.15s',
+    transition: 'transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), background 0.2s ease',
+    transform: isOpen ? 'rotate(90deg) scale(1.1)' : 'rotate(0deg) scale(1)',
   };
 
   const panelStyle: React.CSSProperties = {
     position: 'fixed',
-    bottom: '5rem',
+    bottom: '5.5rem',
     right: '1.5rem',
-    width: '680px',
+    width: '760px',
     maxWidth: 'calc(100vw - 2rem)',
-    maxHeight: '75vh',
+    maxHeight: '82vh',
     display: 'flex',
     flexDirection: 'column',
     background: 'var(--bg-surface)',
     border: '1px solid var(--accent-violet)',
-    borderRadius: '8px',
+    borderRadius: '10px',
     overflow: 'hidden',
-    boxShadow: '0 8px 40px color-mix(in srgb, var(--accent-violet) 20%, transparent)',
+    boxShadow: '0 16px 60px color-mix(in srgb, var(--accent-violet) 25%, transparent)',
     zIndex: 100,
     fontFamily: 'ui-monospace, SFMono-Regular, "SF Mono", Menlo, Monaco, Consolas, monospace',
+    animation: 'chatSlideIn 0.35s cubic-bezier(0.34, 1.56, 0.64, 1) forwards',
   };
 
   return (
@@ -241,6 +245,17 @@ export default function ChatWidget() {
           50% { opacity: 0; }
         }
         .chat-cursor { animation: blink 1s step-end infinite; }
+
+        @keyframes chatSlideIn {
+          0% {
+            opacity: 0;
+            transform: translateY(24px) scale(0.94);
+          }
+          100% {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+          }
+        }
       `}</style>
     </>
   );
