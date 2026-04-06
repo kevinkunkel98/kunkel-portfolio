@@ -11,22 +11,22 @@ const navItems = [
 ---
 
 <nav style="position: sticky; top: 0; z-index: 50; background: var(--bg-surface); border-bottom: 1px solid var(--border);">
-  <div style="max-width: 80rem; margin: 0 auto; padding: 0 1.5rem; display: flex; align-items: center; justify-content: space-between; height: 48px;">
+  <div style="max-width: 80rem; margin: 0 auto; padding: 0 1.5rem; display: flex; align-items: center; justify-content: space-between; height: 64px;">
 
     <!-- Terminal prompt (left) -->
-    <a href="/" style="font-size: 0.875rem; text-decoration: none; display: flex; align-items: center; gap: 4px; color: var(--accent-magenta);">
+    <a href="/" style="font-size: 1rem; text-decoration: none; display: flex; align-items: center; gap: 5px; color: var(--accent-magenta);">
       <span style="color: var(--accent-violet);">❯</span>
       <span> kevin</span><span style="color: var(--accent-magenta);">@</span><span>portfolio</span><span style="color: var(--text-muted);">:~$</span>
     </a>
 
     <!-- Desktop links (right) -->
-    <div class="nav-desktop" style="display: flex; align-items: center; gap: 24px;">
+    <div class="nav-desktop" style="display: flex; align-items: center; gap: 28px;">
       {navItems.map((item) => (
         <a
           href={item.href}
           data-nav-href={item.href}
           class="nav-link"
-          style="font-size: 0.8125rem; text-decoration: none; color: var(--text-muted); transition: color 0.2s;"
+          style="font-size: 1.0625rem; text-decoration: none; color: var(--text-muted); transition: color 0.2s;"
         >
           {item.label}
         </a>

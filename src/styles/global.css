@@ -4,18 +4,18 @@
 @variant dark (&:where(.dark, .dark *));
 
 /* ─── Color tokens ─── */
-/* Light mode (rose/fuchsia) */
+/* Light mode (gruvbox light) */
 :root {
-  --bg-base:       #fdf4ff;
-  --bg-surface:    #fae8ff;
-  --bg-elevated:   #e9d5ff;
-  --border:        #d8b4fe;
-  --accent-violet: #7c3aed;
-  --accent-magenta:#a21caf;
-  --accent-emerald:#059669;
-  --text-primary:  #1e1b4b;
-  --text-secondary:#3b0764;
-  --text-muted:    #6b21a8;
+  --bg-base:       #fbf1c7;
+  --bg-surface:    #f2e5bc;
+  --bg-elevated:   #ebdbb2;
+  --border:        #d5c4a1;
+  --accent-violet: #b16286;
+  --accent-magenta:#8f3f71;
+  --accent-emerald:#98971a;
+  --text-primary:  #282828;
+  --text-secondary:#3c3836;
+  --text-muted:    #7c6f64;
 }
 
 /* Dark mode (deep space purple) */
@@ -47,8 +47,8 @@ body {
       0deg,
       transparent,
       transparent 2px,
-      rgba(124, 58, 237, 0.04) 2px,
-      rgba(124, 58, 237, 0.04) 4px
+      rgba(215, 153, 33, 0.04) 2px,
+      rgba(215, 153, 33, 0.04) 4px
     );
   min-height: 100vh;
 }
@@ -119,6 +119,44 @@ body {
 }
 
 .prose hr { border-color: var(--border); }
+
+/* ─── Theme toggle ─── */
+.theme-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 2px solid var(--border);
+  background: transparent;
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: color 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+  min-height: unset;
+  min-width: unset;
+  padding: 0;
+}
+.theme-toggle:hover {
+  color: var(--accent-violet);
+  border-color: var(--accent-violet);
+  box-shadow: 0 0 10px color-mix(in srgb, var(--accent-violet) 40%, transparent);
+  transform: scale(1.1);
+}
+.theme-toggle-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.4s ease, opacity 0.2s ease;
+}
+.theme-toggle.spinning .theme-toggle-icon {
+  animation: theme-icon-spin 0.4s ease forwards;
+}
+@keyframes theme-icon-spin {
+  0%   { transform: rotate(0deg)   scale(1);   opacity: 1; }
+  40%  { transform: rotate(180deg) scale(0.5); opacity: 0.3; }
+  100% { transform: rotate(360deg) scale(1);   opacity: 1; }
+}
 
 /* ─── Mobile touch targets ─── */
 @media (max-width: 640px) {
