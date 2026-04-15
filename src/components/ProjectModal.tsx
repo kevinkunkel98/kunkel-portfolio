@@ -198,7 +198,7 @@ export default function ProjectModal({ project, onClose, triggerRef }: Props) {
           position: absolute;
           top: 12px;
           left: 14px;
-          font-size: 9px;
+          font-size: 0.6rem;
           letter-spacing: 2px;
           text-transform: uppercase;
           border-radius: 3px;
@@ -214,7 +214,7 @@ export default function ProjectModal({ project, onClose, triggerRef }: Props) {
           background: rgba(0,0,0,0.6);
           border: 1px solid var(--border);
           color: var(--text-muted);
-          font-size: 13px;
+          font-size: 0.75rem;
           display: flex;
           align-items: center;
           justify-content: center;
@@ -250,14 +250,14 @@ export default function ProjectModal({ project, onClose, triggerRef }: Props) {
           padding: 18px 20px 20px;
         }
         .modal-label {
-          font-size: 9px;
+          font-size: 0.6rem;
           letter-spacing: 2px;
           text-transform: uppercase;
           color: var(--text-muted);
           margin-bottom: 8px;
         }
         .modal-description {
-          font-size: 12px;
+          font-size: 0.75rem;
           color: var(--text-secondary);
           line-height: 1.7;
           margin: 0 0 18px 0;
@@ -273,7 +273,7 @@ export default function ProjectModal({ project, onClose, triggerRef }: Props) {
           border: 1px solid var(--border);
           border-radius: 4px;
           padding: 3px 9px;
-          font-size: 10px;
+          font-size: 0.6rem;
           color: var(--text-muted);
           letter-spacing: 0.3px;
         }
@@ -289,7 +289,7 @@ export default function ProjectModal({ project, onClose, triggerRef }: Props) {
           align-items: center;
           padding: 7px 16px;
           border-radius: 5px;
-          font-size: 11px;
+          font-size: 0.65rem;
           font-family: inherit;
           cursor: pointer;
           text-decoration: none;

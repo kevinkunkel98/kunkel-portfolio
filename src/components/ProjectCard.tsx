@@ -171,7 +171,7 @@ export default function ProjectCard({ project, onExpand }: Props) {
           position: absolute;
           top: 10px;
           left: 10px;
-          font-size: 9px;
+          font-size: 0.6rem;
           letter-spacing: 2px;
           text-transform: uppercase;
           border-radius: 3px;
@@ -195,7 +195,7 @@ export default function ProjectCard({ project, onExpand }: Props) {
           opacity: 1;
         }
         .proj-card-excerpt {
-          font-size: 11px;
+          font-size: 0.65rem;
           color: #ccc;
           line-height: 1.6;
           margin: 0 0 12px 0;
@@ -206,7 +206,7 @@ export default function ProjectCard({ project, onExpand }: Props) {
           flex-wrap: wrap;
         }
         .proj-card-link {
-          font-size: 10px;
+          font-size: 0.6rem;
           padding: 4px 10px;
           border-radius: 4px;
           border: 1px solid var(--accent-violet);
@@ -226,7 +226,7 @@ export default function ProjectCard({ project, onExpand }: Props) {
           position: absolute;
           bottom: 8px;
           right: 10px;
-          font-size: 9px;
+          font-size: 0.6rem;
           color: var(--accent-violet);
           opacity: 0;
           transition: opacity 0.25s ease;
@@ -249,7 +249,7 @@ export default function ProjectCard({ project, onExpand }: Props) {
           flex-shrink: 0;
         }
         .proj-card-title {
-          font-size: 12px;
+          font-size: 0.7rem;
           color: var(--text-primary);
           font-weight: 600;
           white-space: nowrap;

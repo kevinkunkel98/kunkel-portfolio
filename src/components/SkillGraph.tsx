@@ -99,7 +99,7 @@ export default function SkillGraph() {
     const canvas = canvasRef.current;
     if (!container || !canvas) return;
 
-    const iconSize = () => window.innerWidth <= 639 ? 48 : 64;
+    const iconSize = () => window.innerWidth <= 639 ? 36 : 64;
 
     function scatter(w: number, h: number) {
       const pad = 0.1;
@@ -196,7 +196,7 @@ export default function SkillGraph() {
       }
 
       // Integrate + damp
-      const half = 32; // half of max icon size (64px)
+      const half = iconSize() / 2;
       for (let i = 0; i < nodes.length; i++) {
         nodes[i].vx = (nodes[i].vx + fx[i]) * DAMPING;
         nodes[i].vy = (nodes[i].vy + fy[i]) * DAMPING;
@@ -291,10 +291,10 @@ export default function SkillGraph() {
       <style>{`
         @media (max-width: 639px) {
           .skill-graph-wrap { height: 560px !important; }
-          .sg-icon { width: 48px !important; height: 48px !important; }
-          .sg-icon img { width: 48px !important; height: 48px !important; }
-          .sg-si-icon { width: 28px !important; height: 28px !important; }
-          .sg-si-icon svg { width: 28px !important; height: 28px !important; }
+          .sg-icon { width: 36px !important; height: 36px !important; }
+          .sg-icon img { width: 36px !important; height: 36px !important; }
+          .sg-si-icon { width: 22px !important; height: 22px !important; }
+          .sg-si-icon svg { width: 22px !important; height: 22px !important; }
         }
       `}</style>
       <canvas
