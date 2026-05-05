@@ -97,11 +97,18 @@ export default function LossLandscape() {
       ctx.clearRect(0, 0, cw, ch);
       t += 0.00012;
 
-      const N = 24;
+      // Responsive settings: reduce complexity on narrow (mobile) viewports
+      const isMobile = cw < 640;
+      const N = isMobile ? 16 : 24;
+      const trail = isMobile ? 70 : TRAIL;
+      const activeBalls = isMobile ? BALLS.slice(0, 3) : BALLS;
+
+      // On portrait/mobile, push the landscape centre higher and scale it up
+      // so it fills more of the narrow viewport rather than sitting as a thin sliver.
       const cx = cw * 0.5;
-      const cy = ch * 0.76;
-      const sx = cw * 0.23;
-      const sy = Math.min(cw, ch) * 0.10;
+      const cy = isMobile ? ch * 0.68 : ch * 0.76;
+      const sx = cw * (isMobile ? 0.30 : 0.23);
+      const sy = Math.min(cw, ch) * (isMobile ? 0.13 : 0.10);
 
       // Build grid with subtle breathing
       const grid: [number, number, number][][] = [];
@@ -144,17 +151,17 @@ export default function LossLandscape() {
       }
 
       // Draw balls + trails
-      BALLS.forEach(({ path, color: [cr, cg, cb] }) => {
+      activeBalls.forEach(({ path, color: [cr, cg, cb] }) => {
         const headT = t;
         const tailT = Math.max(0, headT - 0.18);
 
         // Trail — interpolated samples from tail to head
-        for (let s = 0; s < TRAIL; s++) {
-          const t0 = tailT + (headT - tailT) * (s / TRAIL);
-          const t1 = tailT + (headT - tailT) * (Math.min(s + 1, TRAIL) / TRAIL);
+        for (let s = 0; s < trail; s++) {
+          const t0 = tailT + (headT - tailT) * (s / trail);
+          const t1 = tailT + (headT - tailT) * (Math.min(s + 1, trail) / trail);
           const pa = isoProject(samplePath(path, t0), cx, cy, sx, sy);
           const pb = isoProject(samplePath(path, t1), cx, cy, sx, sy);
-          const age = s / TRAIL;
+          const age = s / trail;
           ctx.strokeStyle = `rgba(${cr},${cg},${cb},${(age * 0.88).toFixed(2)})`;
           ctx.lineWidth = 0.5 + age * 1.8;
           ctx.beginPath(); ctx.moveTo(pa.x, pa.y); ctx.lineTo(pb.x, pb.y); ctx.stroke();
@@ -163,11 +170,12 @@ export default function LossLandscape() {
         // Glow halo + white core
         const head = samplePath(path, headT);
         const pt = isoProject([head[0], head[1], head[2] + 0.055], cx, cy, sx, sy);
-        const halo = ctx.createRadialGradient(pt.x, pt.y, 0, pt.x, pt.y, 11);
+        const haloRadius = isMobile ? 9 : 11;
+        const halo = ctx.createRadialGradient(pt.x, pt.y, 0, pt.x, pt.y, haloRadius);
         halo.addColorStop(0,   `rgba(${cr},${cg},${cb},1)`);
         halo.addColorStop(0.4, `rgba(${cr},${cg},${cb},0.3)`);
         halo.addColorStop(1,   `rgba(${cr},${cg},${cb},0)`);
-        ctx.beginPath(); ctx.arc(pt.x, pt.y, 11, 0, TAU);
+        ctx.beginPath(); ctx.arc(pt.x, pt.y, haloRadius, 0, TAU);
         ctx.fillStyle = halo; ctx.fill();
 
         ctx.beginPath(); ctx.arc(pt.x, pt.y, 2.5, 0, TAU);
